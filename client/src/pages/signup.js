@@ -1,12 +1,9 @@
-import React from 'react'
-import "../pages.css"
-import styled from "styled-components"
-
+import React from 'react';
+import '../pages.css';
+import styled from 'styled-components';
 
 const Signup = () => {
-  return (
-    <div>Signup</div>
-  )
-}
+  return <div>Signup</div>;
+};
 
-export default Signup
+export default Signup;

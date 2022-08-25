@@ -1,0 +1,50 @@
+.login_box{
+  
+    width: 288.45px;
+    height: 570.59px;
+
+}
+.img_box{
+  display: flex;
+    height: 37px;
+    margin: 0px 0px 24px;
+
+}
+
+.content{
+    padding: 24px 16px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    height: 100%;
+    background-color: rgb(241, 242, 243);
+    
+}
+.social{
+    margin : -4px 0px 16px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.stack_logo{
+    width: 32px;
+    height: 37px;
+}
+.icon_box{
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 24px;
+}
+.form_container{
+  background-color: white;
+  border-radius: 7px;
+  margin: 0px 0px 24px;
+  padding: 24px;
+}
+.login-form{
+  margin:-6px 0px ;
+  display: flex;
+  justify-content: space-between;
+  
+}
+

@@ -5,11 +5,13 @@ import Main from "./pages/Main";
 import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
 import MyPage from "./pages/MyPage";
+import Nav from "./components/Nav";
 
 const App = () => {
   return (
     <>
       <Router>
+      <Nav/>
         <Routes>
           <Route path="/" element={<Main></Main>}></Route>
           <Route path="/questions" element={<Questions></Questions>}></Route>

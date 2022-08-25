@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 
 import Search from "./Search";
 import { BlueButton, LightBlueButton } from "./ui/Button";
+import { ReactComponent as Stackoverflow } from "../assets/stack-overflow-brands.svg";
 
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  // 로그인 유무 판별
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <>
@@ -15,7 +17,7 @@ const Nav = () => {
         <Container>
           <LogoContainer>
             <StyledLink to="/">
-              <i className="fa-brands fa-stack-overflow" />
+              <Stackoverflow width="30" height="35"></Stackoverflow>
               <span>
                 stack<b>overflow</b>
               </span>

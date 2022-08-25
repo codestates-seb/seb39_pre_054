@@ -19,8 +19,8 @@ const App = () => {
           <Route path='/questions/ask' element={<Ask></Ask>}></Route>
           <Route path='/users/:id' element={<MyPage></MyPage>}></Route>
         </Routes>
+        <Footer />
       </Router>
-      <Footer></Footer>
     </>
   );
 };

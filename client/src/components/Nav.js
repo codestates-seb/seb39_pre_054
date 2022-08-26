@@ -13,7 +13,7 @@ import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <>
@@ -44,7 +44,7 @@ const Nav = () => {
           <Search />
         </Container>
         <ButtonContainer>
-          {/* {!isLogin ? (
+          {!isLogin ? (
             <>
               <StyledLink to="/users/login">
                 <LightBlueButton>Login</LightBlueButton>
@@ -53,8 +53,7 @@ const Nav = () => {
                 <BlueButton>Sign up</BlueButton>
               </StyledLink>
             </>
-          ) : null} */}
-          <>
+          ) : (
             <Ol>
               <li>
                 <Profile>
@@ -75,7 +74,7 @@ const Nav = () => {
                 <StackExchange />
               </li>
             </Ol>
-          </>
+          )}
         </ButtonContainer>
       </Header>
     </>
@@ -106,6 +105,7 @@ const Header = styled.header`
   position: fixed;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   background: #f8f9f9;
+  z-index: 1000;
 `;
 
 const Container = styled.div`

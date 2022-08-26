@@ -1,50 +1,50 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import Search from "./Search";
-import { BlueButton, LightBlueButton } from "./ui/Button";
-import { ReactComponent as Stackoverflow } from "../assets/stack-overflow-brands.svg";
+import Search from './Search';
+import { BlueButton, LightBlueButton } from './ui/Button';
+import { ReactComponent as Stackoverflow } from '../assets/stack-overflow-brands.svg';
 
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <>
       <Header>
         <Container>
           <LogoContainer>
-            <StyledLink to="/">
-              <Stackoverflow width="30" height="35"></Stackoverflow>
+            <StyledLink to='/'>
+              <Stackoverflow width='30' height='35'></Stackoverflow>
               <span>
                 stack<b>overflow</b>
               </span>
             </StyledLink>
           </LogoContainer>
-          { !isLogin &&
+          {!isLogin && (
             <Tab>
               <span>About</span>
             </Tab>
-          }
+          )}
           <Tab onClick={() => setProductsClick(!productsClick)}>
             <span>Products</span>
           </Tab>
-          { !isLogin &&
+          {!isLogin && (
             <Tab>
               <span>ForTeams</span>
             </Tab>
-          }
+          )}
           <Search />
         </Container>
         <ButtonContainer>
           {!isLogin ? (
             <>
-              <StyledLink to="/users/login">
+              <StyledLink to='/users/login'>
                 <LightBlueButton>Login</LightBlueButton>
               </StyledLink>
-              <StyledLink to="/users/signup">
+              <StyledLink to='/users/signup'>
                 <BlueButton>Sign up</BlueButton>
               </StyledLink>
             </>
@@ -112,8 +112,8 @@ const Tab = styled.div`
     border-radius: 1000px;
     background: #f8f9f9;
     /* background: ${(productsClick) =>
-      productsClick ? "orange" : "#F8F9F9"}; */
-    /* color: ${(productsClick) => (productsClick ? "#FFF" : "#F8F9F9")}; */
+      productsClick ? 'orange' : '#F8F9F9'}; */
+    /* color: ${(productsClick) => (productsClick ? '#FFF' : '#F8F9F9')}; */
   }
 
   span:hover {

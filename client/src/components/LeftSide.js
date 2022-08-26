@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { ReactComponent as Globe } from "../assets/globe.svg";
 import { ReactComponent as StarVerified } from "../assets/starVerified.svg";
@@ -8,6 +8,8 @@ import { ReactComponent as BoardCase } from "../assets/board-case.svg";
 import { ReactComponent as QuestionMark } from "../assets/question-mark.svg";
 
 const LeftSide = () => {
+  const { pathname } = useLocation();
+
   return (
     <>
       <Container>
@@ -19,7 +21,7 @@ const LeftSide = () => {
           </li>
           <li className="li-title">PUBLIC</li>
           <li>
-            <StyledLink to="/">
+            <StyledLink to="/questions">
               <Globe fill="#666d72" />
               Questions
             </StyledLink>
@@ -71,7 +73,6 @@ const Container = styled.div`
   position: sticky;
   display: flex;
   align-items: center;
-  height: 100%;
   width: 184px;
   background: #ffffff;
   margin: 0;
@@ -105,21 +106,28 @@ const Ol = styled.ol`
   .li-title {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    width: 170px;
+    font-size: 13px;
+    
+    svg{
+      width: 40px;
+    }
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  width: 100%;
+  width: 166px;
   height: 100%;
   color: #666d72;
+  padding-left: 6px;
 
-  :hover {
+  &.active{
     background: #e3e6e8;
     border-right: 5px solid #f48024;
+    font-weight: bold;
   }
 
   div {

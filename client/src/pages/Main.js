@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import LeftSide from '../components/LeftSide';
 import QuestionList from '../components/QuestionList';
 // 메인 페이지
 const Main = () => {
   return (
     <>
       <MainContainer>
-        <Left />
+        <Left><LeftSide></LeftSide></Left>
         <QuestionList />
         <Right />
       </MainContainer>
@@ -16,7 +17,12 @@ const Main = () => {
 
 export default Main;
 
-const Left = styled.div``;
+const Left = styled.div`
+  display: flex;
+  justify-content: right;
+  height: 100%;
+`;
+
 const MainContainer = styled.div`
   top: 0;
   display: grid;

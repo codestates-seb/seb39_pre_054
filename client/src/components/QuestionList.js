@@ -10,7 +10,7 @@ const QuestionList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/questions', { withCredentials: true })
+      .get('http://localhost:3001/questions', { withCredentials: true })
       .then((response) => setQuestions(response.data));
   }, []);
   return (

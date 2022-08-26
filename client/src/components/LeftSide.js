@@ -71,6 +71,7 @@ export default LeftSide;
 
 const Container = styled.div`
   position: sticky;
+  top: 56px;
   display: flex;
   align-items: center;
   width: 184px;

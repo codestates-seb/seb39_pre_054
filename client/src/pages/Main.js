@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <>
       <MainContainer>
-        <Left><LeftSide></LeftSide></Left>
+        <Left><LeftSide/></Left>
         <QuestionList />
         <Right />
       </MainContainer>
@@ -20,6 +20,7 @@ export default Main;
 const Left = styled.div`
   display: flex;
   justify-content: right;
+  align-items: flex-start;
   height: 100%;
 `;
 

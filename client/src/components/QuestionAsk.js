@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import QuestionAskRight from "./QuestionAskRight";
 import { BlueButton } from "./ui/Button";
@@ -9,7 +9,12 @@ const QuestionAsk = () => {
     title: "",
     body: "",
     author: "",
-    createAt: new Date().toLocaleDateString(),
+    createdAt: new Date().toLocaleDateString(),
+  });
+
+  const [validations, setValidations] = useState({
+    title: true,
+    body: true,
   });
 
   const titleChange = (el) => {
@@ -22,10 +27,30 @@ const QuestionAsk = () => {
 
   const onPostClick = () => {
     if (questionPost.title !== "" && questionPost.body !== "") {
+      setValidations({ title: false, body: false });
       axios
         .post("http://localhost:3001/questions", questionPost)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
+    }
+
+    if (questionPost.title === "") {
+      setValidations((prev) => {
+        return { ...prev, title: false };
+      });
+    } else {
+      setValidations((prev) => {
+        return { ...prev, title: true };
+      });
+    }
+    if (questionPost.body === "") {
+      setValidations((prev) => {
+        return { ...prev, body: false };
+      });
+    } else {
+      setValidations((prev) => {
+        return { ...prev, body: true };
+      });
     }
   };
 
@@ -48,6 +73,7 @@ const QuestionAsk = () => {
                   placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
                   onChange={(el) => titleChange(el.target.value)}
                 ></TitleTags>
+                {validations.title || <span>Title is empty.</span>}
               </InputContainer>
             </TextContianer>
             <TextContianer>
@@ -58,13 +84,14 @@ const QuestionAsk = () => {
                   question
                 </div>
               </label>
+              <InputContainer>
+                <BodyInput
+                  id="body"
+                  onChange={(el) => bodyChange(el.target.value)}
+                ></BodyInput>
+                {validations.body || <span>Body is empty.</span>}
+              </InputContainer>
             </TextContianer>
-            <InputContainer>
-              <BodyInput
-                id="body"
-                onChange={(el) => bodyChange(el.target.value)}
-              ></BodyInput>
-            </InputContainer>
             <TextContianer>
               <label htmlFor="tags">
                 Tags
@@ -142,6 +169,10 @@ const TextContianer = styled.div`
 
 const InputContainer = styled.div`
   width: 100%;
+
+  span {
+    color: red;
+  }
 `;
 
 const TitleTags = styled.input`
@@ -168,7 +199,6 @@ const BodyInput = styled.textarea`
   border-radius: 5px;
   resize: none;
   font-size: 15px;
-  margin-bottom: 3rem;
 
   :focus {
     outline: 1px solid #6bbbf7;

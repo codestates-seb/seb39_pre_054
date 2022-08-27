@@ -1,9 +1,34 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import styled from "styled-components";
 import QuestionAskRight from "./QuestionAskRight";
 import { BlueButton } from "./ui/Button";
 
 const QuestionAsk = () => {
+  const [questionPost, setQuestionPost] = useState({
+    title: "",
+    body: "",
+    author: "",
+    createAt: new Date().toLocaleDateString(),
+  });
+
+  const titleChange = (el) => {
+    setQuestionPost({ ...questionPost, title: el });
+  };
+
+  const bodyChange = (el) => {
+    setQuestionPost({ ...questionPost, body: el });
+  };
+
+  const onPostClick = () => {
+    if (questionPost.title !== "" && questionPost.body !== "") {
+      axios
+        .post("http://localhost:3001/questions", questionPost)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <>
       <AskContainer>
@@ -21,6 +46,7 @@ const QuestionAsk = () => {
                 <TitleTags
                   id="title"
                   placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+                  onChange={(el) => titleChange(el.target.value)}
                 ></TitleTags>
               </InputContainer>
             </TextContianer>
@@ -34,7 +60,10 @@ const QuestionAsk = () => {
               </label>
             </TextContianer>
             <InputContainer>
-              <BodyInput id="body"></BodyInput>
+              <BodyInput
+                id="body"
+                onChange={(el) => bodyChange(el.target.value)}
+              ></BodyInput>
             </InputContainer>
             <TextContianer>
               <label htmlFor="tags">
@@ -52,7 +81,12 @@ const QuestionAsk = () => {
             </InputContainer>
           </form>
           <ButtonContainer>
-            <BlueButton width="135px" height="38px" margin="0">
+            <BlueButton
+              width="135px"
+              height="38px"
+              margin="0"
+              onClick={onPostClick}
+            >
               Post your question
             </BlueButton>
           </ButtonContainer>
@@ -147,6 +181,7 @@ const ButtonContainer = styled.div`
   padding-left: 0;
 `;
 
+// 오른쪽 사이드 바
 const RightContainer = styled.div`
   display: flex;
   flex-direction: column;

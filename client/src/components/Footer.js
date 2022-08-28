@@ -1,130 +1,127 @@
 // import axios from 'axios';
-import React from 'react';
+import React from "react";
 // import styled from 'styled-components';
-import './Footer.css';
-import { ReactComponent as Stackoverflow } from '../assets/stack-overflow-brands.svg';
+import "./Footer.css";
+import { ReactComponent as Stackoverflow } from "../assets/stack-overflow-brands.svg";
 
 const Footer = () => {
   return (
     <footer>
       <nav>
-        <div className='logo'>
-          <Stackoverflow width='30' height='35'></Stackoverflow>
+        <div className="logo">
+          <Stackoverflow width="30" height="35"></Stackoverflow>
         </div>
-        <div class='row'>
-          <div class='col'>
+        <div class="row">
+          <div class="col">
             <h5>STACK OVERFLOW</h5>
             <ul>
               <li>
-                <a href='#'>Questions</a>
+                <a href="http://localhost:3001/">Questions</a>
               </li>
               <li>
-                <a href='#'>Help</a>
+                <a href="http://localhost:3001/">Help</a>
               </li>
             </ul>
           </div>
-          <div class='col'>
+          <div class="col">
             <h5>PRODUCTS</h5>
             <ul>
               <li>
-                <a href='#'>Teams</a>
+                <a href="http://localhost:3001/">Teams</a>
               </li>
               <li>
-                <a href='#'>Advertising</a>
+                <a href="http://localhost:3001/">Advertising</a>
               </li>
               <li>
-                <a href='#'>Collectives</a>
+                <a href="http://localhost:3001/">Collectives</a>
               </li>
               <li>
-                <a href='#'>Talent</a>
+                <a href="http://localhost:3001/">Talent</a>
               </li>
             </ul>
           </div>
-          <div class='col'>
+          <div class="col">
             <h5>COMPANY</h5>
             <ul>
               <li>
-                <a href='#'>About</a>
+                <a href="http://localhost:3001/">About</a>
               </li>
               <li>
-                <a href='#'>Press</a>
+                <a href="http://localhost:3001/">Press</a>
               </li>
               <li>
-                <a href='#'>Work Here</a>
+                <a href="http://localhost:3001/">Work Here</a>
               </li>
               <li>
-                <a href='#'>Legal</a>
+                <a href="http://localhost:3001/">Legal</a>
               </li>
               <li>
-                <a href='#'>Privacy Policy</a>
+                <a href="http://localhost:3001/">Privacy Policy</a>
               </li>
               <li>
-                <a href='#'>Terms of Service</a>
+                <a href="http://localhost:3001/">Terms of Service</a>
               </li>
               <li>
-                <a href='#'>Contact Us</a>
+                <a href="http://localhost:3001/">Contact Us</a>
               </li>
               <li>
-                <a href='#'>Cookie Settings</a>
+                <a href="http://localhost:3001/">Cookie Settings</a>
               </li>
               <li>
-                <a href='#'>Cookie Policy</a>
+                <a href="http://localhost:3001/">Cookie Policy</a>
               </li>
             </ul>
           </div>
-          <div class='col'>
+          <div class="col">
             <h5>STACK EXCHANGE NETWORK</h5>
             <ul>
               <li>
-                <a href='#'>Technology</a>
+                <a href="http://localhost:3001/">Technology</a>
               </li>
               <li>
-                <a href='#'>Culture & recreation</a>
+                <a href="http://localhost:3001/">Culture & recreation</a>
               </li>
               <li>
-                <a href='#'>Life & arts</a>
+                <a href="http://localhost:3001/">Life & arts</a>
               </li>
               <li>
-                <a href='#'>Science</a>
+                <a href="http://localhost:3001/">Science</a>
               </li>
               <li>
-                <a href='#'>Professional</a>
+                <a href="http://localhost:3001/">Professional</a>
               </li>
               <li>
-                <a href='#'>Business</a>
+                <a href="http://localhost:3001/">Business</a>
               </li>
               <li>
-                <a href='#'></a>
+                <a href="http://localhost:3001/">API</a>
               </li>
               <li>
-                <a href='#'>API</a>
-              </li>
-              <li>
-                <a href='#'>Data</a>
+                <a href="http://localhost:3001/">Data</a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div class='row-right'>
+        <div class="row-right">
           {/* <div class='col grow'></div> */}
-          <div class='col'>
+          <div class="col">
             {/* <div class='row text-right'> */}
-            <ul class='row'>
+            <ul class="row">
               <li>
-                <a href='#'>Blog</a>
+                <a href="http://localhost:3001/">Blog</a>
               </li>
               <li>
-                <a href='#'>Facebook</a>
+                <a href="http://localhost:3001/">Facebook</a>
               </li>
               <li>
-                <a href='#'>Twitter</a>
+                <a href="http://localhost:3001/">Twitter</a>
               </li>
               <li>
-                <a href='#'>LinkedIn</a>
+                <a href="http://localhost:3001/">LinkedIn</a>
               </li>
               <li>
-                <a href='#'>Instagram</a>
+                <a href="http://localhost:3001/">Instagram</a>
               </li>
               <p>
                 Site design / logo © 2022 Stack Exchange Inc; user contributions

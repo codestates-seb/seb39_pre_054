@@ -38,5 +38,5 @@ export default App;
 
 const Container = styled.div`
   position: relative;
-  top: 38px;
+  top: 50px;
 `;

@@ -48,7 +48,8 @@ const Container = styled.main`
 const HeaderRow = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
-  padding: 4.5rem 1.5rem 4rem 1.5rem;
+  /* 상단 패팅 4.5rem에서 2rem으로 변경 */
+  padding: 2rem 1.5rem 4rem 1.5rem;
 `;
 
 const Header1 = styled.h1`

@@ -6,8 +6,8 @@ import Ask from "./pages/Ask";
 import Questions from "./pages/Questions";
 import MyPage from "./pages/MyPage";
 import Nav from "./components/Nav";
-import Login from "./pages/login.js";
-import Signup from "./pages/signup.js";
+import Login from "./pages/Login.js";
+import Signup from "./pages/Signup.js";
 import Footer from "./components/Footer";
 import styled from "styled-components";
 

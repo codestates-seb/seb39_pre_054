@@ -189,7 +189,7 @@ const Ol = styled.ol`
     align-items: center;
     width: 100%;
     height: 100%;
-    padding-left: 1.5rem;
+    padding: 0 0.75rem;
     float: left;
     flex-grow: 1;
   }

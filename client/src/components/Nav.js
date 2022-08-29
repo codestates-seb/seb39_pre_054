@@ -13,7 +13,7 @@ import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <>
@@ -42,40 +42,41 @@ const Nav = () => {
             </Tab>
           )}
           <Search />
+
+          <ButtonContainer>
+            {!isLogin ? (
+              <>
+                <StyledLink to="/users/login">
+                  <LightBlueButton>Login</LightBlueButton>
+                </StyledLink>
+                <StyledLink to="/users/signup">
+                  <BlueButton>Sign up</BlueButton>
+                </StyledLink>
+              </>
+            ) : (
+              <Ol>
+                <li>
+                  <Profile>
+                    <img />
+                    <div className="">1</div>
+                  </Profile>
+                </li>
+                <li>
+                  <Inbox />
+                </li>
+                <li>
+                  <TrophyStar />
+                </li>
+                <li>
+                  <Question />
+                </li>
+                <li>
+                  <StackExchange />
+                </li>
+              </Ol>
+            )}
+          </ButtonContainer>
         </Container>
-        <ButtonContainer>
-          {!isLogin ? (
-            <>
-              <StyledLink to="/users/login">
-                <LightBlueButton>Login</LightBlueButton>
-              </StyledLink>
-              <StyledLink to="/users/signup">
-                <BlueButton>Sign up</BlueButton>
-              </StyledLink>
-            </>
-          ) : (
-            <Ol>
-              <li>
-                <Profile>
-                  <img />
-                  <div className="">1</div>
-                </Profile>
-              </li>
-              <li>
-                <Inbox />
-              </li>
-              <li>
-                <TrophyStar />
-              </li>
-              <li>
-                <Question />
-              </li>
-              <li>
-                <StackExchange />
-              </li>
-            </Ol>
-          )}
-        </ButtonContainer>
       </Header>
     </>
   );
@@ -95,9 +96,10 @@ const HeaderTop = styled.div`
 const Header = styled.header`
   position: fixed;
   top: 2px;
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  grid-column-gap: 10px;
+  display: flex;
+  justify-content: center;
+  /* grid-template-columns: 1fr 240px;
+  grid-column-gap: 10px; */
   margin: 0 auto;
   height: 50px;
   width: 100%;
@@ -112,9 +114,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 100%;
+  width: 79rem;
   height: 100%;
-  /* background-image: url(https://cdn.sstatic.net/Img/unified/sprites.svg?v=fcc0ea44ba27); */
 `;
 
 const LogoContainer = styled.div`
@@ -167,7 +168,7 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 280px;
   height: 100%;
 `;
 
@@ -188,6 +189,7 @@ const Ol = styled.ol`
     align-items: center;
     width: 100%;
     height: 100%;
+    padding-left: 1.5rem;
     float: left;
     flex-grow: 1;
   }

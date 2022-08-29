@@ -34,3 +34,17 @@ export const LightBlueButton = styled.button`
   }
 `;
 
+export const LightBlueButton2 = styled.button`
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 0.9px solid #2c5877;
+  background: #e1ecf4;
+  color: #2c5877;
+  cursor: pointer;
+
+  &:hover {
+    background: #b3d4ea;
+  }
+`;

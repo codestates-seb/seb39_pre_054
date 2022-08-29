@@ -19,16 +19,21 @@ const QuestionsViewContent = ({
 
   const deleteClick = () => {
     const result = window.confirm("Delete this post?");
-    if(result === true){
+    if (result === true) {
       axios
-      .delete(
-        `http://localhost:3001/questions/${id}`
-      )
-      .then((res) => navigate(`/`))
-      .catch((err) => console.log(err));
-    }else{
-
+        .delete(`http://localhost:3001/questions/${id}`)
+        .then((res) => navigate(`/`))
+        .catch((err) => console.log(err));
+    } else {
     }
+  };
+
+  const shareClick = () => {
+    navigator.clipboard
+      .writeText(`http://localhost:3000/questions/${id}`)
+      .then(() => {
+        window.alert("링크를 복사하였습니다!");
+      });
   };
 
   return (
@@ -42,14 +47,20 @@ const QuestionsViewContent = ({
         <pre>{questionBody}</pre>
         <div className="view-container">
           <div className="view-button-container">
-            <div className="view-button share">Share</div>
-            <StyledLink
-              to={`/posts/${id}`}
-              state={{ title: questionTitle, body: questionBody, id: id }}
-            >
-              <div className="view-button edit">Edit</div>
-            </StyledLink>
-            <div className="view-button delete" onClick={deleteClick}>Delete</div>
+            <div className="view-button share">
+              <span onClick={shareClick}>Share</span>
+            </div>
+            <div className="view-button edit">
+              <StyledLink
+                to={`/posts/${id}`}
+                state={{ title: questionTitle, body: questionBody, id: id }}
+              >
+                <span>Edit</span>
+              </StyledLink>
+            </div>
+            <div className="view-button delete">
+              <span onClick={deleteClick}>Delete</span>
+            </div>
           </div>
           <div className="view-user-container">
             <div className="view-user-profile">
@@ -109,7 +120,10 @@ const Container = styled.div`
     padding-right: 1rem;
     margin: 3px;
     color: #636b74;
-    cursor: pointer;
+
+    span{
+      cursor: pointer;
+    }
   }
 
   .edit {

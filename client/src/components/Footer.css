@@ -1,6 +1,5 @@
 nav {
-  /* 높이 지정되어 있어서 밑에 공간이 남습니다 */
-  /* height: 21rem; */
+  height: 21rem;
   background-color: #232629;
   display: flex;
   flex-wrap: wrap;

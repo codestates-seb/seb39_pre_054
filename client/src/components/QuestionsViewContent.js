@@ -5,15 +5,32 @@ import { ReactComponent as VoteUp } from "../assets/vote-up.svg";
 import { ReactComponent as VoteDown } from "../assets/vote-down.svg";
 import { ReactComponent as History } from "../assets/history.svg";
 import { ReactComponent as BookMark } from "../assets/book-mark.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const QuestionsViewContent = ({
   questionTitle,
   questionBody,
   questionCreatedAt,
   questionAuthor,
-  id
+  id,
 }) => {
+  const navigate = useNavigate();
+
+  const deleteClick = () => {
+    const result = window.confirm("Delete this post?");
+    if(result === true){
+      axios
+      .delete(
+        `http://localhost:3001/questions/${id}`
+      )
+      .then((res) => navigate(`/`))
+      .catch((err) => console.log(err));
+    }else{
+
+    }
+  };
+
   return (
     <Container>
       <div className="vote">
@@ -26,10 +43,13 @@ const QuestionsViewContent = ({
         <div className="view-container">
           <div className="view-button-container">
             <div className="view-button share">Share</div>
-            <StyledLink to={`/posts/${id}`} state={{title:questionTitle, body:questionBody, id:id}}>
+            <StyledLink
+              to={`/posts/${id}`}
+              state={{ title: questionTitle, body: questionBody, id: id }}
+            >
               <div className="view-button edit">Edit</div>
             </StyledLink>
-            <div className="view-button delete">Delete</div>
+            <div className="view-button delete" onClick={deleteClick}>Delete</div>
           </div>
           <div className="view-user-container">
             <div className="view-user-profile">

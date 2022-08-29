@@ -121,26 +121,11 @@
       "createdAt": "2023.08.26"
     },
     {
-      "id": 16,
-      "title": "Defining variable within function in jest",
-      "body": "뭐먹지",
-      "author": "parkhacker",
-      "likes": 2,
-      "createdAt": "2023.08.26"
-    },
-    {
-      "title": "dsdsa",
-      "body": "dsadsadsa",
+      "title": "오늘 뭐먹지?",
+      "body": "치킨\n피자\n삼겹살",
       "author": "",
-      "createdAt": "2022. 8. 29.",
-      "id": 17
-    },
-    {
-      "title": "이렇게 작성하면 띄어쓰기 어떻게 구현됨?",
-      "body": "이렇게 작성하면 띄어쓰기 어떻게 구현됨?\n이렇게 작성하면 띄어쓰기 어떻게 구현됨?",
-      "author": "",
-      "createdAt": "2022. 8. 29.",
-      "id": 18
+      "createdAt": "2022. 8. 30.",
+      "id": 16
     }
   ],
   "poll": [

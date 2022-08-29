@@ -7,10 +7,13 @@ import QuestionsViewHeader from "../components/QuestionsViewHeader";
 import RightSide from "../components/RightSide";
 import axios from "axios";
 import QuestionsViewContent from "../components/QuestionsViewContent";
+import useScrollTop from "../util/useScrollTop"
 
 const QuestionView = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState({});
+
+  useScrollTop();
 
   useEffect(() => {
     axios

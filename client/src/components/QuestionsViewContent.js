@@ -5,8 +5,15 @@ import { ReactComponent as VoteUp } from "../assets/vote-up.svg";
 import { ReactComponent as VoteDown } from "../assets/vote-down.svg";
 import { ReactComponent as History } from "../assets/history.svg";
 import { ReactComponent as BookMark } from "../assets/book-mark.svg";
+import { Link } from "react-router-dom";
 
-const QuestionsViewContent = ({ questionBody, questionCreatedAt, questionAuthor }) => {
+const QuestionsViewContent = ({
+  questionTitle,
+  questionBody,
+  questionCreatedAt,
+  questionAuthor,
+  id
+}) => {
   return (
     <Container>
       <div className="vote">
@@ -19,14 +26,16 @@ const QuestionsViewContent = ({ questionBody, questionCreatedAt, questionAuthor 
         <div className="view-container">
           <div className="view-button-container">
             <div className="view-button share">Share</div>
-            <div className="view-button edit">Edit</div>
+            <StyledLink to={`/posts/${id}`} state={{title:questionTitle, body:questionBody, id:id}}>
+              <div className="view-button edit">Edit</div>
+            </StyledLink>
             <div className="view-button delete">Delete</div>
           </div>
           <div className="view-user-container">
             <div className="view-user-profile">
               <div>{questionCreatedAt}</div>
               <div className="view-user-info">
-                <img className="view-user-img"/>
+                <img className="view-user-img" />
                 <div className="view-user-name">{questionAuthor}</div>
               </div>
             </div>
@@ -104,13 +113,13 @@ const Container = styled.div`
     width: 100%;
   }
 
-  .view-user-info{
+  .view-user-info {
     display: flex;
     flex-direction: row;
     padding-top: 10px;
   }
 
-  .view-user-img{
+  .view-user-img {
     width: 32px;
     height: 32px;
     border-radius: 5px;
@@ -118,8 +127,13 @@ const Container = styled.div`
     margin-right: 20px;
   }
 
-  .view-user-name{
+  .view-user-name {
     display: flex;
     align-items: center;
   }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #636b74;
 `;

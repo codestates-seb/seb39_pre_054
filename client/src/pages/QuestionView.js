@@ -32,9 +32,11 @@ const QuestionView = () => {
           ></QuestionsViewHeader>
           <Content>
             <QuestionsViewContent
+              questionTitle={question.title}
               questionBody={question.body}
               questionCreatedAt={question.createdAt}
               questionAuthor={question.author}
+              id={question.id}
             ></QuestionsViewContent>
             <RightSide />
           </Content>
@@ -47,10 +49,11 @@ const QuestionView = () => {
 export default QuestionView;
 
 const Left = styled.div`
-  width: 100%;
   display: flex;
   justify-content: right;
+  align-items: flex-start;
   height: 100%;
+  width: 100%;
 `;
 
 const MainContainer = styled.div`
@@ -59,6 +62,7 @@ const MainContainer = styled.div`
   justify-content: center;
   grid-template-columns: 0.32fr 1fr 0.26fr;
   margin: 0 auto;
+  height: 100%;
 `;
 
 const ContentContainer = styled.div`

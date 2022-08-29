@@ -11,6 +11,7 @@ import Signup from "./pages/Signup.js";
 import Footer from "./components/Footer";
 import styled from "styled-components";
 import QuestionView from "./pages/QuestionView";
+import Posts from "./pages/Posts";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/users/signup" element={<Signup></Signup>}></Route>
             <Route path="/questions/ask" element={<Ask></Ask>}></Route>
             <Route path="/users/:id" element={<MyPage></MyPage>}></Route>
+            <Route path="/posts/:id" element={<Posts></Posts>}></Route>
           </Routes>
           <Footer />
         </Router>

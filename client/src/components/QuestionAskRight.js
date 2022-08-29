@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { ReactComponent as ArrowDown } from "../assets/chevron-down-solid.svg";
+import { ReactComponent as ArrowUp } from "../assets/chevron-up-solid.svg";
+
 const step1_1 = [
   {
     title: "1. Summarize the problem",
@@ -49,8 +52,15 @@ const QuestionAskRight = () => {
             {step1_1.map((el, idx) => {
               return (
                 <Ol key={idx} onClick={(e) => clicked(idx)}>
-                  <li className="li-title">
-                    {el.title}
+                  <li className="li-content">
+                    <div className="li-title-logo">
+                      {el.title}
+                      {select === idx ? (
+                        <ArrowUp width="13px" heigth="13px" />
+                      ) : (
+                        <ArrowDown width="13px" heigth="13px" />
+                      )}
+                    </div>
                     <div>
                       {el.content.map((el, idx2) => {
                         return (
@@ -109,9 +119,16 @@ const Ol = styled.ol`
   margin: 0;
   padding: 0;
 
-  .li-title {
+  .li-content {
     font-weight: bold;
-    padding: 12px 0;
+    padding: 10px 0;
+  }
+
+  .li-title-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
   }
 `;
 

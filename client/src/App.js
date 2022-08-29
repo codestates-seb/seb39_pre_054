@@ -10,6 +10,7 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import Footer from "./components/Footer";
 import styled from "styled-components";
+import QuestionView from "./pages/QuestionView";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="/" element={<Main></Main>}></Route>
             <Route path="/questions" element={<Questions></Questions>}></Route>
             {/* 질문보기 라우터 */}
-            {/* <Route path="/questions/:id" element={<Main></Main>}></Route> */}
+            <Route path="/questions/:id" element={<QuestionView></QuestionView>}></Route>
             <Route path="/users/login" element={<Login></Login>}></Route>
             <Route path="/users/signup" element={<Signup></Signup>}></Route>
             <Route path="/questions/ask" element={<Ask></Ask>}></Route>

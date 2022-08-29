@@ -114,7 +114,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  width: 79rem;
+  width: 84.8rem;
   height: 100%;
 `;
 
@@ -170,6 +170,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   width: 280px;
   height: 100%;
+  padding: 0 0.75rem;
 `;
 
 const Ol = styled.ol`

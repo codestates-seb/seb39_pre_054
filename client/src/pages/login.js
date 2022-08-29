@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 // 로그인 페이지
 const Login = () => {
-  return (
+  return (<>
 <div className="content">
  <div className="login_box">
     <div className="img_box"> </div>
@@ -24,7 +24,6 @@ const Login = () => {
     </div>
     <div className="form_container">
         <form id="login-form">
-
               <Inputdiv>
               <Inputlabel>Email</Inputlabel>
               <InputText type={"email"}></InputText>
@@ -34,10 +33,11 @@ const Login = () => {
               <Inputlabel>Password</Inputlabel>
               <InputText type={"password"}></InputText>
               <InputMessage>Password cannot be empty.</InputMessage>
-              </Inputdiv>
-              <LoginButton>Log in</LoginButton>
-           
-        </form>
+            </Inputdiv>
+            <LoginButton>Log in</LoginButton>
+          </form>
+        </div>
+      </div>
     </div>
     <Choicediv>
       Dont' have an account? 
@@ -47,16 +47,10 @@ const Login = () => {
       </StyledLink>
 
     </Choicediv>
-
-</div>
-</div>
-
+  </>
   )
-
-}
-
-
-export default Login
+};
+export default Login;
 
 export const LogoImage = styled.img`
 margin: -3.9px 5px;
@@ -112,7 +106,7 @@ export const GitHubButton = styled(SocialButton)`
   :hover{
     background-color:rgb(35,39,41) ;
   }
-  color : white;
+  color: white;
   font-weight: bolder;
 `
 export const FacebookButton = styled(SocialButton)`
@@ -121,7 +115,7 @@ export const FacebookButton = styled(SocialButton)`
   :hover{
     background-color:rgb(54,60,121) ;
   }
-  color : white;
+  color: white;
   font-weight: bolder;
   
 `
@@ -134,7 +128,7 @@ margin: 4px 0px;
 :hover{
   background: #2584f4;
   }
-`
+`;
 const InputMessage = styled.p`
 margin: 2px 0px;
 padding: 2px;

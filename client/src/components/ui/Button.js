@@ -48,3 +48,18 @@ export const LightBlueButton2 = styled.button`
     background: #b3d4ea;
   }
 `;
+
+export const WhiteBox = styled.button`
+  height: ${(props) => props.height || "100%"};
+  width: ${(props) => props.width || "100%"};
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  background: #fff;
+  color: #0174cc;
+  cursor: pointer;
+
+  &:hover {
+    background: #b3d4ea;
+  }
+`;

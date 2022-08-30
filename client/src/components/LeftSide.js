@@ -14,7 +14,7 @@ const LeftSide = () => {
     <>
       <Container>
         <Ol>
-          <li className="li-title">
+          <li className="li-title-home">
             <StyledLink to="/" className="home">
               Home
             </StyledLink>

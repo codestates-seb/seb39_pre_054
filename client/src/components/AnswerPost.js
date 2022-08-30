@@ -69,7 +69,7 @@ export default AnswerPost;
 
 const Container = styled.main`
   display: flex;
-  width: 38rem;
+  width: 42rem;
 `;
 
 const ContentInfo = styled.div`

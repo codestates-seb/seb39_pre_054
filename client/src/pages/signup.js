@@ -1,22 +1,44 @@
-import React, { useState } from "react";
+import React, { useState  , useEffect} from "react";
 import "../pages.css";
 import styled from "styled-components";
 import { GoogleButton , GitHubButton , FacebookButton , LoginButton , LogoImage , Inputlabel , Inputdiv , InputText} from "./Login"
 import GithubIcon from "../assets/github-brands.svg"
 import FacebookIcon from "../assets/square-facebook-brands.svg"
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
 
   const [name , setName] = useState("");
   const [email , setEmail] = useState("");
   const [password , setPassword] = useState("")
-  const [error , setError] = useState(false)
 
+
+  //오류확인
+  const [nameError , setNameError] = useState({display  :"none"});
+  const [nonameError , setnoNameError] = useState({display : "none"})
+  const [emailError , setEmailError] = useState({display : "none"})
+  const [noemailError , setnoEmailError] = useState({display : "none"})
+  const [passwordError , setPasswordError] = useState({display : "none"})
+  const [nopasswordError , setnoPasswordError] = useState({display : "none"})
+  
 
   const register = () =>{
-  console.log("hi")
+    axios.post("http://localhost:3001/signup",{
+      name : name ,
+      email : email,
+      password :password,
+    }).then((response) =>{
+      console.log(response)
+      localStorage.setItem('token' , response.data.jwt)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
   }
+
+
+  
   return(
   <Signupdiv>
     <Signupdiv className="content">
@@ -49,12 +71,18 @@ const Signup = () => {
           <InputText id = "name"type={"text"} 
           value = {name} 
           onChange = {(e) =>{
-            setName(e.target.value);
-            if(error){
-              document.querySelector('#name').style.backgroundColor = 'black';
-            }
+            setName(e.target.value)
           }}></InputText>
+          <ErrorP id="nameError"
+          style = {nameError}>
+            Name already exists
+          </ErrorP>
+          <ErrorP id= "nonameError"
+          style={nonameError}>
+            Name cannot be empty.
+          </ErrorP>
           </Inputdiv>
+
           <Inputdiv>
           <Inputlabel>Email</Inputlabel>
           <InputText type={"email"}
@@ -62,6 +90,12 @@ const Signup = () => {
           onChange = {(e) =>{
             setEmail(e.target.value)
           }}></InputText>
+            <ErrorP id="emailError">
+            Please check email
+          </ErrorP>
+          <ErrorP id="noemailError">
+            Email cannot be empty.
+          </ErrorP>
           </Inputdiv>
           <Inputdiv>
           <Inputlabel>Password</Inputlabel>
@@ -70,13 +104,18 @@ const Signup = () => {
           onChange = {(e) =>{
             setPassword(e.target.value)
           }}></InputText>
+          <ErrorP id="pwError">
+            Please check password
+          </ErrorP>
+          <ErrorP id="nopwError">
+          Password cannot be empty.
+          </ErrorP>
           </Inputdiv>
           <div className="last2">
           Passwords must contain at least eight characters, including at least 1 letter and 1 number.      
           </div>
-          <LoginButton onClick={() =>{
-            //register();
-            console.log("click")
+          <LoginButton type="button" onClick={() =>{
+            register();
           }}>Sign up</LoginButton>
         </form>
         </div>
@@ -121,7 +160,8 @@ background-color:#F1F2F3 ;
 }
 .last2{
   font-size: 12px;
-  color : #6A737C
+  color : #6A737C;
+  margin: 4px 0px ;
 
 }
 .body2{
@@ -139,6 +179,14 @@ const Body1img = styled.img`
 margin: -2px 0px 0px;
 width: 25px;
 height: 25px;
+
+`
+const ErrorP = styled.p`
+margin: 2px 0px;
+padding: 2px;
+color: #D0393E;
+font-size: 12px;
+
 
 `
 

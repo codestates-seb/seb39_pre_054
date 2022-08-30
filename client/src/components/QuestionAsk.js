@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import QuestionAskRight from "./QuestionAskRight";
@@ -12,6 +12,7 @@ const QuestionAsk = () => {
     body: "",
     author: "test",
     createdAt: new Date().toLocaleDateString(),
+    answer_id: []
   });
 
   const [validations, setValidations] = useState({

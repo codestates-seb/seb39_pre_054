@@ -8,17 +8,24 @@
       "likes": 30,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [
+        3,
+        2,
+        1
+      ]
     },
     {
       "id": 2,
       "title": "METHOD_NOT_SUPPORTED error while generate invoice number from paypal api",
-      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.",
+      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.dasdsasa",
       "author": "Khajehei",
       "likes": 100,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [
+        5,
+        4
+      ]
     },
     {
       "id": 3,
@@ -207,15 +214,31 @@
       "answer2": "React",
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [
+        1
+      ]
     }
   ],
   "answer": [
     {
-      "id": 1,
-      "body": "질문에 대한 답변드림요 내공냠냠",
-      "createdAt": "2022. 8. 30.",
-      "last_edit_date": "2022. 8. 30."
+      "body": "dsadsadsadsa",
+      "id": 1
+    },
+    {
+      "body": "dsadsadsadsadsa",
+      "id": 2
+    },
+    {
+      "body": "3번째\n",
+      "id": 3
+    },
+    {
+      "body": "dsadsadsadsa",
+      "id": 4
+    },
+    {
+      "body": "작성이 잘 되나요?",
+      "id": 5
     }
   ],
   "signup": [
@@ -242,6 +265,12 @@
       "email": "gpwl3354@gmail.cofsd",
       "password": "dfjsdhffsd",
       "id": 4
+    },
+    {
+      "name": "",
+      "email": "alsdn@gmail.com",
+      "password": "gigigi",
+      "id": 5
     }
   ]
 }

@@ -10,7 +10,6 @@ const PostsContent = () => {
   const [questionPost, setQuestionPost] = useState({
     title: location.state.title,
     body: location.state.body,
-    answer_id: []
   });
 
   const titleChange = (el) => {

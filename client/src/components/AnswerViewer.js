@@ -1,25 +1,30 @@
 import axios from "axios";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const QuestionAnswersView = ({
-  questionTitle,
-  questionBody,
-  questionCreatedAt,
-  questionAuthor,
-  id,
-}) => {
-  const navigate = useNavigate();
+const AnswerViewer = ({ questionid, answerId, author, id }) => {
+  const [answer, setAnswer] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/answer/${id}`)
+      .then((res) => setAnswer(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const deleteClick = () => {
-    const result = window.confirm("Delete this post?");
+    const result = window.confirm("Delete this answer?");
     if (result === true) {
       axios
-        .delete(`http://localhost:3001/questions/${id}`)
-        .then((res) => navigate(`/`))
+        .delete(`http://localhost:3001/answer/${id}`)
+        .then((res) => console.log(res))
         .catch((err) => console.log(err));
-    } else {
+      axios
+        .patch(`http://localhost:3001/questions/${questionid}`, {answer_id:[...answerId.filter((el) => el !== id)]})
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      window.location.reload();
     }
   };
 
@@ -30,9 +35,10 @@ const QuestionAnswersView = ({
         window.alert("Link copy complete!");
       });
   };
+
   return (
     <ViewContainer>
-      <pre>{questionBody}</pre>
+      <pre>{answer.body}</pre>
       <div className="view-container">
         <div className="view-button-container">
           <div className="view-button share">
@@ -41,7 +47,7 @@ const QuestionAnswersView = ({
           <div className="view-button edit">
             <StyledLink
               to={`/posts/${id}`}
-              state={{ title: questionTitle, body: questionBody, id: id }}
+              state={{ body: answer.body, id: answer.id }}
             >
               <span>Edit</span>
             </StyledLink>
@@ -52,10 +58,10 @@ const QuestionAnswersView = ({
         </div>
         <div className="view-user-container">
           <div className="view-user-profile">
-            <div>{questionCreatedAt}</div>
+            <div>{answer.createdAt}</div>
             <div className="view-user-info">
               <img className="view-user-img" />
-              <div className="view-user-name">{questionAuthor}</div>
+              <div className="view-user-name">{author}</div>
             </div>
           </div>
         </div>
@@ -64,7 +70,7 @@ const QuestionAnswersView = ({
   );
 };
 
-export default QuestionAnswersView;
+export default AnswerViewer;
 
 const ViewContainer = styled.div`
   width: 38rem;

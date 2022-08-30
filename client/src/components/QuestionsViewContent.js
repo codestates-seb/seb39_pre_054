@@ -1,7 +1,9 @@
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import AnswerPost from "./AnswerPost";
-import QuestionAnswersView from "./QuestionAnswersView";
+import AnswerViewer from "./AnswerViewer";
+import QuestionViewer from "./QuestionViewer";
 
 import Vote from "./Vote";
 
@@ -10,6 +12,7 @@ const QuestionsViewContent = ({
   questionBody,
   questionCreatedAt,
   questionAuthor,
+  answerId,
   id,
 }) => {
   return (
@@ -17,31 +20,34 @@ const QuestionsViewContent = ({
       <div className="question-container">
         <Vote></Vote>
         {/* 질문 뷰어 */}
-        <QuestionAnswersView
-          questionTitle={questionTitle}
-          questionBody={questionBody}
-          questionCreatedAt={questionCreatedAt}
-          questionAuthor={questionAuthor}
+        <QuestionViewer
+          title={questionTitle}
+          body={questionBody}
+          createdAt={questionCreatedAt}
+          author={questionAuthor}
           id={id}
-        ></QuestionAnswersView>
+        ></QuestionViewer>
       </div>
-      <div className="answer-container">
-        <div className="answer-title">Answer</div>
-        <div className="answer-content">
-          <Vote></Vote>
-          {/* 답변 데이터 만들것 */}
-          <QuestionAnswersView
-            questionTitle={questionTitle}
-            questionBody={questionBody}
-            questionCreatedAt={questionCreatedAt}
-            questionAuthor={questionAuthor}
-            id={id}
-          ></QuestionAnswersView>
-        </div>
-      </div>
+      {(answerId !== undefined && answerId.length !== 0) &&
+        answerId.map((el, idx) => {
+          return (
+            <div className="answer-container" key={idx}>
+              <div className="answer-title">Answer</div>
+              <div className="answer-content">
+                <Vote></Vote>
+                <AnswerViewer
+                  author={questionAuthor}
+                  answerId={answerId}
+                  questionid={id}
+                  id={el}
+                ></AnswerViewer>
+              </div>
+            </div>
+          );
+        })}
       <div className="answer-post-container">
         <div className="answer-title">Your Answer</div>
-        <AnswerPost></AnswerPost>
+        <AnswerPost questionid={id} answerId={answerId}></AnswerPost>
       </div>
     </Container>
   );

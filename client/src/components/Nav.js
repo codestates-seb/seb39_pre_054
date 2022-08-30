@@ -23,6 +23,7 @@ const Nav = () => {
           <LogoContainer>
             <StyledLink to="/">
               <Stackoverflow width="26" height="31"></Stackoverflow>
+
               <span>
                 stack<b>overflow</b>
               </span>

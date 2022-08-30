@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserLink from "./UserLink";
 
 // MainQuestionList.js로부터 받은 값
-const QuestionRow = ({ id, title, body, author, createdAt }) => {
+const QuestionRow = ({ id, title, author, createdAt }) => {
   return (
     <StyledQuestionRow>
       <QuestionStats>
@@ -25,7 +25,7 @@ const QuestionRow = ({ id, title, body, author, createdAt }) => {
 
       <QuestionTitleArea>
         <QuestionLink to={`/questions/${id}`}>{title}</QuestionLink>
-        <QuestionBody>{body}</QuestionBody>
+
         <WhoAndWhen>
           <UserLink id={author}>{author}</UserLink>
 
@@ -88,20 +88,6 @@ const QuestionLink = styled(Link)`
   &:hover {
     color: #0a95ff;
   }
-`;
-
-const QuestionBody = styled.div`
-  font-size: 13.5px;
-  color: #3b4045;
-  font-weight: 400;
-  /* background-color: skyblue; */
-  margin: -2px 0px 8px;
-  /* width: 600px; */
-  height: 33px;
-
-  white-space: no-wrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 const WhoAndWhen = styled.div`

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import QuestionList from "../components/QuestionList";
+import MainQuestionList from "../components/MainQuestionList";
 import LeftSide from "../components/LeftSide";
 import RightSide from "../components/RightSide";
 
@@ -12,7 +12,7 @@ const Main = () => {
         <Left>
           <LeftSide />
         </Left>
-        <QuestionList />
+        <MainQuestionList />
         <RightSide />
       </MainContainer>
     </>
@@ -32,7 +32,6 @@ export const MainContainer = styled.div`
   top: 0;
   display: grid;
   grid-template-columns: 1fr 755px 1.7fr;
-  /* grid-template-columns: 1.1fr 750px 1.8fr; */
   margin: 0 auto;
   width: 100%;
 `;

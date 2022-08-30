@@ -2,10 +2,10 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import QuestionRow from "./QuestionRow";
+import MainQuestionRow from "./MainQuestionRow";
 import { BlueButton } from "./ui/Button";
 
-const QuestionList = () => {
+const MainQuestionList = () => {
   const [questions, setQuestions] = useState([]); // 질문들
 
   useEffect(() => {
@@ -15,48 +15,54 @@ const QuestionList = () => {
   }, []);
   return (
     <Container>
-      <HeaderRow1>
+      <Row1>
         <Header1>Top Questions</Header1>
         <StyledLink to="/questions/ask">
-          <BlueButton>Ask Question</BlueButton>
+          <BlueButton margin="0">Ask Question</BlueButton>
         </StyledLink>
-      </HeaderRow1>
+      </Row1>
 
-      <HeaderRow2>
-        <div></div>
+      <Row2>
         <FilterGroup>
           <button className="filter-button1">Interesting</button>
-          <button className="filter-button2">Bountied</button>
+          <button className="filter-button2">
+            <span classname="box">300</span>
+            Bountied
+          </button>
           <button className="filter-button3">Hot</button>
           <button className="filter-button4">Week</button>
           <button className="filter-button5">Month</button>
         </FilterGroup>
-      </HeaderRow2>
+      </Row2>
       {questions.map((question) => (
-        <QuestionRow
+        <MainQuestionRow
           key={question.id}
-          title={question.title}
           id={question.id}
+          title={question.title}
+          body={question.body}
           createdAt={question.createdAt}
           author={question.author}
-
-          // tags={question.tags}
         />
       ))}
+
+      {/* <BottomText>
+        Looking for more? Browse the complete list of questions, or popular
+        tags. Help us answer unanswered questions.
+      </BottomText> */}
     </Container>
   );
 };
 
-export default QuestionList;
+export default MainQuestionList;
 
 const Container = styled.main`
   border-left: 1px solid #e3e6e8;
 `;
 
-const HeaderRow1 = styled.div`
+const Row1 = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
-  padding: 2rem 0 1rem 1.4rem;
+  padding: 2rem 0 0.4rem 1.4rem;
 `;
 
 const Header1 = styled.h1`
@@ -67,15 +73,15 @@ const Header1 = styled.h1`
 
 const StyledLink = styled(Link)`
   display: flex;
-  align-items: center;
   width: 7rem;
   height: 3.5rem;
   text-decoration: none;
   color: #000000;
 `;
 
-const HeaderRow2 = styled.div`
-  padding: 0 0 1.1rem 28.3rem;
+const Row2 = styled.div`
+  padding-bottom: 1rem;
+  text-align: right;
 `;
 
 const FilterGroup = styled.div`
@@ -87,6 +93,7 @@ const FilterGroup = styled.div`
     border: 1px solid #888888;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+
     &:hover {
       cursor: pointer;
     }
@@ -95,42 +102,57 @@ const FilterGroup = styled.div`
     padding: 0 0.7rem;
     height: 2.3rem;
     color: #555555;
+    margin-right: -1px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
+
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
+      cursor: pointer;
+    }
+
+    span {
+      margin: 0 5px 0 0;
+      padding: 2.2px 5.5px 2.75px;
+      background-color: #0074cc;
+      color: #ffffff;
+      font-size: 12px;
+      border-radius: 2px;
     }
   }
+
   .filter-button3 {
     padding: 0 0.7rem;
     height: 2.3rem;
     color: #555555;
-    margin-left: -1px;
+    margin-right: -1px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
+      cursor: pointer;
     }
   }
   .filter-button4 {
     padding: 0 0.7rem;
     height: 2.3rem;
     color: #555555;
-    margin-left: -1px;
+    margin-right: -3px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
+      cursor: pointer;
     }
   }
   .filter-button5 {
     padding: 0 0.7rem;
     height: 2.3rem;
     color: #555555;
-    margin-left: -1px;
+    margin-left: 2px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
     border-top-right-radius: 3px;
@@ -138,6 +160,13 @@ const FilterGroup = styled.div`
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
+      cursor: pointer;
     }
   }
 `;
+
+// const BottomText = styled.div`
+//   padding: 3rem 2rem 3rem 1.5rem;
+//   font-size: 17.5px;
+//   font-weight: 400;
+// `;

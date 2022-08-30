@@ -56,7 +56,7 @@ const Container = styled.main`
 const HeaderRow1 = styled.div`
   display: grid;
   grid-template-columns: 1fr min-content;
-  padding: 4.2rem 0 1rem 1.4rem;
+  padding: 2rem 0 1rem 1.4rem;
 `;
 
 const Header1 = styled.h1`

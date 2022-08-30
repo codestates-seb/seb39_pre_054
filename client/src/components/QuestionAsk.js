@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import QuestionAskRight from "./QuestionAskRight";
 import { BlueButton } from "./ui/Button";
 
 const QuestionAsk = () => {
+  const navigate = useNavigate();
   const [questionPost, setQuestionPost] = useState({
     title: "",
     body: "",
-    author: "",
+    author: "test",
     createdAt: new Date().toLocaleDateString(),
   });
 
@@ -30,7 +32,7 @@ const QuestionAsk = () => {
       setValidations({ title: false, body: false });
       axios
         .post("http://localhost:3001/questions", questionPost)
-        .then((res) => console.log(res))
+        .then((res) => navigate(`/questions/${res.data.id}`))
         .catch((err) => console.log(err));
     }
 

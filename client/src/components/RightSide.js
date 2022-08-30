@@ -38,7 +38,7 @@ const RightSide = () => {
 
         <li className="body">
           <div className="icon">
-            <img src="./img/speech_balloon.png" alt="speech_balloon"></img>
+            <img src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`} alt="speech_balloon"></img>
           </div>
           <div className="text">
             <a href="http://localhost:3001/">
@@ -48,7 +48,7 @@ const RightSide = () => {
         </li>
         <li className="body">
           <div className="icon">
-            <img src="./img/speech_balloon.png" alt="speech_balloon"></img>
+            <img src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`} alt="speech_balloon"></img>
           </div>
           <div className="text">
             <a href="http://localhost:3001/">
@@ -59,7 +59,7 @@ const RightSide = () => {
         <li className="body">
           <div className="icon-stackoverflow_logo_black">
             <img
-              src="./img/stackoverflow_logo_black.png"
+              src={`${process.env.PUBLIC_URL}/img/stackoverflow_logo_black.png`}
               alt="stackoverflow_logo_black"
             ></img>
           </div>

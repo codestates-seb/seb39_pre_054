@@ -21,17 +21,18 @@ const Main = () => {
 
 export default Main;
 
-const Left = styled.div`
+export const Left = styled.div`
   display: flex;
   justify-content: right;
   align-items: flex-start;
   height: 100%;
 `;
 
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   top: 0;
   display: grid;
-  grid-template-columns: 1fr 780px 2fr;
+  grid-template-columns: 1fr 755px 1.7fr;
+  /* grid-template-columns: 1.1fr 750px 1.8fr; */
   margin: 0 auto;
   width: 100%;
 `;

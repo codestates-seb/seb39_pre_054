@@ -9,3 +9,4 @@ spring:
     hibernate:
       ddl-auto: create  # (1) ??? ?? ??
     show-sql: true      # (2) SQL ?? ??
+    open-in-view: false

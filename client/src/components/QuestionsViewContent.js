@@ -32,7 +32,7 @@ const QuestionsViewContent = ({
     navigator.clipboard
       .writeText(`http://localhost:3000/questions/${id}`)
       .then(() => {
-        window.alert("링크를 복사하였습니다!");
+        window.alert("Link copy complete!");
       });
   };
 
@@ -109,6 +109,9 @@ const Container = styled.div`
   .view-container {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e3e6e8;
   }
 
   .view-button-container {

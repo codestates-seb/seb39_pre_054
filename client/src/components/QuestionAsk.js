@@ -10,7 +10,7 @@ const QuestionAsk = () => {
   const [questionPost, setQuestionPost] = useState({
     title: "",
     body: "",
-    author: "",
+    author: "test",
     createdAt: new Date().toLocaleDateString(),
   });
 

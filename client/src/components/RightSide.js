@@ -95,17 +95,17 @@ const RightSide = () => {
         <div className="header">Watched Tags</div>
         <div className="body">
           <div className="container">
-            <div className="icon">
+            <div className="icon-spotsearch">
               <Spotsearch width="48" height="48" fill="#0a95ff"></Spotsearch>
             </div>
             <p>Watch tags to curate your list of questions.</p>
             <div className="button">
               <StyledLink to="http://localhost:3001/">
                 <LightBlueButton2>
-                  <div className="icon">
-                    <Eye fill="#2c5877"></Eye>
+                  <div className="icon-eye">
+                    <Eye fill="#39739d"></Eye>
                   </div>
-                  Watch a tag
+                  <div>Watch a tag</div>
                 </LightBlueButton2>
               </StyledLink>
             </div>
@@ -118,12 +118,11 @@ const RightSide = () => {
           <StyledLink to="http://localhost:3001/">
             <LightBlueButton2>Add an ignored tag</LightBlueButton2>
           </StyledLink>
-          {/* <button>Add an ignored tag</button> */}
         </div>
       </Sidebarwidget4>
       <Sidebarwidget5>
         <div className="header">
-          <a></a>Collectives
+          <a href="http://localhost:3001/"></a>Collectives
         </div>
         <div>
           <div>
@@ -131,10 +130,10 @@ const RightSide = () => {
               <div className="icon">
                 <div>
                   <h1>
-                    <a></a>
+                    <a href="http://localhost:3001/"></a>
                   </h1>
                 </div>
-                <button></button>
+                {/* <button></button> */}
               </div>
             </div>
           </div>
@@ -148,16 +147,13 @@ const RightSide = () => {
   );
 };
 
-const Aside = styled.aside`
-  /* width: 25rem; */
-  /* background-color: blueviolet; */
-`;
+const Aside = styled.aside``;
 
 const Sidebarwidget1 = styled.div`
   list-style: none;
   background-color: #fdf7e2;
   width: 19rem;
-  margin: 4.8rem 0 0 1.5rem;
+  margin: 1.9rem 0 0 1.5rem;
   border: 1px solid hsl(47, 65%, 84%);
   padding-left: 0;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 6px 0px;
@@ -272,7 +268,7 @@ const Sidebarwidget3 = styled.div`
   }
 
   .container {
-    .icon {
+    .icon-spotsearch {
       text-align: center;
     }
 
@@ -284,14 +280,11 @@ const Sidebarwidget3 = styled.div`
     }
 
     .button {
-      display: flex;
-      flex-wrap: wrap;
       width: 8rem;
       margin: auto;
       padding: 9.5px;
       font-size: 12px;
-      .icon {
-        text-align: center;
+      .icon-eye {
         width: 18px;
         height: 18px;
       }

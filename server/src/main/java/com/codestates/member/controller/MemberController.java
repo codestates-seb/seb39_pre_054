@@ -1,6 +1,6 @@
 package com.codestates.member.controller;
 
-import com.codestates.member.Service.MemberService;
+import com.codestates.member.service.MemberService;
 import com.codestates.member.dto.MemberPatchDto;
 import com.codestates.member.dto.MemberPostDto;
 import com.codestates.member.dto.MemberResponseDto;

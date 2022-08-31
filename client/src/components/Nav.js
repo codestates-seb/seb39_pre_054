@@ -12,8 +12,14 @@ import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
 
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
+  const [optionClick, setOptionClick] = useState(true);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const stackExchangeClick = () => {
+    setOptionClick(!optionClick);
+    console.log(optionClick);
+  };
 
   return (
     <>
@@ -58,7 +64,9 @@ const Nav = () => {
               <Ol>
                 <li>
                   <Profile>
-                    <img />
+                    <StyledLink to="/users/1">
+                      <img />
+                    </StyledLink>
                     <div className="">1</div>
                   </Profile>
                 </li>
@@ -71,8 +79,18 @@ const Nav = () => {
                 <li>
                   <Question />
                 </li>
-                <li>
+                <li onClick={stackExchangeClick}>
                   <StackExchange />
+                </li>
+                <li className="dropdown">
+                  {optionClick && (
+                    <Dropdown>
+                      <div className="dropdown-title">CURRENT COMMUNITY</div>
+                      <div>
+                        <div><Stackoverflow width="16px" height="21px"></Stackoverflow> Stack Overflow</div>
+                      </div>
+                    </Dropdown>
+                  )}
                 </li>
               </Ol>
             )}
@@ -199,6 +217,15 @@ const Ol = styled.ol`
   li:hover {
     background: #e3e6e8;
   }
+
+  .dropdown {
+    display: flex;
+    justify-content: flex-end;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const Profile = styled.div`
@@ -210,5 +237,27 @@ const Profile = styled.div`
     width: 24px;
     height: 24px;
     background-color: #000;
+  }
+`;
+
+const Dropdown = styled.div`
+  position: absolute;
+  display: block;
+  background-color: #f1f2f3;
+  max-width: 1300px;
+  width: 20rem;
+  top: 50px;
+
+  .dropdown-title {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    color: #0074cc;
+    font-size: 11px;
+    font-weight: bold;
+    height: 1.2rem;
+  }
+
+  .dropdown-content {
   }
 `;

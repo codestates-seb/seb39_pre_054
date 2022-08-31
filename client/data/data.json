@@ -9,9 +9,8 @@
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
       "answer_id": [
-        3,
-        2,
-        1
+        7,
+        2
       ]
     },
     {
@@ -204,6 +203,16 @@
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
       "answer_id": []
+    },
+    {
+      "title": "글작성",
+      "body": "됩니다",
+      "author": "test",
+      "createdAt": "2022. 8. 31.",
+      "answer_id": [
+        6
+      ],
+      "id": 22
     }
   ],
   "poll": [
@@ -221,16 +230,8 @@
   ],
   "answer": [
     {
-      "body": "dsadsadsadsa",
-      "id": 1
-    },
-    {
       "body": "dsadsadsadsadsa",
       "id": 2
-    },
-    {
-      "body": "3번째\n",
-      "id": 3
     },
     {
       "body": "dsadsadsadsa",
@@ -239,6 +240,14 @@
     {
       "body": "작성이 잘 되나요?",
       "id": 5
+    },
+    {
+      "body": "됐다 수빈님 감사해요",
+      "id": 6
+    },
+    {
+      "body": "답변달아요",
+      "id": 7
     }
   ],
   "signup": [

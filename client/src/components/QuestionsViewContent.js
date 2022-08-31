@@ -28,12 +28,13 @@ const QuestionsViewContent = ({
           id={id}
         ></QuestionViewer>
       </div>
-      {(answerId !== undefined && answerId.length !== 0) &&
-        answerId.map((el, idx) => {
-          return (
-            <div className="answer-container" key={idx}>
-              <div className="answer-title">Answer</div>
-              <div className="answer-content">
+      <div className="answer-container">
+        <div className="answer-title">Answer</div>
+        {answerId !== undefined &&
+          answerId.length !== 0 &&
+          answerId.map((el, idx) => {
+            return (
+              <div className="answer-content" key={idx}>
                 <Vote></Vote>
                 <AnswerViewer
                   author={questionAuthor}
@@ -42,9 +43,9 @@ const QuestionsViewContent = ({
                   id={el}
                 ></AnswerViewer>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
       <div className="answer-post-container">
         <div className="answer-title">Your Answer</div>
         <AnswerPost questionid={id} answerId={answerId}></AnswerPost>

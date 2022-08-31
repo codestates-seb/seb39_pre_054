@@ -252,7 +252,7 @@
       "id": 7
     }
   ],
-  "signup": [
+  "members": [
     {
       "id": 1,
       "name": "haeji",
@@ -283,5 +283,6 @@
       "password": "gigigi",
       "id": 5
     }
+   
   ]
 }

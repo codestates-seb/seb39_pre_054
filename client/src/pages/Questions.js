@@ -4,23 +4,19 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BlueButton } from "../components/ui/Button";
 import { ReactComponent as Filter } from "../assets/filter.svg";
-import QuestionRow from "../components/QuestionRow";
 import LeftSide from "../components/LeftSide";
 import RightSide from "../components/RightSide";
-import ReactPaginate from "react-paginate";
+import Pagination from "../components/Pagination";
 
 const Questions = () => {
   const [questions, setQuestions] = useState([]); // 질문들
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/questions", { withCredentials: true })
-      .then((response) => setQuestions(response.data));
+      .get("http://localhost:3001/questions")
+      .then((res) => setQuestions(res.data))
+      .catch((err) => console.log(err));
   }, []);
-
-  // const handlePageClick = () => {
-  //   console.log("d");
-  // };
 
   return (
     <MainContainer>
@@ -31,10 +27,9 @@ const Questions = () => {
         <Row1>
           <Header1>Top Questions</Header1>
           <StyledLink to="/questions/ask">
-            <BlueButton margin="0">Top Question</BlueButton>
+            <BlueButton margin="0">Ask Question</BlueButton>
           </StyledLink>
         </Row1>
-
         <Row2>
           <FilterGroup>
             <button className="filter-button1">Interesting</button>
@@ -53,54 +48,8 @@ const Questions = () => {
             </button>
           </FilterGroup>
         </Row2>
-        {questions.map((question) => (
-          <QuestionRow
-            key={question.id}
-            id={question.id}
-            title={question.title}
-            body={question.body}
-            createdAt={question.createdAt}
-            author={question.author}
-          />
-        ))}
-        <Row3>
-          {/* <ReactPaginate
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
-            breakLabel={"..."}
-            pageCount={15}
-            marginPagesDisplayed={1}
-            pageRangeDisplayed={3}
-            onPageChange={handlePageClick}
-            containerClassName={"pagination"}
-            pageClassName={"page-item"}
-            pageLinkClassName={"page-link"}
-            previousClassName={"page-item"}
-            previousLinkClassName={"page-link"}
-            nextClassName={"page-item"}
-            nextLinkClassName={"page-link"}
-            breakClassName={"page-item"}
-            breakLinkClassName={"page-link"}
-            activeClassName={"active"}
-          ></ReactPaginate> */}
 
-          <div className="pagination-left">
-            <a href="http://localhost:3001/">1</a>
-            <a href="http://localhost:3001/">2</a>
-            <a href="http://localhost:3001/">3</a>
-            <a href="http://localhost:3001/">4</a>
-            <a href="http://localhost:3001/">5</a>
-            <span>...</span>
-            <a href="http://localhost:3001/">1529170</a>
-            <a href="http://localhost:3001/">Next</a>
-          </div>
-          <div className="pagination-right">
-            <a href="http://localhost:3001/">15</a>
-            <a href="http://localhost:3001/">30</a>
-            <a href="http://localhost:3001/">50</a>
-            <span>per page</span>
-          </div>
-        </Row3>
+        <Pagination data={questions} />
       </Container>
       <RightSide />
     </MainContainer>
@@ -155,8 +104,6 @@ const FilterGroup = styled.div`
   padding-bottom: 1rem;
   display: flex;
   margin-left: 19rem;
-  /* margin-right: 0; */
-  /* float: right; */
 
   .filter-button1 {
     padding: 0 0.7rem;
@@ -258,66 +205,6 @@ const FilterGroup = styled.div`
       height: 18px;
       padding-right: 3px;
       border-radius: 20%;
-      /* text-align: right; */
-    }
-  }
-`;
-
-const Row3 = styled.div`
-  border-top: 1px solid #e3e6e8;
-  padding: 5rem 1.5rem 3rem 1.5rem;
-  /* background-color: aliceblue; */
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-
-  .pagination-left {
-    /* background-color: skyblue; */
-    /* float: left; */
-    text-align: left;
-    /* margin: 20px 0; */
-    /* align-items: center; */
-
-    a {
-      height: 27px;
-      border: 1px solid #d6d9dc;
-      border-radius: 3px;
-      text-decoration: none;
-      color: inherit;
-      margin: 0px 2px;
-      padding: 5px 8px;
-      &:hover {
-        background-color: #d6d9dc;
-      }
-    }
-
-    span {
-      height: 27px;
-      margin: 0px 2px;
-      padding: 5px 8px;
-    }
-  }
-  .pagination-right {
-    /* background-color: bisque; */
-    /* float: right; */
-    text-align: right;
-
-    a {
-      height: 27px;
-      border: 1px solid #d6d9dc;
-      border-radius: 3px;
-      text-decoration: none;
-      color: inherit;
-      margin: 0px 2px;
-      padding: 5px 8px;
-      &:hover {
-        background-color: #d6d9dc;
-      }
-    }
-    span {
-      height: 27px;
-      margin: 0px 2px;
-      padding: 5px 8px;
     }
   }
 `;

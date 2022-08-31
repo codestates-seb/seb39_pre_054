@@ -38,7 +38,10 @@ const RightSide = () => {
 
         <li className="body">
           <div className="icon">
-            <img src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`} alt="speech_balloon"></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`}
+              alt="speech_balloon"
+            ></img>
           </div>
           <div className="text">
             <a href="http://localhost:3001/">
@@ -48,7 +51,10 @@ const RightSide = () => {
         </li>
         <li className="body">
           <div className="icon">
-            <img src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`} alt="speech_balloon"></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/img/speech_balloon.png`}
+              alt="speech_balloon"
+            ></img>
           </div>
           <div className="text">
             <a href="http://localhost:3001/">
@@ -102,9 +108,9 @@ const RightSide = () => {
             <div className="button">
               <StyledLink to="http://localhost:3001/">
                 <LightBlueButton2>
-                  <div className="icon-eye">
+                  {/* <div className="icon-eye">
                     <Eye fill="#39739d"></Eye>
-                  </div>
+                  </div> */}
                   <div>Watch a tag</div>
                 </LightBlueButton2>
               </StyledLink>
@@ -246,7 +252,6 @@ const Sidebarwidget2 = styled.div`
 `;
 const Sidebarwidget3 = styled.div`
   width: 19rem;
-  height: 14.3rem;
   margin: 1rem 0 0 1.5rem;
   border: 1px solid #d6d9dc;
   border-radius: 3px;
@@ -264,7 +269,6 @@ const Sidebarwidget3 = styled.div`
 
   .body {
     padding: 16px 15px;
-    margin: 6px 20px;
   }
 
   .container {
@@ -275,19 +279,20 @@ const Sidebarwidget3 = styled.div`
     p {
       color: #6a737c;
       font-size: 13px;
-      margin: 8px 0;
+      margin: 14px 12px 11px 12px;
       text-align: center;
     }
 
     .button {
-      width: 8rem;
+      width: 6rem;
+      height: 35px;
       margin: auto;
-      padding: 9.5px;
+      padding: 9.5px 9.5px 0 9.5px;
       font-size: 12px;
-      .icon-eye {
+      /* .icon-eye {
         width: 18px;
         height: 18px;
-      }
+      } */
     }
   }
 `;

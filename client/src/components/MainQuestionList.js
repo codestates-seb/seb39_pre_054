@@ -10,8 +10,9 @@ const MainQuestionList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/questions", { withCredentials: true })
-      .then((response) => setQuestions(response.data));
+      .get("http://localhost:3001/questions")
+      .then((res) => setQuestions(res.data))
+      .catch((err) => console.log(err));
   }, []);
   return (
     <Container>
@@ -40,15 +41,11 @@ const MainQuestionList = () => {
           id={question.id}
           title={question.title}
           body={question.body}
-          createdAt={question.createdAt}
           author={question.author}
+          createdAt={question.createdAt}
+          answer_id={question.answer_id}
         />
       ))}
-
-      {/* <BottomText>
-        Looking for more? Browse the complete list of questions, or popular
-        tags. Help us answer unanswered questions.
-      </BottomText> */}
     </Container>
   );
 };
@@ -164,9 +161,3 @@ const FilterGroup = styled.div`
     }
   }
 `;
-
-// const BottomText = styled.div`
-//   padding: 3rem 2rem 3rem 1.5rem;
-//   font-size: 17.5px;
-//   font-weight: 400;
-// `;

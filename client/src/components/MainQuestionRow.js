@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserLink from "./UserLink";
 
 // MainQuestionList.js로부터 받은 값
-const QuestionRow = ({ id, title, author, createdAt }) => {
+const QuestionRow = ({ id, title, author, createdAt, answer_id }) => {
   return (
     <StyledQuestionRow>
       <QuestionStats>
@@ -13,7 +13,9 @@ const QuestionRow = ({ id, title, author, createdAt }) => {
         </div>
 
         <div className="stats-item">
-          <span className="stats-num">0</span>
+          <span className="stats-num">
+            {answer_id !== undefined && answer_id.length}
+          </span>
           <span className="stats-unit">answers</span>
         </div>
 
@@ -27,8 +29,8 @@ const QuestionRow = ({ id, title, author, createdAt }) => {
         <QuestionLink to={`/questions/${id}`}>{title}</QuestionLink>
 
         <WhoAndWhen>
+          <UserAvatar />
           <UserLink id={author}>{author}</UserLink>
-
           <CreatedAtLink to={`/questions/${id}`}>{createdAt}</CreatedAtLink>
         </WhoAndWhen>
       </QuestionTitleArea>
@@ -95,6 +97,14 @@ const WhoAndWhen = styled.div`
   font-size: 0.8rem;
   float: right;
   padding: 10px 0 3px 0;
+`;
+
+const UserAvatar = styled.div`
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background-color: #888888;
+  margin-right: 5px;
 `;
 
 const CreatedAtLink = styled(Link)`

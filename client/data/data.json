@@ -8,17 +8,17 @@
       "likes": 30,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [7, 2]
     },
     {
       "id": 2,
       "title": "METHOD_NOT_SUPPORTED error while generate invoice number from paypal api",
-      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.",
+      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.dasdsasa",
       "author": "Khajehei",
       "likes": 100,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [5, 4]
     },
     {
       "id": 3,
@@ -116,7 +116,9 @@
       "body": "I am trying to render a whole new component into a page when there's is event. For example I have a button that sends request to DB, and I want that whenever this button is clicked a NEW toaster will open that will say sent",
       "author": "Smitt",
       "likes": 30,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 13,
@@ -124,7 +126,9 @@
       "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.",
       "author": "Khajehei",
       "likes": 100,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 14,
@@ -132,7 +136,9 @@
       "body": "I wish to scan a QR Code in Flutter and I'm running on Linux and Chrome (web) without any mobile device. When I run my code, I get the following error:",
       "author": "Smitt",
       "likes": 12,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 15,
@@ -140,7 +146,9 @@
       "body": "Estoy intentanto guardar datos en MYSQL pero al intentarlo me sale este error: IntegrityError: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails",
       "author": "Smitt",
       "likes": 70,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 16,
@@ -148,7 +156,9 @@
       "body": "Mi base de datos es la siguiente: create table if not exists vuelo( idvuelo INT NOT NULL AUTO_INCREMENT, fecha_salida date, fecha_vuelta date, origen varchar(45), destino varchar(45), aerolinea varchar(45), escalas int(5), primary key (idvuelo) );",
       "author": "Ali Khajehei",
       "likes": 100,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 17,
@@ -156,7 +166,9 @@
       "body": "create table if not exists temporal_por_dia( idtemporal INT NOT NULL AUTO_INCREMENT, ubicacion varchar(45), fecha_busqueda datetime, ultima_actualizacion datetime, temperatura_max int, temperatura_min int, temperatura_media int, condiciones_text varchar(45), condiciones_img varchar(45), kmh_viento int, sensacion_corporal int, dir_viento varchar(45), media_humedad int, h_amanecer time, h_atardecer time, primary key (idtemporal)",
       "author": "Smitt",
       "likes": 12,
-      "createdAt": "2023.08.26"
+      "createdAt": "2023.08.26",
+      "last_edit_date": "2023. 8. 26.",
+      "answer_id": []
     },
     {
       "id": 18,
@@ -181,7 +193,7 @@
     {
       "id": 20,
       "title": "Spring Boot adds double quotes around",
-      "body": "cds,fknsdf  dgfsdflsd",
+      "body": "cds,fknsdf  dgfsdflsd1111",
       "author": "xampo",
       "likes": 12,
       "createdAt": "2023. 8. 26.",
@@ -197,6 +209,14 @@
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
       "answer_id": []
+    },
+    {
+      "title": "글작성",
+      "body": "됩니다",
+      "author": "test",
+      "createdAt": "2022. 8. 31.",
+      "answer_id": [6],
+      "id": 22
     }
   ],
   "poll": [
@@ -207,24 +227,61 @@
       "answer2": "React",
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "answer_id": [1]
     }
   ],
   "answer": [
     {
-      "id": 1,
-      "body": "질문에 대한 답변드림요 내공냠냠",
-      "createdAt": "2022. 8. 30.",
-      "last_edit_date": "2022. 8. 30."
+      "body": "dsadsadsadsadsa",
+      "id": 2
+    },
+    {
+      "body": "dsadsadsadsa",
+      "id": 4
+    },
+    {
+      "body": "작성이 잘 되나요?",
+      "id": 5
+    },
+    {
+      "body": "됐다 수빈님 감사해요",
+      "id": 6
+    },
+    {
+      "body": "답변달아요",
+      "id": 7
     }
   ],
   "members": [
     {
-      "name": "hihihi",
-      "email": "gpwl3354@fhdjkfhj.com",
-      "password": "asdfghjkkl12!",
-      "creation_date": "2022. 8. 31.",
-      "id": 1
+      "id": 1,
+      "name": "haeji",
+      "email": "haji3354@gmai.com",
+      "password": "hihi"
+    },
+    {
+      "name": "hajiji",
+      "email": "gpwl3354@gmail.com",
+      "password": "dfjsdhf",
+      "id": 2
+    },
+    {
+      "name": "hajiji",
+      "email": "gpwl3354@gmail.com",
+      "password": "dfjsdhf",
+      "id": 3
+    },
+    {
+      "name": "dfsdhajiji",
+      "email": "gpwl3354@gmail.cofsd",
+      "password": "dfjsdhffsd",
+      "id": 4
+    },
+    {
+      "name": "",
+      "email": "alsdn@gmail.com",
+      "password": "gigigi",
+      "id": 5
     }
    
   ]

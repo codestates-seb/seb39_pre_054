@@ -1,37 +1,45 @@
-import React from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BlueButton, WhiteBox } from "./ui/Button";
 
-const AnswerPost = () => {
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  // const [questionPost, setQuestionPost] = useState({
-  //   title: location.state.title,
-  //   body: location.state.body,
-  // });
+const AnswerPost = ({ questionid, answerId }) => {
+  const [answerPost, setAnswerPost] = useState({
+    body: "",
+  });
+  const [answerNumber, setAnswerNumber] = useState({
+    answer_id: [],
+  });
 
-  // const titleChange = (el) => {
-  //   setQuestionPost({ ...questionPost, title: el });
-  // };
+  useEffect(() => {
+    if (answerId !== undefined && answerId.length !== 0) {
+      setAnswerNumber({ answer_id: [...answerId] });
+    }
+  }, [answerId]);
 
-  // const bodyChange = (el) => {
-  //   setQuestionPost({ ...questionPost, body: el });
-  // };
+  const bodyChange = (el) => {
+    setAnswerPost({ body: el });
+  };
 
-  // const saveClick = () => {
-  //   axios
-  //     .patch(
-  //       `http://localhost:3001/answer/${location.state.id}`,
-  //       questionPost
-  //     )
-  //     .then((res) => navigate(`/answer/${location.state.id}`))
-  //     .catch((err) => console.log(err));
-  // };
+  const cancleClick = () => {
+    setAnswerPost({ body: "" });
+  };
 
-  // const cancleClick = () => {
-  //   navigate(`/answer/${location.state.id}`);
-  // };
+  const postAnswerClick = () => {
+    if (answerPost.body !== "") {
+      axios
+        .post(`http://localhost:3001/answer`, answerPost)
+        .then((res) =>
+          axios
+            .patch(`http://localhost:3001/questions/${questionid}`, {
+              answer_id: [res.data.id, ...answerNumber.answer_id],
+            })
+            .then((res) => console.log(res.data.answer_id)).then(window.location.reload())
+            .catch((err) => console.log(err))
+        )
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <Container>
@@ -40,8 +48,8 @@ const AnswerPost = () => {
           <div className="body-container">
             <textarea
               id="body"
-              // defaultValue={location.state.body}
-              // onChange={(el) => bodyChange(el.target.value)}
+              defaultValue={answerPost.body}
+              onChange={(el) => bodyChange(el.target.value)}
             />
           </div>
           <div className="button-container">
@@ -49,13 +57,11 @@ const AnswerPost = () => {
               type="button"
               height="40px"
               width="10rem"
-              // onClick={saveClick}
+              onClick={postAnswerClick}
             >
               Post Your Answer
             </BlueButton>
-            <WhiteBox height="40px" width="100px" 
-            // onClick={cancleClick}
-            >
+            <WhiteBox height="40px" width="100px" onClick={cancleClick}>
               Cancel
             </WhiteBox>
           </div>

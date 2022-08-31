@@ -40,6 +40,13 @@ public class QuestionController {
         return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
     }
 
+    @GetMapping("/{question-id}")
+    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive long questionId) {
+        Question question = questionService.findQuestion(questionId);
+
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
+    }
+
     @GetMapping
     public String getQuestions() {
         return "hello pre-project";

@@ -50,4 +50,8 @@ public class QuestionService {
 
         return findQuestion;
     }
+
+    public Question findQuestion(long questionId) {
+        return findVerifiedQuestion(questionId);
+    }
 }

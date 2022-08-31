@@ -26,6 +26,7 @@ public interface QuestionMapper {
             return null;
         }
 
+        Member member = question.getMember();
         QuestionResponseDto questionResponseDto = new QuestionResponseDto();
 
         if ( question.getQuestionId() != null ) {
@@ -35,10 +36,14 @@ public interface QuestionMapper {
         questionResponseDto.setBody( question.getBody() );
         questionResponseDto.setCreationDate( question.getCreationDate() );
         questionResponseDto.setLastEditDate( question.getLastEditDate() );
-        questionResponseDto.setMember(question.getMember());
+//        questionResponseDto.setMember(memberToMemberResponseDto(member));
 
         return questionResponseDto;
     }
+
+//    default MemberResponseDto memberToMemberResponseDto(Member member) {
+//        return member.
+//    }
 
     Question questionPatchDtoToQuestion(QuestionPatchDto questionPatchDto);
 }

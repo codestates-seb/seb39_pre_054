@@ -218,30 +218,14 @@
       "last_edit_date": "2022. 8. 30."
     }
   ],
-  "signup": [
+  "members": [
     {
-      "id": 1,
-      "name": "haeji",
-      "email": "haji3354@gmai.com",
-      "password": "hihi"
-    },
-    {
-      "name": "hajiji",
-      "email": "gpwl3354@gmail.com",
-      "password": "dfjsdhf",
-      "id": 2
-    },
-    {
-      "name": "hajiji",
-      "email": "gpwl3354@gmail.com",
-      "password": "dfjsdhf",
-      "id": 3
-    },
-    {
-      "name": "dfsdhajiji",
-      "email": "gpwl3354@gmail.cofsd",
-      "password": "dfjsdhffsd",
-      "id": 4
+      "name": "hihihi",
+      "email": "gpwl3354@fhdjkfhj.com",
+      "password": "asdfghjkkl12!",
+      "creation_date": "2022. 8. 31.",
+      "id": 1
     }
+   
   ]
 }

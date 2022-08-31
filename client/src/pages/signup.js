@@ -12,6 +12,7 @@ const Signup = () => {
   const [name , setName] = useState("");
   const [email , setEmail] = useState("");
   const [password , setPassword] = useState("")
+  const navigate = useNavigate();
 
 
   //오류확인
@@ -21,25 +22,71 @@ const Signup = () => {
   const [noemailError , setnoEmailError] = useState({display : "none"})
   const [passwordError , setPasswordError] = useState({display : "none"})
   const [nopasswordError , setnoPasswordError] = useState({display : "none"})
-  
+
+  //const noerror = document.getElementsByClassName("errormsg")
+  //nameError.display === "none"
 
   const register = () =>{
-    axios.post("http://localhost:3001/signup",{
+    if(name.length !==0 && email.length !==0 && password.length !==0 ){
+    axios.post("http://localhost:3001/members",{
       name : name ,
       email : email,
       password :password,
+      creation_date : new Date().toLocaleDateString()
     }).then((response) =>{
       console.log(response)
-      localStorage.setItem('token' , response.data.jwt)
+      alert('회원가입이 완료되었습니다!!')
+      navigate(`/users/login`)
     })
-    .catch(function(error){
+    .catch(function(error){ 
       console.log(error)
     })
   }
+  }
+
+  let emailform = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
+  let passwordform = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/
+
+  useEffect(() => {
+    if(name.length === 0){
+      setnoNameError({display : "block"})
+    }
+    if(name.length > 0){
+      setnoNameError({display : "none"})
+    }
+    if(email.length === 0){
+      setnoEmailError({display : "block"})
+    }
+    if(email.length > 0){
+      setnoEmailError({display : "none"})
+    }
+ 
+    if(password.length === 0){
+      setnoPasswordError({display : "block"})
+    }
+    if(password.length > 0){
+      setnoPasswordError({display : "none"})
+    }
+    if(!emailform.test(email)){
+      setEmailError({display : "block"})
+    }
+    if(emailform.test(email)){
+      setEmailError({display : "none"})
+    }
+ 
+    if(!passwordform.test(password)){
+      setPasswordError({display : "block"})
+    }
+    if(passwordform.test(password)){
+      setPasswordError({display : "none"})
+    }
+    
+  },[name , email , password])
 
 
   
   return(
+    <>
   <Signupdiv>
     <Signupdiv className="content">
       <Signupdiv className="center">
@@ -73,12 +120,12 @@ const Signup = () => {
           onChange = {(e) =>{
             setName(e.target.value)
           }}></InputText>
-          <ErrorP id="nameError"
-          style = {nameError}>
+          <ErrorP 
+          style = {nameError} className = "errormsg">
             Name already exists
           </ErrorP>
-          <ErrorP id= "nonameError"
-          style={nonameError}>
+          <ErrorP 
+          style={nonameError} className = "errormsg">
             Name cannot be empty.
           </ErrorP>
           </Inputdiv>
@@ -90,10 +137,12 @@ const Signup = () => {
           onChange = {(e) =>{
             setEmail(e.target.value)
           }}></InputText>
-            <ErrorP id="emailError">
+            <ErrorP 
+            style={emailError} className = "errormsg">
             Please check email
           </ErrorP>
-          <ErrorP id="noemailError">
+          <ErrorP
+          style={noemailError} className = "errormsg">
             Email cannot be empty.
           </ErrorP>
           </Inputdiv>
@@ -104,10 +153,12 @@ const Signup = () => {
           onChange = {(e) =>{
             setPassword(e.target.value)
           }}></InputText>
-          <ErrorP id="pwError">
+          <ErrorP
+          style={passwordError} className = "errormsg">
             Please check password
           </ErrorP>
-          <ErrorP id="nopwError">
+          <ErrorP
+          style={nopasswordError}className = "errormsg">
           Password cannot be empty.
           </ErrorP>
           </Inputdiv>
@@ -125,7 +176,7 @@ const Signup = () => {
       </Signupdiv>
     </Signupdiv>
   </Signupdiv>
-
+</>
   )
 };
 
@@ -133,12 +184,13 @@ export default Signup;
 
 const Signupdiv = styled.div`
 background-color:#F1F2F3 ;
+height: auto;
 .content{
-  padding: 74px 24px 24px 24px;
+  padding: 0px 24px 24px 24px;
   display : flex;
   justify-content: center;
   align-items : center;
-  height: 100%;
+  height: 100vh;
 
 }
 .button2{

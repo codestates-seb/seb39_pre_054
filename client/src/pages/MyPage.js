@@ -9,7 +9,23 @@ const MyPage = () => {
   <Left>
   <LeftSide />
   </Left>
-  <div>hi</div>
+  <RightContainer>
+    <div>
+      <Topdiv>
+        <Profil>
+          <a href="/users/:id">
+            <ProfilImg />
+          </a>
+          <Namediv>
+            hi
+          </Namediv>
+        </Profil>
+        
+      </Topdiv>
+    </div>
+
+  </RightContainer>
+
 
 </MainContainer>
   );
@@ -28,7 +44,31 @@ const Left = styled.div`
 const MainContainer = styled.div`
   top: 0;
   display: grid;
-  grid-template-columns: 1fr 4.7fr;
+  grid-template-columns: 1fr 7.3fr;
   margin: 0 auto;
   width: 100%;
   `;
+
+const RightContainer = styled.div`
+  background-color: #FFFFFF;
+  font-size: 13px;
+  padding: 24px;
+  border-left: 1px solid #BABFC3;
+  `;
+const Topdiv = styled.div`
+margin: 12px;
+  `
+const Profil = styled.div`
+margin: -8px;
+display: flex;
+`
+const ProfilImg = styled.img`
+width: 128px;
+height: 128px;
+border-radius: 5px;
+background-color: #636b74;
+
+`
+const Namediv = styled.div`
+margin: 10px;
+`

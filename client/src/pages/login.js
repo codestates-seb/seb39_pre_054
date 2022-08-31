@@ -1,15 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import "../pages.css"
 import styled from "styled-components"
 import GithubIcon from "../assets/github-brands.svg"
 import FacebookIcon from "../assets/square-facebook-brands.svg"
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
+import { useDispatch , useSelector} from "react-redux"
+import axios from "axios"
 
 
 
 
 // 로그인 페이지
 const Login = () => {
+  const [email , setEmail] = useState("")
+  const [password , setPassword] = useState("")
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+
+
+  const Logincheck = () =>
+  {
+    axios.post("",{
+
+    }).then((response) =>{
+      console.log("ok")
+      localStorage.setItem("token" , response.data.jwt);
+      navigate(`/`)
+    })
+  }
   return (<>
 <div className="content">
  <div className="login_box">
@@ -34,12 +54,13 @@ const Login = () => {
               <InputText type={"password"}></InputText>
               <InputMessage>Password cannot be empty.</InputMessage>
             </Inputdiv>
-            <LoginButton>Log in</LoginButton>
+            <LoginButton type="button" onClick={() =>{
+            Logincheck();
+          }}>Log in</LoginButton>
           </form>
         </div>
       </div>
-    </div>
-    <Choicediv>
+       <Choicediv>
       Dont' have an account? 
       <br></br>
       <StyledLink to="/users/signup">
@@ -47,6 +68,8 @@ const Login = () => {
       </StyledLink>
 
     </Choicediv>
+    </div>
+
   </>
   )
 };

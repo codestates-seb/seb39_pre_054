@@ -39,6 +39,7 @@ const QuestionView = () => {
               questionBody={question.body}
               questionCreatedAt={question.createdAt}
               questionAuthor={question.author}
+              answerId = {question.answer_id}
               id={question.id}
             ></QuestionsViewContent>
             <RightSide />

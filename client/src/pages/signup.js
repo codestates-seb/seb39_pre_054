@@ -34,17 +34,20 @@ const Signup = () => {
   //nameError.display === "none"
 
   const register = () => {
-    if (name.length !== 0 && email.length !== 0 && password.length !== 0) {
+    if (
+      name.length !== 0 &&
+      email.length !== 0 &&
+      password.length !== 0 &&
+      nameError.display === "none" &&
+      emailError.display === "none" &&
+      passwordError.display === "none"
+    ) {
       axios
-        .post(
-          // preocess.env = 서버의 주소를 숨김 처리함
-          `${process.env.REACT_APP_API_URI}/v1/members/signup`,
-          {
-            name: name,
-            email: email,
-            password: password,
-          }
-        )
+        .post(`${process.env.REACT_APP_API_URI}/v1/members/signup`, {
+          name: name,
+          email: email,
+          password: password,
+        })
         .then((response) => {
           console.log(response);
           alert("회원가입이 완료되었습니다!!");

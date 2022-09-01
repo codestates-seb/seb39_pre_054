@@ -8,8 +8,11 @@ import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-@NoArgsConstructor // ????
+@NoArgsConstructor
 @Getter
 @Setter
 @AllArgsConstructor
@@ -34,4 +37,14 @@ public class Member {
 
     @Column
     private LocalDateTime last_edit_date = LocalDateTime.now();
+
+    @Column
+    private String roles; // USER, MANAGER, ADMIN
+
+    public List<String> getRoleList() {    //????? 언제 사용하니???
+        if (this.roles.length() > 0) {
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
 }

@@ -37,8 +37,9 @@ public class MemberService {
     }
 
     private void verifyExistsEmail(String email) {
-        Optional<Member> member = memberRepository.findByEmail(email);
-        if (member.isPresent()) {
+        Member member = memberRepository.findByEmail(email);
+
+        if (member != null) {
             throw new IllegalStateException();
         }
     }

@@ -15,4 +15,5 @@ public class MemberPatchDto {
     private String name;
 
     private String password;
+
 }

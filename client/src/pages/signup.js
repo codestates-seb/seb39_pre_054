@@ -37,6 +37,7 @@ const Signup = () => {
     if (name.length !== 0 && email.length !== 0 && password.length !== 0) {
       axios
         .post(
+          // preocess.env = 서버의 주소를 숨김 처리함
           `${process.env.REACT_APP_API_URI}/v1/members/signup`,
           {
             name: name,

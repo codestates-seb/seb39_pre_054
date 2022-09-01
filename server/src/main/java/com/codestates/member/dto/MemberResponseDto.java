@@ -18,4 +18,7 @@ public class MemberResponseDto {
     private LocalDateTime creation_date;
 
     private LocalDateTime last_edit_date;
+
+    private String roles; // User, MANAGER, ADMIN
+
 }

@@ -10,9 +10,9 @@ const QuestionAsk = () => {
   const [questionPost, setQuestionPost] = useState({
     title: "",
     body: "",
-    author: "test",
-    createdAt: new Date().toLocaleDateString(),
-    answer_id: []
+    // author: "test",
+    // createdAt: new Date().toLocaleDateString(),
+    memberId : 1,
   });
 
   const [validations, setValidations] = useState({
@@ -32,7 +32,7 @@ const QuestionAsk = () => {
     if (questionPost.title !== "" && questionPost.body !== "") {
       setValidations({ title: false, body: false });
       axios
-        .post("http://localhost:3001/questions", questionPost)
+        .post(`${process.env.REACT_APP_API_URI}/v1/questions`, questionPost)
         .then((res) => navigate(`/questions/${res.data.id}`))
         .catch((err) => console.log(err));
     }

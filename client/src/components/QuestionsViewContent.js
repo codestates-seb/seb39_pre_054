@@ -70,10 +70,12 @@ const Container = styled.div`
   .answer-container {
     padding-bottom: 2rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #e3e6e8;
 
     .answer-content {
       display: flex;
+      padding-bottom: 2rem;
+      padding-top: 1rem;
+      border-bottom: 1px solid #e3e6e8;
     }
   }
 

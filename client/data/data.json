@@ -8,10 +8,7 @@
       "likes": 30,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        7,
-        2
-      ]
+      "answer_id": [7, 2]
     },
     {
       "id": 2,
@@ -21,10 +18,7 @@
       "likes": 100,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        5,
-        4
-      ]
+      "answer_id": [5, 4]
     },
     {
       "id": 3,
@@ -221,9 +215,7 @@
       "body": "됩니다",
       "author": "test",
       "createdAt": "2022. 8. 31.",
-      "answer_id": [
-        6
-      ],
+      "answer_id": [6],
       "id": 22
     }
   ],
@@ -235,9 +227,7 @@
       "answer2": "React",
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        1
-      ]
+      "answer_id": [1]
     }
   ],
   "answer": [
@@ -260,6 +250,14 @@
     {
       "body": "답변달아요",
       "id": 7
+    },
+    {
+      "body": "dsadsa",
+      "id": 8
+    },
+    {
+      "body": "dsadsa",
+      "id": 9
     }
   ],
   "members": [
@@ -294,9 +292,9 @@
       "id": 5
     },
     {
-      "name": "fd",
-      "email": "fd@gmail.com",
-      "password": "8349aA3/",
+      "name": "cho",
+      "email": "alsals@gmail.com",
+      "password": "qwer1234",
       "creation_date": "2022. 8. 31.",
       "id": 6
     }

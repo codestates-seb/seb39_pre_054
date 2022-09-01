@@ -1,11 +1,14 @@
 package com.codestates.question.mapper;
 
+import com.codestates.member.dto.MemberResponseDto;
 import com.codestates.member.entity.Member;
 import com.codestates.question.dto.QuestionPatchDto;
 import com.codestates.question.dto.QuestionPostDto;
 import com.codestates.question.dto.QuestionResponseDto;
 import com.codestates.question.entity.Question;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface QuestionMapper {
@@ -36,14 +39,14 @@ public interface QuestionMapper {
         questionResponseDto.setBody( question.getBody() );
         questionResponseDto.setCreationDate( question.getCreationDate() );
         questionResponseDto.setLastEditDate( question.getLastEditDate() );
-//        questionResponseDto.setMember(memberToMemberResponseDto(member));
+        questionResponseDto.setMember(memberToMemberResponseDto(member));
 
         return questionResponseDto;
     }
 
-//    default MemberResponseDto memberToMemberResponseDto(Member member) {
-//        return member.
-//    }
+    MemberResponseDto memberToMemberResponseDto(Member member);
 
     Question questionPatchDtoToQuestion(QuestionPatchDto questionPatchDto);
+
+    List<QuestionResponseDto> questionToQuestionResponseDtos(List<Question> questions);
 }

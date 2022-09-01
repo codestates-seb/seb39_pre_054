@@ -5,7 +5,7 @@ import GithubIcon from "../assets/github-brands.svg"
 import FacebookIcon from "../assets/square-facebook-brands.svg"
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
-import { useDispatch , useSelector} from "react-redux"
+// import { useDispatch , useSelector} from "react-redux"
 import axios from "axios"
 
 
@@ -16,7 +16,7 @@ const Login = () => {
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
 
 

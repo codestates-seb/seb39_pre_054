@@ -74,6 +74,7 @@ export default AnswerViewer;
 
 const ViewContainer = styled.div`
   width: 38rem;
+  
 
   pre {
     font-size: 1rem;

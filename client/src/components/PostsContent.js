@@ -23,10 +23,11 @@ const PostsContent = () => {
   const saveClick = () => {
     axios
       .patch(
-        `http://localhost:3001/questions/${location.state.id}`,
+        `${process.env.REACT_APP_API_URI}/v1/questions/${location.state.id}`,
         questionPost
       )
       .then((res) => navigate(`/questions/${location.state.id}`))
+      // .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
 

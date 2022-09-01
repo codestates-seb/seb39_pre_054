@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -12,13 +12,12 @@ import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
 
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
-  const [optionClick, setOptionClick] = useState(true);
+  const [optionClick, setOptionClick] = useState(false);
   // 로그인 유무 판별
   const [isLogin, setIsLogin] = useState(false);
 
   const stackExchangeClick = () => {
     setOptionClick(!optionClick);
-    console.log(optionClick);
   };
 
   return (
@@ -67,7 +66,7 @@ const Nav = () => {
                     <StyledLink to="/users/1">
                       <img />
                     </StyledLink>
-                    <div className="">1</div>
+                    <div>1</div>
                   </Profile>
                 </li>
                 <li>
@@ -85,9 +84,31 @@ const Nav = () => {
                 <li className="dropdown">
                   {optionClick && (
                     <Dropdown>
-                      <div className="dropdown-title">CURRENT COMMUNITY</div>
-                      <div>
-                        <div><Stackoverflow width="16px" height="21px"></Stackoverflow> Stack Overflow</div>
+                      <div className="dropdown-title dropdown-hover">
+                        CURRENT COMMUNITY
+                      </div>
+                      <div className="dropdown-content">
+                        <div className="dropdown-logo dropdown-hover">
+                          <Stackoverflow width="16px" height="21px" /> Stack
+                          Overflow
+                        </div>
+                        <div className="dropdown-options">
+                          <span className="dropdown-hover">help</span>
+                          <span className="dropdown-hover">chat</span>
+                          <span className="dropdown-hover">log out</span>
+                        </div>
+                      </div>
+                      <div className="dropdown-title dropdown-hover">
+                        YOUR COMMUNITIES
+                      </div>
+                      <div className="dropdown-content">
+                        <div className="dropdown-logo dropdown-hover">
+                          <Stackoverflow width="16px" height="21px" /> Stack
+                          Overflow
+                        </div>
+                        <div className="dropdown-options">
+                          <span className="dropdown-hover">edit</span>
+                        </div>
                       </div>
                     </Dropdown>
                   )}
@@ -117,8 +138,6 @@ const Header = styled.header`
   top: 2px;
   display: flex;
   justify-content: center;
-  /* grid-template-columns: 1fr 240px;
-  grid-column-gap: 10px; */
   margin: 0 auto;
   height: 50px;
   width: 100%;
@@ -236,7 +255,8 @@ const Profile = styled.div`
   img {
     width: 24px;
     height: 24px;
-    background-color: #000;
+    background-color: #626b74;
+    margin-right: 4px;
   }
 `;
 
@@ -244,20 +264,50 @@ const Dropdown = styled.div`
   position: absolute;
   display: block;
   background-color: #f1f2f3;
+  color: #0074cc;
   max-width: 1300px;
   width: 20rem;
   top: 50px;
+  border: 1px solid #e4e6e8;
 
   .dropdown-title {
     display: flex;
     align-items: center;
     padding: 6px;
-    color: #0074cc;
     font-size: 11px;
     font-weight: bold;
     height: 1.2rem;
   }
 
   .dropdown-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px;
+    font-size: 12px;
+    background-color: #f4f8fb;
+
+    svg {
+      padding-right: 6px;
+    }
+  }
+
+  .dropdown-logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .dropdown-options {
+    span {
+      padding: 0 6px;
+    }
+  }
+
+  .dropdown-hover {
+    :hover {
+      color: #0995ff;
+    }
   }
 `;

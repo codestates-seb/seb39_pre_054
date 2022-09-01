@@ -24,4 +24,7 @@ const VoteContainer = styled.div`
   align-items: center;
   width: 3rem;
   padding-right: 10px;
+  svg{
+    cursor: pointer;
+  }
 `;

@@ -14,7 +14,7 @@ const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
   const [optionClick, setOptionClick] = useState(true);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   const stackExchangeClick = () => {
     setOptionClick(!optionClick);

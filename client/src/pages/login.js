@@ -1,14 +1,13 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "../pages.css"
 import styled from "styled-components"
 import GithubIcon from "../assets/github-brands.svg"
 import FacebookIcon from "../assets/square-facebook-brands.svg"
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
-// import { useDispatch , useSelector} from "react-redux"
 import axios from "axios"
-
-
+import { useDispatch , useSelector} from "react-redux"
+import {loginSuccess} from "../actions/index"
 
 
 // 로그인 페이지
@@ -16,18 +15,33 @@ const Login = () => {
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  
+  const dispatch = useDispatch();
+  const test = useSelector((state) => state.loginReducer)
+  //id값 or name 받아올때 useSelector
+
 
 
   const Logincheck = () =>
   {
-    axios.post("",{
-
+    
+    console.log(test);
+    axios.get("http://localhost:3001/members/100",{
+      email : email,
+      password : password
     }).then((response) =>{
+      dispatch(loginSuccess(response.data));
       console.log("ok")
+      //console.log(response)
       localStorage.setItem("token" , response.data.jwt);
       navigate(`/`)
+    }).catch((error)=>{
+      console.log(error.message)
+      // if(error.message === "Request failed with status code 404"){
+      //   alert("사용자가 없습니다")
+      //   setEmail("")
+      //   setPassword("")
+      // }
+  
     })
   }
   return (<>
@@ -46,12 +60,18 @@ const Login = () => {
         <form id="login-form">
               <Inputdiv>
               <Inputlabel>Email</Inputlabel>
-              <InputText type={"email"}></InputText>
+              <InputText type={"email"} value = {email}
+              onChange = {(e) =>{
+                setEmail(e.target.value)
+              }}></InputText>
               <InputMessage>The email is not a valid email address.</InputMessage>
               </Inputdiv>
               <Inputdiv>
               <Inputlabel>Password</Inputlabel>
-              <InputText type={"password"}></InputText>
+              <InputText type={"password"} value = {password}
+              onChange = {(e) =>{
+                setPassword(e.target.valie)
+              }}></InputText>
               <InputMessage>Password cannot be empty.</InputMessage>
             </Inputdiv>
             <LoginButton type="button" onClick={() =>{

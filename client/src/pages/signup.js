@@ -34,7 +34,8 @@ const Signup = () => {
   //nameError.display === "none"
 
   const register = () => {
-    if (name.length !== 0 && email.length !== 0 && password.length !== 0) {
+    if (name.length !== 0 && email.length !== 0 && password.length !== 0 && 
+      nameError.display === "none" && emailError.display === "none" && passwordError.display === "none") {
       axios
         .post(
           `${process.env.REACT_APP_API_URI}/v1/members/signup`,

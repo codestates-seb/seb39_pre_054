@@ -47,7 +47,7 @@ public class QuestionService {
         return saveQuestion(findQuestion);
     }
 
-    private Question findVerifiedQuestion(Long questionId) {
+    public Question findVerifiedQuestion(Long questionId) {
         Optional<Question> optionalQuestion = questionRepository.findById(questionId);
         Question findQuestion = optionalQuestion.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));

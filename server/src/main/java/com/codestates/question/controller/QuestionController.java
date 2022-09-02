@@ -1,5 +1,7 @@
 package com.codestates.question.controller;
 
+import com.codestates.answer.repository.AnswerIdMapping;
+import com.codestates.answer.service.AnswerService;
 import com.codestates.question.dto.QuestionPatchDto;
 import com.codestates.question.dto.QuestionPostDto;
 import com.codestates.question.entity.Question;
@@ -21,10 +23,12 @@ import java.util.List;
 @Validated
 public class QuestionController {
     private final QuestionService questionService;
+    private final AnswerService answerService;
     private final QuestionMapper mapper;
 
-    public QuestionController(QuestionService questionService, QuestionMapper mapper) {
+    public QuestionController(QuestionService questionService, AnswerService answerService, QuestionMapper mapper) {
         this.questionService = questionService;
+        this.answerService = answerService;
         this.mapper = mapper;
     }
 
@@ -46,8 +50,9 @@ public class QuestionController {
     @GetMapping("/{question-id}")
     public ResponseEntity getQuestion(@PathVariable("question-id") @Positive long questionId) {
         Question question = questionService.findQuestion(questionId);
+        List<AnswerIdMapping> answers = answerService.findAnswers(questionId);
 
-        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.questionToQuestionResponseDto(question, answers), HttpStatus.OK);
     }
 
     @GetMapping

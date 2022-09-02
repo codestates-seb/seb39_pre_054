@@ -3,9 +3,11 @@ package com.codestates.member.jwt.config;
 import com.codestates.member.jwt.filter.FirstFilter;
 import com.codestates.member.jwt.filter.JwtAuthenticationFilter;
 import com.codestates.member.jwt.filter.JwtAuthorizationFilter;
+import com.codestates.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,11 +18,12 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
-@EnableWebSecurity // 시큐리티 활성화 -> 기본 스프링 필터 체인에 등록
+@EnableWebSecurity (debug = true) // 시큐리티 활성화 -> 기본 스프링 필터 체인에 등록
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final CorsFilter corsFilter;
+    private final MemberRepository memberRepository;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -34,12 +37,14 @@ public class SecurityConfig {
                 .apply(new CustomDsl()) // 추가
                 .and()
                 .authorizeRequests()
-                .antMatchers("/v1/member/**")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/v1/manager/**")
-                .access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-                .antMatchers("/v1/admin/**")
-                .access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST,"/v1/questions","/v1/answers")
+                .access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.PATCH,"/v1/questions/**","/v1/answers/**","/v1/members/**")
+                .access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.GET,"/v1/members/**")
+                .access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.DELETE,"/v1/questions/**","/v1/answers/**")
+                .access("hasRole('ROLE_USER')")
                 .anyRequest().permitAll();
         return http.build();
     }
@@ -52,10 +57,9 @@ public class SecurityConfig {
             builder
                     .addFilter(corsFilter)
                     .addFilter(new JwtAuthenticationFilter(authenticationManager)) // 인증
-                    .addFilter(new JwtAuthorizationFilter(authenticationManager)); // 인가
+                    .addFilter(new JwtAuthorizationFilter(authenticationManager,memberRepository)); // 인가
         }
     }
-
 }
 
 

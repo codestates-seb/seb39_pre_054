@@ -22,6 +22,9 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
+    public Member findMember(long memberId) {
+        return findVerifiedMember(memberId);
+    }
 
     public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getMemberId()); //ID로 멤버 존재 확인하고 Member 정보 반환

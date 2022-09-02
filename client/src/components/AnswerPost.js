@@ -3,19 +3,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BlueButton, WhiteBox } from "./ui/Button";
 
-const AnswerPost = ({ questionid, answerId }) => {
+const AnswerPost = ({ questionId, answerId }) => {
   const [answerPost, setAnswerPost] = useState({
     body: "",
   });
-  const [answerNumber, setAnswerNumber] = useState({
-    answer_id: [],
-  });
-
-  useEffect(() => {
-    if (answerId !== undefined && answerId.length !== 0) {
-      setAnswerNumber({ answer_id: [...answerId] });
-    }
-  }, [answerId]);
 
   const bodyChange = (el) => {
     setAnswerPost({ body: el });
@@ -27,16 +18,20 @@ const AnswerPost = ({ questionid, answerId }) => {
 
   const postAnswerClick = () => {
     if (answerPost.body !== "") {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `${localStorage.getItem("authorization")}`,
+      };
       axios
-        .post(`http://localhost:3001/answer`, answerPost)
-        .then((res) =>
-          axios
-            .patch(`http://localhost:3001/questions/${questionid}`, {
-              answer_id: [res.data.id, ...answerNumber.answer_id],
-            })
-            .then((res) => console.log(res.data.answer_id)).then(window.location.reload())
-            .catch((err) => console.log(err))
+        .post(
+          `${process.env.REACT_APP_API_URI}/v1/answers`,
+          // 멤버 아이디 추가
+          { ...answerPost, memberId: 2, questionId: Number(`${questionId}`) },
+          {
+            headers: headers,
+          }
         )
+        .then((res) => window.location.reload())
         .catch((err) => console.log(err));
     }
   };

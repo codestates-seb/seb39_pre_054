@@ -10,8 +10,9 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import styled from "styled-components";
 import QuestionView from "./pages/QuestionView";
-import Posts from "./pages/Posts";
+import QuestionEdit from "./pages/QuestionEdit";
 import FooterLayout from "./components/FooterLayout";
+import AnswerEdit from "./pages/AnswerEdit";
 
 const App = () => {
   return (
@@ -33,7 +34,8 @@ const App = () => {
               ></Route>
               <Route path="/questions/ask" element={<Ask></Ask>}></Route>
               <Route path="/users/:id" element={<MyPage></MyPage>}></Route>
-              <Route path="/posts/:id" element={<Posts></Posts>}></Route>
+              <Route path="/questionedit/:id" element={<QuestionEdit></QuestionEdit>}></Route>
+              <Route path="/answeredit/:id" element={<AnswerEdit></AnswerEdit>}></Route>
             </Route>
             <Route path="/users/login" element={<Login></Login>}></Route>
             <Route path="/users/signup" element={<Signup></Signup>}></Route>

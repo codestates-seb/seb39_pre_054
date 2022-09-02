@@ -21,20 +21,21 @@ const Login = () => {
 
   const Logincheck = () => {
     console.log(test);
+
     axios
-      .get("http://localhost:3001/members/100", {
+      .post(`${process.env.REACT_APP_API_URI}/login`, {
         email: email,
         password: password,
       })
-      .then((response) => {
-        dispatch(loginSuccess(response.data));
-        console.log("ok");
-        //console.log(response)
-        localStorage.setItem("token", response.data.jwt);
-        navigate(`/`);
+      .then((response) => { 
+        let jwtToken = response.headers.authorization
+        localStorage.setItem("authorization", jwtToken)
+        console.log(response.headers)
+        dispatch(loginSuccess());
+        navigate('/');
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error);
         // if(error.message === "Request failed with status code 404"){
         //   alert("사용자가 없습니다")
         //   setEmail("")
@@ -89,7 +90,7 @@ const Login = () => {
                   type={"password"}
                   value={password}
                   onChange={(e) => {
-                    setPassword(e.target.valie);
+                    setPassword(e.target.value);
                   }}
                 ></InputText>
                 <InputMessage>Password cannot be empty.</InputMessage>

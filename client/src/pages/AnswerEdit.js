@@ -1,25 +1,24 @@
 import React from "react";
 import LeftSide from "../components/LeftSide";
-import PostsContent from "../components/PostsContent";
+import AnswerEditContent from "../components/AnswerEditContent";
 import PostsRight from "../components/PostsRight";
 import { Left, MainContainer } from "./Main";
-import useScrollTop from "../util/useScrollTop"
+import useScrollTop from "../util/useScrollTop";
 
-const Posts = () => {
-
+const AnswerEdit = () => {
   useScrollTop();
-  
+
   return (
     <>
       <MainContainer>
         <Left>
           <LeftSide />
         </Left>
-        <PostsContent />
+        <AnswerEditContent />
         <PostsRight />
       </MainContainer>
     </>
   );
 };
 
-export default Posts;
+export default AnswerEdit;

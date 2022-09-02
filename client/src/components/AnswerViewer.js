@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const AnswerViewer = ({ questionid, answerId, author, id }) => {
+const AnswerViewer = ({ author, id, questionId }) => {
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/answer/${id}`)
+      .get(`${process.env.REACT_APP_API_URI}/v1/answers/${id}`)
       .then((res) => setAnswer(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -16,21 +16,25 @@ const AnswerViewer = ({ questionid, answerId, author, id }) => {
   const deleteClick = () => {
     const result = window.confirm("Delete this answer?");
     if (result === true) {
-      axios
-        .delete(`http://localhost:3001/answer/${id}`)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-      axios
-        .patch(`http://localhost:3001/questions/${questionid}`, {answer_id:[...answerId.filter((el) => el !== id)]})
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-      window.location.reload();
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `${localStorage.getItem("authorization")}`,
+      };
+      setTimeout(() => {
+        axios
+          .delete(`${process.env.REACT_APP_API_URI}/v1/answers/${id}`, {
+            headers: headers,
+          })
+          .then((res) => console.log(res))
+          .then(() => window.location.reload())
+          .catch((err) => console.log(err));
+      }, 1000);
     }
   };
 
   const shareClick = () => {
     navigator.clipboard
-      .writeText(`http://localhost:3000/questions/${id}`)
+      .writeText(`${process.env.REACT_APP_API_URI}/questions/${id}`)
       .then(() => {
         window.alert("Link copy complete!");
       });
@@ -46,8 +50,8 @@ const AnswerViewer = ({ questionid, answerId, author, id }) => {
           </div>
           <div className="view-button edit">
             <StyledLink
-              to={`/posts/${id}`}
-              state={{ body: answer.body, id: answer.id }}
+              to={`/answeredit/${id}`}
+              state={{ body: answer.body, answerId: answer.answerId, questionId: questionId }}
             >
               <span>Edit</span>
             </StyledLink>
@@ -58,10 +62,10 @@ const AnswerViewer = ({ questionid, answerId, author, id }) => {
         </div>
         <div className="view-user-container">
           <div className="view-user-profile">
-            <div>{answer.createdAt}</div>
+            <div>{answer.creationDate !== undefined && answer.creationDate.slice(0, 10)}</div>
             <div className="view-user-info">
               <img className="view-user-img" />
-              <div className="view-user-name">{author}</div>
+              <div className="view-user-name">{author !== undefined && author}</div>
             </div>
           </div>
         </div>
@@ -74,7 +78,6 @@ export default AnswerViewer;
 
 const ViewContainer = styled.div`
   width: 38rem;
-  
 
   pre {
     font-size: 1rem;

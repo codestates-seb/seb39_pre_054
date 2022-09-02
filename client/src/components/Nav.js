@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -9,12 +9,13 @@ import { ReactComponent as Inbox } from "../assets/inbox.svg";
 import { ReactComponent as TrophyStar } from "../assets/trophy-star.svg";
 import { ReactComponent as Question } from "../assets/circle-question.svg";
 import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
   const [productsClick, setProductsClick] = useState(false);
   const [optionClick, setOptionClick] = useState(false);
   // 로그인 유무 판별
-  const [isLogin, setIsLogin] = useState(false);
+  const isLogin = useSelector((state) => state.loginReducer.isLogin);
 
   const stackExchangeClick = () => {
     setOptionClick(!optionClick);

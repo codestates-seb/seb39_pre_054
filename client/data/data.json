@@ -8,7 +8,10 @@
       "likes": 30,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [7, 2]
+      "answer_id": [
+        10,
+        7
+      ]
     },
     {
       "id": 2,
@@ -18,7 +21,10 @@
       "likes": 100,
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [5, 4]
+      "answer_id": [
+        5,
+        4
+      ]
     },
     {
       "id": 3,
@@ -215,7 +221,9 @@
       "body": "됩니다",
       "author": "test",
       "createdAt": "2022. 8. 31.",
-      "answer_id": [6],
+      "answer_id": [
+        6
+      ],
       "id": 22
     }
   ],
@@ -227,14 +235,12 @@
       "answer2": "React",
       "createdAt": "2023. 8. 26.",
       "last_edit_date": "2023. 8. 26.",
-      "answer_id": [1]
+      "answer_id": [
+        1
+      ]
     }
   ],
   "answer": [
-    {
-      "body": "dsadsadsadsadsa",
-      "id": 2
-    },
     {
       "body": "dsadsadsadsa",
       "id": 4
@@ -258,6 +264,10 @@
     {
       "body": "dsadsa",
       "id": 9
+    },
+    {
+      "body": "ㅇㄴㅁ",
+      "id": 10
     }
   ],
   "members": [

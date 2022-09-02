@@ -39,11 +39,11 @@ public class MemberController {
         return new ResponseEntity(memberResponseDto, HttpStatus.CREATED);
     }
 
-
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(@PathVariable("member-id") @Positive long memberId,@Valid @RequestBody MemberPatchDto memberPatchDto) {
 
         memberPatchDto.setMemberId(memberId);
+        memberPatchDto.setPassword(bCryptPasswordEncoder.encode(memberPatchDto.getPassword()));
 
         Member member = memberService.updateMember(mapper.memberPatchDtoToMember(memberPatchDto));
         MemberResponseDto memberResponseDto = mapper.memberToMemberResponseDto(member);
@@ -51,9 +51,12 @@ public class MemberController {
         return new ResponseEntity<>(memberResponseDto, HttpStatus.OK);
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "<h1>home</h1>";
-    }
+    @GetMapping("/{member-id}")
+    public ResponseEntity getMember(@PathVariable("member-id") @Positive long memberId) {
 
+        Member member = memberService.findMember(memberId);
+        MemberResponseDto memberResponseDto = mapper.memberToMemberResponseDto(member);
+
+        return new ResponseEntity(memberResponseDto, HttpStatus.OK);
+    }
 }

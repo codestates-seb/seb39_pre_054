@@ -21,7 +21,7 @@ public class PrincipalDetails implements UserDetails { // Spring Security 에서
     public Collection<? extends GrantedAuthority> getAuthorities() { // 계정의 권한 목록을 리턴
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         member.getRoleList().forEach(n -> {
-            authorities.add(()->{ return n;});
+            authorities.add(() -> n);
         });
         return authorities;
     }

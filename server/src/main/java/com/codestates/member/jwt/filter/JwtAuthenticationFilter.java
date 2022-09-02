@@ -62,7 +62,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withExpiresAt(new Date(System.currentTimeMillis() + (1000 * 60 * 10))) // 10분
                 .withClaim("id", principalDetails.getMember().getMemberId())
                 .withClaim("name", principalDetails.getMember().getName())
-                .sign(Algorithm.HMAC512("PreProject54"));
+                .withClaim("email",principalDetails.getMember().getEmail())
+                .sign(Algorithm.HMAC512("PreProject54")); // PreProject54는 SecretKey이다.
+
         response.addHeader("Authorization", "Bearer " + jwtToken);
+        response.addIntHeader("memberId", Math.toIntExact(principalDetails.getMember().getMemberId()));
+
     }
 }

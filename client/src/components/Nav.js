@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Search from "./Search";
 import { BlueButton, LightBlueButton } from "./ui/Button";
@@ -9,9 +9,12 @@ import { ReactComponent as Inbox } from "../assets/inbox.svg";
 import { ReactComponent as TrophyStar } from "../assets/trophy-star.svg";
 import { ReactComponent as Question } from "../assets/circle-question.svg";
 import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess } from "../actions/index";
 
 const Nav = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [productsClick, setProductsClick] = useState(false);
   const [optionClick, setOptionClick] = useState(false);
   // 로그인 유무 판별
@@ -19,6 +22,27 @@ const Nav = () => {
 
   const stackExchangeClick = () => {
     setOptionClick(!optionClick);
+  };
+
+  // const profileClick = () => {
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //     Authorization: `${localStorage.getItem("authorization")}`,
+  //   };
+
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_URI}/v1/members/${2}`,
+  //       { headers: headers }
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  const logoutClick = () => {
+    dispatch(loginSuccess());
+    localStorage.removeItem('authorization');
+    navigate('/');
   };
 
   return (
@@ -63,12 +87,12 @@ const Nav = () => {
             ) : (
               <Ol>
                 <li>
-                  <Profile>
-                    <StyledLink to="/users/1">
+                  <StyledLink to="/users/1">
+                    <Profile>
                       <img />
-                    </StyledLink>
-                    <div>1</div>
-                  </Profile>
+                      <div>1</div>
+                    </Profile>
+                  </StyledLink>
                 </li>
                 <li>
                   <Inbox />
@@ -96,7 +120,12 @@ const Nav = () => {
                         <div className="dropdown-options">
                           <span className="dropdown-hover">help</span>
                           <span className="dropdown-hover">chat</span>
-                          <span className="dropdown-hover">log out</span>
+                          <span
+                            className="dropdown-hover"
+                            onClick={logoutClick}
+                          >
+                            log out
+                          </span>
                         </div>
                       </div>
                       <div className="dropdown-title dropdown-hover">

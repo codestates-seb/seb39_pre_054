@@ -43,7 +43,6 @@ public class MemberController {
     public ResponseEntity patchMember(@PathVariable("member-id") @Positive long memberId,@Valid @RequestBody MemberPatchDto memberPatchDto) {
 
         memberPatchDto.setMemberId(memberId);
-        memberPatchDto.setPassword(bCryptPasswordEncoder.encode(memberPatchDto.getPassword()));
 
         Member member = memberService.updateMember(mapper.memberPatchDtoToMember(memberPatchDto));
         MemberResponseDto memberResponseDto = mapper.memberToMemberResponseDto(member);

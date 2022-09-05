@@ -2,20 +2,21 @@ package com.codestates.member.service;
 
 import com.codestates.member.entity.Member;
 import com.codestates.member.repository.MemberRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
-
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail()); //등록된 이메일인지 확인
@@ -32,7 +33,7 @@ public class MemberService {
         Optional.ofNullable(member.getName())
                 .ifPresent(name -> findMember.setName(name));
         Optional.ofNullable(member.getPassword())
-                .ifPresent(password -> findMember.setPassword(password));
+                .ifPresent(password -> findMember.setPassword(bCryptPasswordEncoder.encode(password)));
 
         findMember.setLast_edit_date(LocalDateTime.now());
 

@@ -41,6 +41,8 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'com.auth0:java-jwt:3.19.2'
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
+
 }
 
 tasks.named('test') {
@@ -71,3 +73,9 @@ bootJar {
 		into 'static/docs'     // (10-3)
 	}
 }
+
+//dependencyManagement {
+//	imports {
+//		mavenBom "org.springframework.cloud:spring-cloud-starter-parent:Hoxton.SR12"
+//	}
+//}

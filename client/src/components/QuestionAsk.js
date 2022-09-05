@@ -7,11 +7,12 @@ import { BlueButton } from "./ui/Button";
 
 const QuestionAsk = () => {
   const navigate = useNavigate();
+  const memberid = localStorage.getItem('memberid');
   const [questionPost, setQuestionPost] = useState({
     title: "",
     body: "",
     // 아이디값 유동적으로 바꾸기
-    memberId: 2,
+    memberId: memberid,
   });
 
   const [validations, setValidations] = useState({

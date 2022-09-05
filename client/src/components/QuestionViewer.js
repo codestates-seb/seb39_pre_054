@@ -3,7 +3,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const QuestionViewer = ({ title, body, createdAt, author, questionId }) => {
+const QuestionViewer = ({
+  title,
+  body,
+  createdAt,
+  author,
+  questionId,
+  questionMemberId,
+}) => {
   const navigate = useNavigate();
 
   const deleteClick = () => {
@@ -19,7 +26,6 @@ const QuestionViewer = ({ title, body, createdAt, author, questionId }) => {
         })
         .then((res) => navigate(`/`))
         .catch((err) => console.log(err));
-    } else {
     }
   };
 
@@ -38,24 +44,30 @@ const QuestionViewer = ({ title, body, createdAt, author, questionId }) => {
           <div className="view-button share">
             <span onClick={shareClick}>Share</span>
           </div>
-          <div className="view-button edit">
-            <StyledLink
-              to={`/questionedit/${questionId}`}
-              state={{ title: title, body: body, questionId: questionId }}
-            >
-              <span>Edit</span>
-            </StyledLink>
-          </div>
-          <div className="view-button delete">
-            <span onClick={deleteClick}>Delete</span>
-          </div>
+          {questionMemberId === Number(localStorage.getItem("memberid")) &&
+            <>
+              <div className="view-button edit">
+                <StyledLink
+                  to={`/questionedit/${questionId}`}
+                  state={{ title: title, body: body, questionId: questionId }}
+                >
+                  <span>Edit</span>
+                </StyledLink>
+              </div>
+              <div className="view-button delete">
+                <span onClick={deleteClick}>Delete</span>
+              </div>
+            </>
+          }
         </div>
         <div className="view-user-container">
           <div className="view-user-profile">
             <div>{createdAt !== undefined && createdAt.slice(0, 10)}</div>
             <div className="view-user-info">
               <img className="view-user-img" />
-              <div className="view-user-name">{author !== undefined && author}</div>
+              <div className="view-user-name">
+                {author !== undefined && author}
+              </div>
             </div>
           </div>
         </div>

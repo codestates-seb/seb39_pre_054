@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BlueButton, WhiteBox } from "./ui/Button";
 
-const AnswerPost = ({ questionId, answerId }) => {
+const AnswerPost = ({ questionId }) => {
   const [answerPost, setAnswerPost] = useState({
     body: "",
   });
@@ -22,11 +22,13 @@ const AnswerPost = ({ questionId, answerId }) => {
         "Content-Type": "application/json",
         Authorization: `${localStorage.getItem("authorization")}`,
       };
+
+      const memberid = localStorage.getItem('memberid');
       axios
         .post(
           `${process.env.REACT_APP_API_URI}/v1/answers`,
           // 멤버 아이디 추가
-          { ...answerPost, memberId: 2, questionId: Number(`${questionId}`) },
+          { ...answerPost, memberId: memberid, questionId: Number(`${questionId}`) },
           {
             headers: headers,
           }

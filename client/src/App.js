@@ -20,7 +20,7 @@ import MyPageEdit from "./pages/MyPageEdit";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if(localStorage.getItem("authorization") !== undefined){
+    if(localStorage.getItem("authorization") !== null){
       dispatch(loginSuccess());
     }
   }, [])

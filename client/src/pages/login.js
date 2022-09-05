@@ -26,7 +26,7 @@ const Login = () => {
         password: password,
       })
       .then((response) => { 
-        // console.log(response)
+        console.log(response)
         let jwtToken = response.headers.authorization
         const memberid = response.headers.memberid
         //console.log(jwtToken)

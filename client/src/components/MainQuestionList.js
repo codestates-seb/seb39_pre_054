@@ -38,11 +38,11 @@ const MainQuestionList = () => {
       </Row2>
       {questions.map((question) => (
         <MainQuestionRow
-          key={question.question_id}
-          id={question.question_id}
+          key={question.questionId}
+          id={question.questionId}
           title={question.title}
           body={question.body}
-          createdAt={question.creation_date}
+          createdAt={question.creationDate}
           author={question.member.name}
         />
       ))}

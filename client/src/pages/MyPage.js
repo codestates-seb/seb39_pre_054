@@ -1,11 +1,13 @@
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import LeftSide from "../components/LeftSide";
-import BirthdayIcon from "../assets/cake-candles-solid.svg"
-import Pen from "../assets/pen-solid.svg"
+import MypageTop from "../components/MypageTop";
+
 
 // 마이페이지
 const MyPage = () => {
+
   return (  
     
  <MainContainer>
@@ -14,35 +16,36 @@ const MyPage = () => {
   </Left>
   <RightContainer>
     <div>
-      <Topdiv>
-        <Profil>
-          <a href="/users/:id">
-            <ProfilImg />
-          </a>
-          <Namediv>
-            <Mypagediv className="namebox">
-              <Mypagediv className="name"> {/* 수정예정 */}
-                haeji
-              </Mypagediv>
-              </Mypagediv>
-              <Forname>
-                <Logo src={BirthdayIcon}></Logo>
-                <Mypagediv className="days">Member for {} days</Mypagediv>
-                </Forname>
-
-          </Namediv>
-
-         </Profil>
-         <div>
-           <Edit>
-             <Logo2 src={Pen}></Logo2>
-             Edit profile
-           </Edit>
-         </div> 
-     </Topdiv>
+      <MypageTop></MypageTop>
      <Mypagediv className="bar">
-       
+       <Barnav>
+         <ProfileNav>Profile</ProfileNav>
+         <ActivityNav>Activity</ActivityNav>
+         <ProfileNav>Settings</ProfileNav>
+       </Barnav>
      </Mypagediv>
+    <Underdiv>
+      <Navdiv>
+       <Navul>
+         <Navlism>Summary</Navlism>
+         <Navli>Answers</Navli>
+         <Navli>Questions</Navli>
+         <Navli>TAgs</Navli>
+         <Navli>Articles</Navli>
+         <Navli>Badges</Navli>
+         <Navli>Bookmarks</Navli>
+         <Navli>Following</Navli>
+         <Navli>Bounties</Navli>
+         <Navli>Reputation</Navli>
+         <Navli>All actions</Navli>
+         <Navli>Responses</Navli>
+         <Navli>Votes</Navli>
+       </Navul>
+      </Navdiv>
+      <H2>Summary</H2>
+
+    </Underdiv>
+
   </div>
   </RightContainer>
 
@@ -52,31 +55,17 @@ const MyPage = () => {
 };
 
 export default MyPage;
+
 const Mypagediv = styled.div`
-
-.namebox{
-  margin: -4px;
- 
-}
-.name{
-  margin: 4px 4px 12px;
-  font-size: 34px;
-}
-.days{
-  margin: 0px 2px;
-}
 .bar{
-  margin: 40px 0px 16px 0px;
+  margin: 0px 0px 16px;
+  display: flex;
 }
-
 `
-const Forname = styled.div`
-color: #6A737C;
+const Underdiv = styled.div`
+margin: 0px 0px 48px;
 display: flex;
-flex-direction: row;
-margin: 3px;
 `
-
 const Left = styled.div`
   display: flex;
   justify-content: right;
@@ -96,46 +85,62 @@ const RightContainer = styled.div`
   background-color: #FFFFFF;
   font-size: 13px;
   padding: 24px;
+
   border-left: 1px solid #BABFC3;
   `;
-const Topdiv = styled.div`
-margin: 12px;
-display: flex;
-justify-content: space-between;
-  `
-const Profil = styled.div`
-margin: -8px;
-display: flex;
-`
-const ProfilImg = styled.img`
-width: 128px;
-height: 128px;
-border-radius: 5px;
-background-color: #636b74;
 
-`
-const Namediv = styled.div`
-margin: 20px 8px 8px 13px;
-width: 500px;
-
-`
-const Logo = styled.img`
-height: 14px;
-width: 17px;
-margin: 0px 5px 0px 0px;
-`
-const Logo2 = styled.img`
-margin: -1.5px 5px 0px 0px;
-width: 14px;
-height: 14px;
-`
-const Edit = styled.a`
-color:#6A737C;
-font-size: 12px;
-margin: -15px 600px 3px 3px;
-padding: 9.6px;
-border: 1px solid #BABFC3;
-border-radius: 5px;
+const Barnav = styled.div`
+margin: -2px;
+padding: 2px 0px;
 display: flex;
 
+`
+const ProfileNav = styled.div`
+margin: 2px;
+padding: 6px 12px;
+border-radius: 70px;
+:hover{
+  background-color: #F1F2F3;
+}
+/* .activity{
+  background-color: #F48225;
+} */
+`
+const ActivityNav = styled.div`
+margin: 2px;
+padding: 6px 12px;
+border-radius: 70px;
+color: white;
+:hover{
+  background-color: rgb(204,110,44);
+}
+background-color: #F48225;
+`
+const Navul = styled.ul`
+display: flex;
+flex-direction: column;
+background-color: white;
+list-style:none;
+padding-left:0px;
+
+`
+const Navli = styled.li`
+padding: 6px 48px 6px 12px;
+font-size: 13px;
+border-radius : 70px;
+
+`
+const Navdiv = styled.nav`
+margin: 0px 10px 0px 0px;
+background-color: white;
+`
+const Navlism = styled.li`
+padding: 6px 48px 6px 12px;
+font-size: 13px;
+border-radius : 70px;
+background-color: #F1F2F3;
+`
+const H2 = styled.h2`
+font-weight: 400;
+font-size: 21px;
 `

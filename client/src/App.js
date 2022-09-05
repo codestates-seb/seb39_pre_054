@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Main from "./pages/Main";
@@ -13,8 +13,16 @@ import QuestionView from "./pages/QuestionView";
 import QuestionEdit from "./pages/QuestionEdit";
 import FooterLayout from "./components/FooterLayout";
 import AnswerEdit from "./pages/AnswerEdit";
+// import { useDispatch } from "react-redux";
+// import { loginSuccess } from "./actions";
 
 const App = () => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if(localStorage.getItem("authorization") !== undefined){
+  //     dispatch(loginSuccess());
+  //   }
+  // }, [])
   return (
     <>
       <Container>

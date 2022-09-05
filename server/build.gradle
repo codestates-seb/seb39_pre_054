@@ -41,7 +41,9 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'com.auth0:java-jwt:3.19.2'
-	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
+	implementation group: 'io.awspring.cloud', name: 'spring-cloud-starter-aws-parameter-store-config'
+
 
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
@@ -76,8 +78,8 @@ bootJar {
 	}
 }
 
-//dependencyManagement {
-//	imports {
-//		mavenBom "org.springframework.cloud:spring-cloud-starter-parent:Hoxton.SR12"
-//	}
-//}
+dependencyManagement {
+	imports {
+		mavenBom "io.awspring.cloud:spring-cloud-aws-dependencies:2.3.3"
+	}
+}

@@ -9,4 +9,5 @@ import java.util.List;
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 //    @Query(value = "select a.answerId as answerId from Answer a")
     List<AnswerIdMapping> findAllByQuestion(Question question);
+
 }

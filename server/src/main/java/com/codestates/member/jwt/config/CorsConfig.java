@@ -7,7 +7,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration // Bean 등록
-public class CorsConfig { //CorsConfig의 역할??
+public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {

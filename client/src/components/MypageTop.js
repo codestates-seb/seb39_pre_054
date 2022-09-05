@@ -3,21 +3,37 @@ import styled from "styled-components";
 import BirthdayIcon from "../assets/cake-candles-solid.svg"
 import Pen from "../assets/pen-solid.svg"
 import seicon from "../assets/se-icon.svg"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const MypageTop = () =>{
 
-  const [myname , setMyname] = useState("")
+  // const [myname , setMyname] = useState("")
   // axios.get(`${process.env.REACT_APP_API_URI}/v1/members/${member_id}`)
   // .then((res) => setMyname(res.name))
   // .catch((err)=> console.log(err))
 
+  // const profileClick = () => {
+  //   const headers = {
+  //     "Content-Type": "application/json",
+  //     Authorization: `${localStorage.getItem("authorization")}`,
+  //   };
+
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_URI}/v1/members/${2}`,
+  //       { headers: headers }
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+  const { id } = useParams();
+
   return(
     <Topdiv>
     <Profil>
-      <a href="/users/:id">
+      <a href={`/users/${id}`}>
         <ProfilImg />
       </a>
       <Namediv>
@@ -34,7 +50,7 @@ const MypageTop = () =>{
       </Namediv>
      </Profil>
      <Mypagediv className="editbox">
-       <Link to ="/users/edit/:id">
+       <Link to ={`/users/edit/${id}`}>
        <Edit>
          <Logo2 src={Pen}></Logo2>
          Edit profile

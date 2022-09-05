@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import LeftSide from "../components/LeftSide";
@@ -6,6 +7,7 @@ import MypageTop from "../components/MypageTop";
 
 // 마이페이지
 const MyPage = () => {
+
   return (  
     
  <MainContainer>

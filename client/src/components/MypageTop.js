@@ -7,28 +7,29 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const MypageTop = () =>{
-
-  // const [myname , setMyname] = useState("")
-  // axios.get(`${process.env.REACT_APP_API_URI}/v1/members/${member_id}`)
-  // .then((res) => setMyname(res.name))
-  // .catch((err)=> console.log(err))
-
-  // const profileClick = () => {
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: `${localStorage.getItem("authorization")}`,
-  //   };
-
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_API_URI}/v1/members/${2}`,
-  //       { headers: headers }
-  //     )
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // };
+const MypageTop = () =>{ 
   const { id } = useParams();
+  const [myname , setMyname] = useState("")
+  const [mydate , setMydate] = useState("")
+  const headers = {
+        "Content-Type": "application/json",
+        Authorization: `${localStorage.getItem("authorization")}`,
+      };
+
+  axios.get(`${process.env.REACT_APP_API_URI}/v1/members/${id}`,
+    { headers: headers })
+    .then((res) =>{
+      setMyname(res.data.name)
+      setMydate(res.data.creation_date)
+      
+
+    });
+  const now = new Date();
+  const last = new Date(mydate);
+  const current = now.getTime() - last.getTime();
+  const current1 = Math.round(current / (1000*60*60*24))+1
+  
+  
 
   return(
     <Topdiv>
@@ -38,13 +39,13 @@ const MypageTop = () =>{
       </a>
       <Namediv>
         <Mypagediv className="namebox">
-          <Mypagediv className="name"> {/* 수정예정 */}
-          {/* {myname} */}
+          <Mypagediv className="name"> 
+          {myname}
           </Mypagediv>
           </Mypagediv>
           <Forname>
             <Logo src={BirthdayIcon}></Logo>
-            <Mypagediv className="days">Member for {} days</Mypagediv>
+            <Mypagediv className="days">Member for {current1} days</Mypagediv>
             </Forname>
 
       </Namediv>

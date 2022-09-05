@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "./actions";
+import { loginSuccess, logout } from "./actions";
 
 import Main from "./pages/Main";
 import Ask from "./pages/Ask";
@@ -20,7 +20,7 @@ import MyPageEdit from "./pages/MyPageEdit";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if(localStorage.getItem("authorization") !== undefined){
+    if(localStorage.getItem("authorization") !== null){
       dispatch(loginSuccess());
     }
   }, [])

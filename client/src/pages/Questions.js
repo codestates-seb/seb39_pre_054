@@ -13,10 +13,12 @@ const Questions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/questions")
-      .then((res) => setQuestions(res.data))
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }, []);
+
+  // setQuestions(res.data)
 
   return (
     <MainContainer>

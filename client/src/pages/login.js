@@ -28,8 +28,10 @@ const Login = () => {
       .then((response) => { 
         // console.log(response)
         let jwtToken = response.headers.authorization
+        const memberid = response.headers.memberid
         //console.log(jwtToken)
         localStorage.setItem("authorization", jwtToken)
+        localStorage.setItem("memberid", memberid)
         dispatch(loginSuccess(response.headers.memberid));
         //console.log(response.headers.memberid)
         console.log("ok");

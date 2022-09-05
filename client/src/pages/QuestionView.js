@@ -7,7 +7,7 @@ import QuestionsViewHeader from "../components/QuestionsViewHeader";
 import RightSide from "../components/RightSide";
 import axios from "axios";
 import QuestionsViewContent from "../components/QuestionsViewContent";
-import useScrollTop from "../util/useScrollTop"
+import useScrollTop from "../util/useScrollTop";
 
 const QuestionView = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ const QuestionView = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/questions/${id}`)
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions/${id}`)
       .then((res) => setQuestion(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -29,21 +29,26 @@ const QuestionView = () => {
           <LeftSide />
         </Left>
         <ContentContainer>
-          <QuestionsViewHeader
-            questionTitle={question.title}
-            questionCreatedAt={question.createdAt}
-          ></QuestionsViewHeader>
-          <Content>
-            <QuestionsViewContent
-              questionTitle={question.title}
-              questionBody={question.body}
-              questionCreatedAt={question.createdAt}
-              questionAuthor={question.author}
-              answerId = {question.answer_id}
-              id={question.id}
-            ></QuestionsViewContent>
-            <RightSide />
-          </Content>
+          {question.length !== 0 && (
+            <>
+              <QuestionsViewHeader
+                questionTitle={question.title}
+                questionCreatedAt={question.creationDate}
+                questionModifiedAt={question.lastEditDate}
+              ></QuestionsViewHeader>
+              <Content>
+                <QuestionsViewContent
+                  questionTitle={question.title}
+                  questionBody={question.body}
+                  questionCreatedAt={question.creationDate}
+                  questionAuthor={question.member !== undefined && question.member.name}
+                  answerId={question.answerIds}
+                  questionId={question.questionId}
+                ></QuestionsViewContent>
+                <RightSide />
+              </Content>
+            </>
+          )}
         </ContentContainer>
       </MainContainer>
     </>

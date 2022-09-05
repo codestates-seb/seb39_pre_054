@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { BlueButton } from "./ui/Button";
 
-const QuestionsViewHeader = ({ questionTitle, questionCreatedAt }) => {
+const QuestionsViewHeader = ({ questionTitle, questionCreatedAt, questionModifiedAt }) => {
   return (
     <Container>
       <TitleContainer>
-        <Header1>{questionTitle}</Header1>
+        <Header1>{questionTitle !== undefined && questionTitle}</Header1>
         <StyledLink to="/questions/ask">
           <BlueButton>Ask Question</BlueButton>
         </StyledLink>
       </TitleContainer>
       <CreateContainer>
-        <span>Asked {questionCreatedAt}</span>
-        <span>Modified {questionCreatedAt}</span>
+        <span>Asked {questionCreatedAt !== undefined && questionCreatedAt.slice(0, 10)}</span>
+        <span>Modified {questionModifiedAt !== undefined && questionModifiedAt.slice(0, 10)}</span>
         <span>Viewed 11 times</span>
       </CreateContainer>
     </Container>

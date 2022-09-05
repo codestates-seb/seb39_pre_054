@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import AnswerPost from "./AnswerPost";
@@ -13,7 +12,7 @@ const QuestionsViewContent = ({
   questionCreatedAt,
   questionAuthor,
   answerId,
-  id,
+  questionId,
 }) => {
   return (
     <Container>
@@ -25,7 +24,7 @@ const QuestionsViewContent = ({
           body={questionBody}
           createdAt={questionCreatedAt}
           author={questionAuthor}
-          id={id}
+          questionId={questionId}
         ></QuestionViewer>
       </div>
       <div className="answer-container">
@@ -38,8 +37,7 @@ const QuestionsViewContent = ({
                 <Vote></Vote>
                 <AnswerViewer
                   author={questionAuthor}
-                  answerId={answerId}
-                  questionid={id}
+                  questionId={questionId}
                   id={el}
                 ></AnswerViewer>
               </div>
@@ -48,7 +46,7 @@ const QuestionsViewContent = ({
       </div>
       <div className="answer-post-container">
         <div className="answer-title">Your Answer</div>
-        <AnswerPost questionid={id} answerId={answerId}></AnswerPost>
+        <AnswerPost questionId={questionId} answerId={answerId}></AnswerPost>
       </div>
     </Container>
   );

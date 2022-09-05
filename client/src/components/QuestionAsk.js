@@ -10,9 +10,8 @@ const QuestionAsk = () => {
   const [questionPost, setQuestionPost] = useState({
     title: "",
     body: "",
-    // author: "test",
-    // createdAt: new Date().toLocaleDateString(),
-    memberId : 1,
+    // 아이디값 유동적으로 바꾸기
+    memberId: 2,
   });
 
   const [validations, setValidations] = useState({
@@ -31,9 +30,16 @@ const QuestionAsk = () => {
   const onPostClick = () => {
     if (questionPost.title !== "" && questionPost.body !== "") {
       setValidations({ title: false, body: false });
+      const headers = {
+        "Content-Type": "application/json",
+        "Authorization":
+          `${localStorage.getItem("authorization")}`,
+      };
       axios
-        .post(`${process.env.REACT_APP_API_URI}/v1/questions`, questionPost)
-        .then((res) => navigate(`/questions/${res.data.id}`))
+        .post(`${process.env.REACT_APP_API_URI}/v1/questions`, questionPost, {
+          headers: headers,
+        })
+        .then((res) => navigate(`/questions/${res.data.questionId}`))
         .catch((err) => console.log(err));
     }
 

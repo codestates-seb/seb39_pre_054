@@ -3,20 +3,20 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const QuestionViewer = ({
-  title,
-  body,
-  createdAt,
-  author,
-  id,
-}) => {
+const QuestionViewer = ({ title, body, createdAt, author, questionId }) => {
   const navigate = useNavigate();
 
   const deleteClick = () => {
     const result = window.confirm("Delete this post?");
     if (result === true) {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: `${localStorage.getItem("authorization")}`,
+      };
       axios
-        .delete(`http://localhost:3001/questions/${id}`)
+        .delete(`${process.env.REACT_APP_API_URI}/v1/questions/${questionId}`, {
+          headers: headers,
+        })
         .then((res) => navigate(`/`))
         .catch((err) => console.log(err));
     } else {
@@ -25,7 +25,7 @@ const QuestionViewer = ({
 
   const shareClick = () => {
     navigator.clipboard
-      .writeText(`http://localhost:3000/questions/${id}`)
+      .writeText(`http://localhost:3000/questions/${questionId}`)
       .then(() => {
         window.alert("Link copy complete!");
       });
@@ -40,8 +40,8 @@ const QuestionViewer = ({
           </div>
           <div className="view-button edit">
             <StyledLink
-              to={`/posts/${id}`}
-              state={{ title: title, body: body, id: id }}
+              to={`/questionedit/${questionId}`}
+              state={{ title: title, body: body, questionId: questionId }}
             >
               <span>Edit</span>
             </StyledLink>
@@ -52,10 +52,10 @@ const QuestionViewer = ({
         </div>
         <div className="view-user-container">
           <div className="view-user-profile">
-            <div>{createdAt}</div>
+            <div>{createdAt !== undefined && createdAt.slice(0, 10)}</div>
             <div className="view-user-info">
               <img className="view-user-img" />
-              <div className="view-user-name">{author}</div>
+              <div className="view-user-name">{author !== undefined && author}</div>
             </div>
           </div>
         </div>

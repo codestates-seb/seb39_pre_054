@@ -4,37 +4,35 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BlueButton, WhiteBox } from "./ui/Button";
 
-const PostsContent = () => {
+const AnswerEditContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [questionPost, setQuestionPost] = useState({
-    title: location.state.title,
     body: location.state.body,
   });
-
-  const titleChange = (el) => {
-    setQuestionPost({ ...questionPost, title: el });
-  };
 
   const bodyChange = (el) => {
     setQuestionPost({ ...questionPost, body: el });
   };
 
   const saveClick = () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("authorization")}`,
+    };
     axios
       .patch(
-        `${process.env.REACT_APP_API_URI}/v1/questions/${location.state.id}`,
-        questionPost
+        `${process.env.REACT_APP_API_URI}/v1/answers/${location.state.answerId}`,
+        questionPost,
+        { headers: headers }
       )
-      .then((res) => navigate(`/questions/${location.state.id}`))
-      // .then((res) => console.log(res))
+      .then((res) => navigate(`/questions/${location.state.questionId}`))
       .catch((err) => console.log(err));
   };
 
   const cancleClick = () => {
-    navigate(`/questions/${location.state.id}`);
+    navigate(`/questions/${location.state.questionId}`);
   };
-
   return (
     <Container>
       <ContentInfo>
@@ -48,14 +46,6 @@ const PostsContent = () => {
           hyperlinks.Í
         </div>
         <form>
-          <div className="title-container">
-            <label htmlFor="title">Title</label>
-            <input
-              id="title"
-              defaultValue={location.state.title}
-              onChange={(el) => titleChange(el.target.value)}
-            />
-          </div>
           <div className="body-container">
             <label htmlFor="body">Body</label>
             <textarea
@@ -65,7 +55,12 @@ const PostsContent = () => {
             />
           </div>
           <div className="button-container">
-            <BlueButton type="button" height="40px" width="100px" onClick={saveClick}>
+            <BlueButton
+              type="button"
+              height="40px"
+              width="100px"
+              onClick={saveClick}
+            >
               Save edits
             </BlueButton>
             <WhiteBox height="40px" width="100px" onClick={cancleClick}>
@@ -78,7 +73,7 @@ const PostsContent = () => {
   );
 };
 
-export default PostsContent;
+export default AnswerEditContent;
 
 const Container = styled.main`
   border-left: 1px solid #e3e6e8;
@@ -93,30 +88,6 @@ const ContentInfo = styled.div`
     padding: 1rem;
     background-color: #fdf7e2;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 6px 0px;
-  }
-
-  .title-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem 0;
-
-    label {
-      font-size: 15px;
-      font-weight: bold;
-      padding: 0.5rem 0;
-      cursor: pointer;
-    }
-
-    input {
-      padding: 7px 9px;
-      border: 1px solid #babfc3;
-      border-radius: 5px;
-
-      :focus {
-        outline: 1px solid #6bbbf7;
-        box-shadow: #d7e5f2 0px 0px 0px px;
-      }
-    }
   }
 
   .body-container {

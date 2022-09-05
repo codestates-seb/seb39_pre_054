@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const AnswerViewer = ({ author, id, questionId }) => {
+const AnswerViewer = ({ id, questionId }) => {
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
@@ -25,7 +25,6 @@ const AnswerViewer = ({ author, id, questionId }) => {
           .delete(`${process.env.REACT_APP_API_URI}/v1/answers/${id}`, {
             headers: headers,
           })
-          .then((res) => console.log(res))
           .then(() => window.location.reload())
           .catch((err) => console.log(err));
       }, 1000);
@@ -48,24 +47,37 @@ const AnswerViewer = ({ author, id, questionId }) => {
           <div className="view-button share">
             <span onClick={shareClick}>Share</span>
           </div>
-          <div className="view-button edit">
-            <StyledLink
-              to={`/answeredit/${id}`}
-              state={{ body: answer.body, answerId: answer.answerId, questionId: questionId }}
-            >
-              <span>Edit</span>
-            </StyledLink>
-          </div>
-          <div className="view-button delete">
-            <span onClick={deleteClick}>Delete</span>
-          </div>
+          {(answer.member !== undefined) && answer.member.memberId === Number(localStorage.getItem("memberid")) &&
+            <>
+              <div className="view-button edit">
+                <StyledLink
+                  to={`/answeredit/${id}`}
+                  state={{
+                    body: answer.body,
+                    answerId: answer.answerId,
+                    questionId: questionId,
+                  }}
+                >
+                  <span>Edit</span>
+                </StyledLink>
+              </div>
+              <div className="view-button delete">
+                <span onClick={deleteClick}>Delete</span>
+              </div>
+            </>
+          }
         </div>
         <div className="view-user-container">
           <div className="view-user-profile">
-            <div>{answer.creationDate !== undefined && answer.creationDate.slice(0, 10)}</div>
+            <div>
+              {answer.creationDate !== undefined &&
+                answer.creationDate.slice(0, 10)}
+            </div>
             <div className="view-user-info">
               <img className="view-user-img" />
-              <div className="view-user-name">{author !== undefined && author}</div>
+              <div className="view-user-name">
+                {answer.member !== undefined && answer.member.name}
+              </div>
             </div>
           </div>
         </div>

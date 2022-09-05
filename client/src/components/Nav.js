@@ -10,7 +10,7 @@ import { ReactComponent as TrophyStar } from "../assets/trophy-star.svg";
 import { ReactComponent as Question } from "../assets/circle-question.svg";
 import { ReactComponent as StackExchange } from "../assets/stack-exchange.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { loginSuccess } from "../actions/index";
+import { logout } from "../actions/index";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -24,26 +24,15 @@ const Nav = () => {
     setOptionClick(!optionClick);
   };
 
-  // const profileClick = () => {
-  //   const headers = {
-  //     "Content-Type": "application/json",
-  //     Authorization: `${localStorage.getItem("authorization")}`,
-  //   };
-
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_API_URI}/v1/members/${2}`,
-  //       { headers: headers }
-  //     )
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // };
+  const memberid = localStorage.getItem("memberid");
 
   const logoutClick = () => {
-    dispatch(loginSuccess());
+    dispatch(logout());
     localStorage.removeItem('authorization');
+    localStorage.removeItem('memberid');
     navigate('/');
   };
+
 
   return (
     <>
@@ -87,7 +76,7 @@ const Nav = () => {
             ) : (
               <Ol>
                 <li>
-                  <StyledLink to="/users/1">
+                  <StyledLink to={`/users/${memberid}`}>
                     <Profile>
                       <img />
                       <div>1</div>

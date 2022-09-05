@@ -16,31 +16,36 @@ const Login = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const test = useSelector((state) => state.loginReducer);
+  // const test = useSelector((state) => state.loginReducer);
   //id값 or name 받아올때 useSelector
-
   const Logincheck = () => {
-    console.log(test);
-
+   
     axios
       .post(`${process.env.REACT_APP_API_URI}/login`, {
         email: email,
         password: password,
       })
       .then((response) => { 
+        // console.log(response)
         let jwtToken = response.headers.authorization
+        const memberid = response.headers.memberid
+        //console.log(jwtToken)
         localStorage.setItem("authorization", jwtToken)
-        console.log(response.headers)
-        dispatch(loginSuccess());
-        navigate('/');
+        localStorage.setItem("memberid", memberid)
+        dispatch(loginSuccess(response.headers.memberid));
+        //console.log(response.headers.memberid)
+        console.log("ok");
+        //console.log(response)
+        ; //getIteml
+        navigate(`/`);;
       })
       .catch((error) => {
-        console.log(error);
-        // if(error.message === "Request failed with status code 404"){
-        //   alert("사용자가 없습니다")
-        //   setEmail("")
-        //   setPassword("")
-        // }
+        console.log(error.message);
+        if(error.message === "Request failed with status code 500"){
+          alert("사용자가 없습니다")
+          setEmail("")
+          setPassword("")
+        }
       });
   };
   return (

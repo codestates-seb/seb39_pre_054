@@ -20,7 +20,7 @@ const MyPageEdit = () => {
   const SaveProfile = () =>{
      axios.patch(
     `${process.env.REACT_APP_API_URI}/v1/members/${id}`,
-     {name : newname , password :"testtest1!"},
+     {name : newname , password :"gpwl3354"},
      { headers: headers}
      ).then((res) =>{
       navigate(`/users/${id}`)

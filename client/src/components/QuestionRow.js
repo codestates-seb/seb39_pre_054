@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserLink from "./UserLink";
 
 // MainQuestionList.js로부터 받은 값
-const QuestionRow = ({ id, title, body, author, createdAt, answer_id }) => {
+const QuestionRow = ({ id, title, body, author, createdAt }) => {
   return (
     <StyledQuestionRow>
       <QuestionStats>
@@ -14,7 +14,7 @@ const QuestionRow = ({ id, title, body, author, createdAt, answer_id }) => {
 
         <div className="stats-item">
           <span className="stats-num">
-            {answer_id !== undefined && answer_id.length}
+            0{/* {answer_id !== undefined && answer_id.length} */}
           </span>
 
           <span className="stats-unit">answers</span>
@@ -74,9 +74,7 @@ const QuestionStats = styled.div`
   }
 `;
 
-const QuestionTitleArea = styled.div`
-  /* padding: 0 0 0 30px; */
-`;
+const QuestionTitleArea = styled.div``;
 const QuestionLink = styled(Link)`
   text-decoration: none;
   color: #0074cc;
@@ -97,9 +95,7 @@ const QuestionBody = styled.div`
   font-size: 13.5px;
   color: #3b4045;
   font-weight: 400;
-  /* background-color: skyblue; */
   margin: -2px 0px 8px;
-  /* width: 600px; */
   height: 33px;
 
   white-space: no-wrap;

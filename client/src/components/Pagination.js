@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import QuestionRow from "./QuestionRow";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 const Pagination = (props) => {
+  const navigate = useNavigate();
   const { data } = props;
   const [currentItems, setCurrentItems] = useState([]); // 현재 창에 보여지는 아이템들
   const [pageCount, setPageCount] = useState(0); // 총 페이지 수
-  const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스
-  // const itemsPerPage = 2;
-  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스 : page
+  const [itemsPerPage, setItemsPerPage] = useState(3); // 쿼리 파라미터 : size
+  const [tab, setTab] = useState("curr");
+
+  // 속성값 offset은 각 목록이 시작하는 데이터 순번을 의미 - 이 경우는 page
+  // 속성값 limit는 한 페이지에 표현할 최대 개수를 의미 - 이 경우는 size
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage; // 현재 창의 가장 마지막 아이템의 인덱스
@@ -17,33 +22,48 @@ const Pagination = (props) => {
     setPageCount(Math.ceil(data.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, data]);
 
+  // 왼쪽 버튼들을 누르면 실행되는 함수. 누른 버튼의 값에 따라 itemOffset 갱신
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
-    setItemOffset(newOffset); // itemOffset을 업데이트
+    setItemOffset(newOffset);
+    updateOffset();
   };
 
+  const updateOffset = () => {
+    const queryString = `?size=${itemsPerPage}&page=${itemOffset}`;
+    navigate(`${queryString}`);
+  };
+
+  // 오른쪽 버튼들을 누르면 실행되는 함수
   const changeItemsPerPage = (e) => {
     setItemsPerPage(e);
+    setTab(String(e));
+    setItemOffset(0);
+    updateOffset();
   };
+
+  console.log(itemsPerPage);
+  console.log(itemOffset);
+  // console.log(data);
+  console.log(currentItems);
 
   return (
     <>
       <QuestionsPagination>
         {currentItems.map((question) => (
           <QuestionRow
-            key={question.id}
-            id={question.id}
+            key={question.question_id}
+            id={question.question_id}
             title={question.title}
             body={question.body}
-            createdAt={question.createdAt}
-            author={question.author}
-            answer_id={question.answer_id}
+            createdAt={question.creation_date}
+            author={question.member.name}
           />
         ))}
       </QuestionsPagination>
 
       <Row3>
-        <div className="pagination-left">
+        <PaginationLeft>
           <ReactPaginate
             previousLabel={"Prev"}
             nextLabel={"Next"}
@@ -63,34 +83,37 @@ const Pagination = (props) => {
             breakLinkClassName={"page-num"}
             activeClassName={"active"}
           ></ReactPaginate>
-        </div>
-        <div className="pagination-right">
-          <ul>
-            <li
+        </PaginationLeft>
+        <PaginationRight>
+          <div>
+            <div
+              className={`btn ${tab === "3" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
               onClick={() => {
-                changeItemsPerPage(2);
+                changeItemsPerPage(3);
               }}
             >
-              2
-            </li>
+              3
+            </div>
 
-            <li
+            <div
+              className={`btn ${tab === "5" ? "active" : ""}`}
               onClick={() => {
                 changeItemsPerPage(5);
               }}
             >
               5
-            </li>
-            <li
+            </div>
+            <div
+              className={`btn ${tab === "10" ? "active" : ""}`}
               onClick={() => {
                 changeItemsPerPage(10);
               }}
             >
               10
-            </li>
-            <li className="perpage">per page</li>
-          </ul>
-        </div>
+            </div>
+            <div className="perpage">per page</div>
+          </div>
+        </PaginationRight>
       </Row3>
     </>
   );
@@ -102,72 +125,76 @@ const QuestionsPagination = styled.div``;
 const Row3 = styled.div`
   border-top: 1px solid #e3e6e8;
   padding: 4.7rem 0.7rem 3rem 1.6rem;
-  /* background-color: aliceblue; */
   display: flex;
   justify-content: space-between;
   font-size: 13px;
+`;
+const PaginationLeft = styled.div`
+  text-align: left;
 
-  .pagination-left {
-    text-align: left;
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
 
-    ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      .active {
-        background-color: #f48225;
-        color: #ffffff;
-        border: 1px solid #f48225;
-      }
+  li {
+    height: 14px;
+    border: 1px solid #d6d9dc;
+    border-radius: 3px;
+    margin: 0px 2px;
+    padding: 4px 0px 6px 0px;
+    &:hover {
+      background-color: #d6d9dc;
+      cursor: pointer;
     }
-
-    li {
-      height: 14px;
-      border: 1px solid #d6d9dc;
-      border-radius: 3px;
-      margin: 0px 2px;
-      padding: 4px 8px 6px 8px;
-      &:hover {
-        background-color: #d6d9dc;
-        cursor: pointer;
-      }
+    &.active {
+      background-color: #f48225;
+      color: #ffffff;
+      cursor: pointer;
+      border: 1px solid #f48225;
     }
   }
-  .pagination-right {
-    text-align: right;
 
-    ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      .active {
-        background-color: #f48225;
-        color: #ffffff;
-        border: 1px solid #f48225;
-      }
-    }
+  a {
+    height: 14px;
+    border-radius: 3px;
+    margin: 0px -1px;
+    padding: 4px 8px 5px 8px;
+  }
+`;
 
-    li {
-      height: 14px;
-      border: 1px solid #d6d9dc;
-      border-radius: 3px;
-      margin: 0px 2px;
-      padding: 4px 8px 6px 8px;
-      &:hover {
-        background-color: #d6d9dc;
-        cursor: pointer;
-      }
-    }
+const PaginationRight = styled.div`
+  text-align: right;
+  div {
+    display: flex;
+  }
 
-    .perpage {
-      padding: 4px;
-      border: none;
-      &:hover {
-        background-color: #ffffff;
-        cursor: default;
-      }
+  .btn {
+    height: 14px;
+    border: 1px solid #d6d9dc;
+    border-radius: 3px;
+    margin: 0px 2px;
+    padding: 4px 8px 6px 8px;
+  }
+  .btn:hover {
+    background-color: #d6d9dc;
+    cursor: pointer;
+  }
+  .btn.active {
+    background-color: #f48225;
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #f48225;
+  }
+
+  .perpage {
+    padding: 4px;
+    border: none;
+    &:hover {
+      background-color: #ffffff;
+      cursor: default;
     }
   }
 `;

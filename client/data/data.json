@@ -1,313 +1,256 @@
 {
   "questions": [
     {
-      "id": 1,
-      "title": "Spring Cloud - Cannot send a request from one service to another one through Api Gateway",
-      "body": "I have an issue not sending a request from one service to another one through api gateway in my spring cloud example, Api gateway port number is 8600. I try to send a request from management service to advertisement service through api gateway, I get the issue in Postman shown below.",
-      "author": "Smitt",
-      "likes": 30,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        10,
-        7,
-        2
-      ]
+      "question_id": 1,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 2,
-      "title": "METHOD_NOT_SUPPORTED error while generate invoice number from paypal api",
-      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.dasdsasa",
-      "author": "Khajehei",
-      "likes": 100,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        5,
-        4
-      ]
+      "question_id": 2,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 3,
-      "title": "Best practices of choice sort in django",
-      "body": "I wish to scan a QR Code in Flutter and I'm running on Linux and Chrome (web) without any mobile device. When I run my code, I get the following error:",
-      "author": "Smitt",
-      "likes": 12,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 3,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 4,
-      "title": "How do I get a ping request to ubuntu?",
-      "body": "Estoy intentanto guardar datos en MYSQL pero al intentarlo me sale este error: IntegrityError: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails",
-      "author": "Smitt",
-      "likes": 70,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 4,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 5,
-      "title": "convert time string to epoch in milliseconds using C++",
-      "body": "Mi base de datos es la siguiente: create table if not exists vuelo( idvuelo INT NOT NULL AUTO_INCREMENT, fecha_salida date, fecha_vuelta date, origen varchar(45), destino varchar(45), aerolinea varchar(45), escalas int(5), primary key (idvuelo) );",
-      "author": "Ali Khajehei",
-      "likes": 100,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 5,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 6,
-      "title": "How do I delete all my plots using a Tkinter button?",
-      "body": "create table if not exists temporal_por_dia( idtemporal INT NOT NULL AUTO_INCREMENT, ubicacion varchar(45), fecha_busqueda datetime, ultima_actualizacion datetime, temperatura_max int, temperatura_min int, temperatura_media int, condiciones_text varchar(45), condiciones_img varchar(45), kmh_viento int, sensacion_corporal int, dir_viento varchar(45), media_humedad int, h_amanecer time, h_atardecer time, primary key (idtemporal)",
-      "author": "Smitt",
-      "likes": 12,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 6,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 7,
-      "title": "FileNotFoundError: Unsuccessful TensorSliceReader constructor",
-      "body": "반갑습니다",
-      "author": "Smitt",
-      "likes": 0,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 7,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 8,
-      "title": "How to prevent spacing between content and back button in SwiftUI",
-      "body": "뭐먹지",
-      "author": "parkhacker",
-      "likes": 2,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 8,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 9,
-      "title": "How to add key to json file using powershell",
-      "body": "Why do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. ",
-      "author": "Smitt",
-      "likes": 30,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 9,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 10,
-      "title": "Add ProgressBar with Video tag in React",
-      "body": "Why do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
-      "author": "Ali Khajehei",
-      "likes": 100,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 10,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 11,
-      "title": "How to get only specific value in REST API JSON response?",
-      "body": "cds,fknsdf  dgfsdflsd",
-      "author": "Smitt",
-      "likes": 12,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 11,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 12,
-      "title": "BouncyCastle deployment error: HTTP Error 500.30 - ASP.NET Core app failed to start",
-      "body": "I am trying to render a whole new component into a page when there's is event. For example I have a button that sends request to DB, and I want that whenever this button is clicked a NEW toaster will open that will say sent",
-      "author": "Smitt",
-      "likes": 30,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 12,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 13,
-      "title": "METHOD_NOT_SUPPORTED error while generate invoice number from paypal api",
-      "body": "In this application there is a button which opens a new window/view. When this view opens it displays some data. At the same time new data is being retrieved and the view gets updated with this new data after a few seconds. I do not want the old data to be shown, so the view should just be loading until the new data is retrieved.",
-      "author": "Khajehei",
-      "likes": 100,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 13,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 14,
-      "title": "Best practices of choice sort in django",
-      "body": "I wish to scan a QR Code in Flutter and I'm running on Linux and Chrome (web) without any mobile device. When I run my code, I get the following error:",
-      "author": "Smitt",
-      "likes": 12,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 14,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 15,
-      "title": "How do I get a ping request to ubuntu?",
-      "body": "Estoy intentanto guardar datos en MYSQL pero al intentarlo me sale este error: IntegrityError: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails",
-      "author": "Smitt",
-      "likes": 70,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 15,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 16,
-      "title": "convert time string to epoch in milliseconds using C++",
-      "body": "Mi base de datos es la siguiente: create table if not exists vuelo( idvuelo INT NOT NULL AUTO_INCREMENT, fecha_salida date, fecha_vuelta date, origen varchar(45), destino varchar(45), aerolinea varchar(45), escalas int(5), primary key (idvuelo) );",
-      "author": "Ali Khajehei",
-      "likes": 100,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 16,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 17,
-      "title": "How do I delete all my plots using a Tkinter button?",
-      "body": "create table if not exists temporal_por_dia( idtemporal INT NOT NULL AUTO_INCREMENT, ubicacion varchar(45), fecha_busqueda datetime, ultima_actualizacion datetime, temperatura_max int, temperatura_min int, temperatura_media int, condiciones_text varchar(45), condiciones_img varchar(45), kmh_viento int, sensacion_corporal int, dir_viento varchar(45), media_humedad int, h_amanecer time, h_atardecer time, primary key (idtemporal)",
-      "author": "Smitt",
-      "likes": 12,
-      "createdAt": "2023.08.26",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
+      "question_id": 17,
+      "title": "spring rest docs api documentation",
+      "body": "body content 1",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     },
     {
-      "id": 18,
-      "title": "react testing library - how to pass in the initial state of the component",
-      "body": "dhfgh",
-      "author": "Dharmendra",
-      "likes": 70,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
-    },
-    {
-      "id": 19,
-      "title": "data type mismatch in SQL Spark",
-      "body": "Why do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\nWhere does it come from?\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\n\nWhere can I get some?\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-      "author": "Ali Khajehei",
-      "likes": 100,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
-    },
-    {
-      "id": 20,
-      "title": "Spring Boot adds double quotes around",
-      "body": "cds,fknsdf  dgfsdflsd1111",
-      "author": "xampo",
-      "likes": 12,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
-    },
-    {
-      "id": 21,
-      "title": "How to programmatically import a reference to an external project",
-      "body": "So I have created a website(deployed on Vercel) for practice and built it responsive by having breakpoints for different screen sizes. But now, when I see the same website's dashboard page on my mobile, I see some extra",
-      "author": "xampo",
-      "likes": 0,
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": []
-    },
-    {
-      "title": "글작성",
-      "body": "됩니다",
-      "author": "test",
-      "createdAt": "2022. 8. 31.",
-      "answer_id": [
-        6
-      ],
-      "id": 22
-    }
-  ],
-  "poll": [
-    {
-      "id": 1,
-      "question": "Vue와 React 중 어게 더 좋으신가요?",
-      "answer1": "Vue",
-      "answer2": "React",
-      "createdAt": "2023. 8. 26.",
-      "last_edit_date": "2023. 8. 26.",
-      "answer_id": [
-        1
-      ]
-    }
-  ],
-  "answer": [
-    {
-      "body": "dsadsadsadsa",
-      "id": 4
-    },
-    {
-      "body": "작성이 잘 되나요?",
-      "id": 5
-    },
-    {
-      "body": "됐다 수빈님 감사해요",
-      "id": 6
-    },
-    {
-      "body": "답변달아요",
-      "id": 7
-    },
-    {
-      "body": "dsadsa",
-      "id": 8
-    },
-    {
-      "body": "dsadsa",
-      "id": 9
-    },
-    {
-      "body": "f",
-      "id": 10
-    }
-  ],
-  "members": [
-    {
-      "id": 1,
-      "name": "haeji",
-      "email": "haji3354@gmai.com",
-      "password": "hihi"
-    },
-    {
-      "name": "hajiji",
-      "email": "gpwl3354@gmail.com",
-      "password": "dfjsdhf",
-      "id": 2
-    },
-    {
-      "name": "hajiji",
-      "email": "gpwl3354@gmail.com",
-      "password": "dfjsdhf",
-      "id": 3
-    },
-    {
-      "name": "dfsdhajiji",
-      "email": "gpwl3354@gmail.cofsd",
-      "password": "dfjsdhffsd",
-      "id": 4
-    },
-    {
-      "name": "",
-      "email": "alsdn@gmail.com",
-      "password": "gigigi",
-      "id": 5
-    },
-    {
-      "name": "cho",
-      "email": "alsals@gmail.com",
-      "password": "qwer1234",
-      "creation_date": "2022. 8. 31.",
-      "id": 6
+      "question_id": 18,
+      "title": "react component problem",
+      "body": "example body 2",
+      "creation_date": "2022-08-25T18:49:12.0459126",
+      "last_edit_date": "2022-08-25T18:49:12.0459126",
+      "member": {
+        "member_id": 1,
+        "name": "jaejin",
+        "email": "jjj@gmail.com",
+        "creation_date": "2022-09-01T12:53:11.718367",
+        "last_edit_date": "2022-09-01T12:53:11.718397"
+      }
     }
   ]
 }

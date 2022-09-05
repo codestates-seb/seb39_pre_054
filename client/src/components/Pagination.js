@@ -18,7 +18,7 @@ const Pagination = (props) => {
     const endOffset = itemOffset + itemsPerPage; // 현재 창의 가장 마지막 아이템의 인덱스
     setCurrentItems(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, data]);
+  }, [itemOffset, itemsPerPage, pageNum, data]);
 
   // 왼쪽 버튼들을 누르면 실행되는 함수. 누른 버튼의 값에 따라 itemOffset 갱신
   const handlePageClick = (event) => {
@@ -43,7 +43,8 @@ const Pagination = (props) => {
   };
 
   console.log(itemsPerPage);
-  console.log(itemOffset);
+  // console.log(itemOffset);
+  console.log(pageNum);
   console.log(currentItems);
 
   return (

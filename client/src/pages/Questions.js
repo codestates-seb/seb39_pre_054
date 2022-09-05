@@ -18,8 +18,7 @@ const Questions = () => {
       .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
       .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
-  }, [location.search]);
-  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
+  }, []);
 
   // json server 테스트 용 - 쿼리파라미터
   // useEffect(() => {
@@ -27,9 +26,10 @@ const Questions = () => {
   //     .get(`http://localhost:3001/questions${location.search}`)
   //     .then((res) => setQuestions(res.data));
   // }, [location.search]);
+  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
 
-  console.log(location);
-  console.log(questions);
+  // console.log(location);
+  // console.log(questions);
 
   return (
     <MainContainer>

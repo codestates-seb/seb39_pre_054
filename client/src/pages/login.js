@@ -19,32 +19,30 @@ const Login = () => {
   // const test = useSelector((state) => state.loginReducer);
   //id값 or name 받아올때 useSelector
   const Logincheck = () => {
-   
     axios
       .post(`${process.env.REACT_APP_API_URI}/login`, {
         email: email,
         password: password,
       })
-      .then((response) => { 
-        // console.log(response)
-        let jwtToken = response.headers.authorization
-        const memberid = response.headers.memberid
+      .then((response) => {
+        console.log(response);
+        let jwtToken = response.headers.authorization;
+        const memberid = response.headers.memberid;
         //console.log(jwtToken)
-        localStorage.setItem("authorization", jwtToken)
-        localStorage.setItem("memberid", memberid)
+        localStorage.setItem("authorization", jwtToken);
+        localStorage.setItem("memberid", memberid);
         dispatch(loginSuccess(response.headers.memberid));
         //console.log(response.headers.memberid)
-        console.log("ok");
+        console.log("ok"); //getIteml
         //console.log(response)
-        ; //getIteml
-        navigate(`/`);;
+        navigate(`/`);
       })
       .catch((error) => {
         console.log(error.message);
-        if(error.message === "Request failed with status code 500"){
-          alert("사용자가 없습니다")
-          setEmail("")
-          setPassword("")
+        if (error.message === "Request failed with status code 500") {
+          alert("사용자가 없습니다");
+          setEmail("");
+          setPassword("");
         }
       });
   };

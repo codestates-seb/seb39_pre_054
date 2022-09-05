@@ -3,13 +3,30 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import LeftSide from "../components/LeftSide";
 import MypageTop from "../components/MypageTop";
+import {useParams, useNavigate} from "react-router-dom";
+
 
 
 const MyPageEdit = () => {
-  const [newname , setNewName] = useState('')
+  const [newname , setNewName] = useState({
+  })
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `${localStorage.getItem("authorization")}`,
+  };
 
-  const saveProfile = () =>{
-    // axios.patch()
+  const SaveProfile = () =>{
+     axios.patch(
+    `${process.env.REACT_APP_API_URI}/v1/members/${id}`,
+     {name : newname , password :"testtest1!"},
+     { headers: headers}
+     ).then((res) =>{
+      navigate(`/users/${id}`)
+       
+     })
+
   }
   return (  
     
@@ -68,7 +85,9 @@ const MyPageEdit = () => {
             setNewName(e.target.value)
           }}></Inputname>
         </Changediv>
-        <LoginButton>Save Profile</LoginButton>
+        <LoginButton onClick={() => {
+                  SaveProfile();
+                }}>Save Profile</LoginButton>
       </Editdiv>
      </Underdiv>
   </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserLink from "./UserLink";
 
 // MainQuestionList.js로부터 받은 값
-const QuestionRow = ({ id, title, author, createdAt, answer_id }) => {
+const QuestionRow = ({ id, title, author, createdAt }) => {
   return (
     <StyledQuestionRow>
       <QuestionStats>
@@ -14,7 +14,7 @@ const QuestionRow = ({ id, title, author, createdAt, answer_id }) => {
 
         <div className="stats-item">
           <span className="stats-num">
-            {answer_id !== undefined && answer_id.length}
+            0{/* {answer_id !== undefined && answer_id.length} */}
           </span>
           <span className="stats-unit">answers</span>
         </div>

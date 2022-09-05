@@ -7,18 +7,61 @@ import { ReactComponent as Filter } from "../assets/filter.svg";
 import LeftSide from "../components/LeftSide";
 import RightSide from "../components/RightSide";
 import Pagination from "../components/Pagination";
+import { useLocation } from "react-router-dom";
 
 const Questions = () => {
+  const location = useLocation();
   const [questions, setQuestions] = useState([]); // 질문들
+
+  // json server 테스트 용
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3001/questions")
+  //     .then((res) => setQuestions(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // console.log(process.env.REACT_APP_API_URI);
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
-      .then((res) => console.log(res))
+      .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
   }, []);
 
-  // setQuestions(res.data)
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
+  //     .then((res) => setQuestions(res.data.data))
+  //     .catch((err) => console.log(err));
+  // }, [location.search]);
+
+  // server 테스트 용
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // server 테스트 용 - 쿼리파라미터
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
+  //     .then((res) => console.log(res.data.data));
+  // }, [location.search]);
+
+  // json server 테스트 용 - 쿼리파라미터
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3001/questions${location.search}`)
+  //     .then((res) => setQuestions(res.data));
+  // }, [location.search]);
+  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
+
+  console.log(location);
+  console.log(questions);
 
   return (
     <MainContainer>

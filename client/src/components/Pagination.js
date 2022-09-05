@@ -9,12 +9,10 @@ const Pagination = (props) => {
   const { data } = props;
   const [currentItems, setCurrentItems] = useState([]); // 현재 창에 보여지는 아이템들
   const [pageCount, setPageCount] = useState(0); // 총 페이지 수
-  const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스 : page
+  const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스
   const [itemsPerPage, setItemsPerPage] = useState(3); // 쿼리 파라미터 : size
   const [tab, setTab] = useState("curr");
-
-  // 속성값 offset은 각 목록이 시작하는 데이터 순번을 의미 - 이 경우는 page
-  // 속성값 limit는 한 페이지에 표현할 최대 개수를 의미 - 이 경우는 size
+  const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage; // 현재 창의 가장 마지막 아이템의 인덱스
@@ -25,12 +23,13 @@ const Pagination = (props) => {
   // 왼쪽 버튼들을 누르면 실행되는 함수. 누른 버튼의 값에 따라 itemOffset 갱신
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
+    setPageNum(event.selected + 1);
     setItemOffset(newOffset);
     updateOffset();
   };
 
   const updateOffset = () => {
-    const queryString = `?size=${itemsPerPage}&page=${itemOffset}`;
+    const queryString = `?size=${itemsPerPage}&page=${pageNum}`;
     navigate(`${queryString}`);
   };
 
@@ -39,12 +38,12 @@ const Pagination = (props) => {
     setItemsPerPage(e);
     setTab(String(e));
     setItemOffset(0);
+    setPageNum(1);
     updateOffset();
   };
 
   console.log(itemsPerPage);
   console.log(itemOffset);
-  // console.log(data);
   console.log(currentItems);
 
   return (
@@ -74,7 +73,7 @@ const Pagination = (props) => {
             onPageChange={handlePageClick}
             containerClassName={"pagination"}
             pageClassName={"page-item"}
-            pageLinkClassName={"page-num"}
+            pageLinkClassName={"page-num"} // 이걸 받아와야되는데..
             previousClassName={"page-item"}
             previousLinkClassName={"page-num"}
             nextClassName={"page-item"}
@@ -87,29 +86,29 @@ const Pagination = (props) => {
         <PaginationRight>
           <div>
             <div
-              className={`btn ${tab === "15" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
+              className={`btn ${tab === "3" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
               onClick={() => {
-                changeItemsPerPage(15);
+                changeItemsPerPage(3);
               }}
             >
-              15
+              3
             </div>
 
             <div
-              className={`btn ${tab === "30" ? "active" : ""}`}
+              className={`btn ${tab === "5" ? "active" : ""}`}
               onClick={() => {
-                changeItemsPerPage(30);
+                changeItemsPerPage(5);
               }}
             >
-              30
+              5
             </div>
             <div
-              className={`btn ${tab === "50" ? "active" : ""}`}
+              className={`btn ${tab === "10" ? "active" : ""}`}
               onClick={() => {
-                changeItemsPerPage(50);
+                changeItemsPerPage(10);
               }}
             >
-              50
+              10
             </div>
             <div className="perpage">per page</div>
           </div>

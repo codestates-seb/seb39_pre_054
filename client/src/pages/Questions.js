@@ -13,44 +13,13 @@ const Questions = () => {
   const location = useLocation();
   const [questions, setQuestions] = useState([]); // 질문들
 
-  // json server 테스트 용
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3001/questions")
-  //     .then((res) => setQuestions(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // console.log(process.env.REACT_APP_API_URI);
-
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
       .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
-  }, []);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
-  //     .then((res) => setQuestions(res.data.data))
-  //     .catch((err) => console.log(err));
-  // }, [location.search]);
-
-  // server 테스트 용
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // server 테스트 용 - 쿼리파라미터
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
-  //     .then((res) => console.log(res.data.data));
-  // }, [location.search]);
+  }, [location.search]);
+  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
 
   // json server 테스트 용 - 쿼리파라미터
   // useEffect(() => {
@@ -58,7 +27,6 @@ const Questions = () => {
   //     .get(`http://localhost:3001/questions${location.search}`)
   //     .then((res) => setQuestions(res.data));
   // }, [location.search]);
-  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
 
   console.log(location);
   console.log(questions);

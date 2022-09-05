@@ -10,10 +10,11 @@ const MainQuestionList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/questions")
-      .then((res) => setQuestions(res.data))
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
+      .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
   }, []);
+
   return (
     <Container>
       <Row1>
@@ -37,13 +38,12 @@ const MainQuestionList = () => {
       </Row2>
       {questions.map((question) => (
         <MainQuestionRow
-          key={question.id}
-          id={question.id}
+          key={question.question_id}
+          id={question.question_id}
           title={question.title}
           body={question.body}
-          author={question.author}
-          createdAt={question.createdAt}
-          answer_id={question.answer_id}
+          createdAt={question.creation_date}
+          author={question.member.name}
         />
       ))}
     </Container>

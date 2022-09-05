@@ -2,7 +2,6 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Pencil } from "../assets/pencil.svg";
-import { ReactComponent as Eye } from "../assets/eye.svg";
 import { ReactComponent as Spotsearch } from "../assets/spotsearch.svg";
 import { Link } from "react-router-dom";
 import { LightBlueButton2 } from "./ui/Button";
@@ -126,32 +125,118 @@ const RightSide = () => {
           </StyledLink>
         </div>
       </Sidebarwidget4>
+
       <Sidebarwidget5>
         <div className="header">
-          <a href="http://localhost:3001/"></a>Collectives
+          Collectives
+          <a
+            className="sidebarwidget5-action"
+            href="https://stackoverflow.com/collectives-all"
+          >
+            see all
+          </a>
         </div>
-        <div>
-          <div>
-            <div>
-              <div className="icon">
-                <div>
-                  <h1>
-                    <a href="http://localhost:3001/"></a>
-                  </h1>
+        <div className="sidebarwidget-items">
+          <div className="box-stretch">
+            <div className="box">
+              <div className="item1">
+                <div className="avatar">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
+                    alt="gitlab_logo"
+                  ></img>
                 </div>
-                {/* <button></button> */}
+              </div>
+              <div className="item2">
+                <a href="https://stackoverflow.com/collectives/gitlab">
+                  GitLab
+                </a>
+                <div className="caption">18k Members</div>
+              </div>
+              <div className="itme3">
+                <form>
+                  <button className="btn-outlined">Join</button>
+                </form>
               </div>
             </div>
           </div>
-          <span></span>
+          <p className="break-word">
+            GitLab is the open DevOps platform, delivered as a single
+            application. Our open source collaboration is a great place to share
+            and learn information about version control, CI/CD, DevSecOps, and
+            all-remote workflows.
+          </p>
         </div>
 
-        <div></div>
-        <div></div>
+        <div className="sidebarwidget-items">
+          <div className="box-stretch">
+            <div className="box">
+              <div className="item1">
+                <div className="avatar">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
+                    alt="gitlab_logo"
+                  ></img>
+                </div>
+              </div>
+              <div className="item2">
+                <a href="https://stackoverflow.com/collectives/intel">Intel</a>
+
+                <div className="caption">6k Members</div>
+              </div>
+              <div className="itme3">
+                <form>
+                  <button className="btn-outlined">Join</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <p className="break-word">
+            A space for developers to collaborate on Intel software tools,
+            libraries, and resources. Share knowledge and connect with Intel
+            product experts. Find the information you need to drive innovation
+            and simplify development from edge to cloud with Intel.
+          </p>
+        </div>
+
+        <div className="sidebarwidget-items">
+          <div className="box-stretch">
+            <div className="box">
+              <div className="item1">
+                <div className="avatar">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
+                    alt="gitlab_logo"
+                  ></img>
+                </div>
+              </div>
+              <div className="item2">
+                <a href="https://stackoverflow.com/collectives/twilio">
+                  Twilio
+                </a>
+
+                <div className="caption">4k Members</div>
+              </div>
+              <div className="itme3">
+                <form>
+                  <button className="btn-outlined">Join</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <p className="break-word">
+            Twilio has democratized channels like voice, text, chat, video, and
+            email by virtualizing the world’s communications infrastructure
+            through APIs that are simple enough for any developer, yet robust
+            enough to power the world’s most demanding applications.
+          </p>
+        </div>
       </Sidebarwidget5>
     </Aside>
   );
 };
+
+export default RightSide;
 
 const Aside = styled.aside``;
 
@@ -321,9 +406,9 @@ const Sidebarwidget4 = styled.div`
     font-size: 12px;
   }
 `;
+
 const Sidebarwidget5 = styled.div`
   width: 19rem;
-  height: 25rem;
   margin: 1rem 0 0 1.5rem;
   border: 1px solid #d6d9dc;
   border-radius: 3px;
@@ -334,11 +419,107 @@ const Sidebarwidget5 = styled.div`
     padding: 12px 15px;
     font-size: 15px;
     background-color: #f8f9f9;
-    border-bottom: 1px solid #d6d9dc;
     font-weight: 500;
     color: #525960;
   }
-  div {
+
+  .sidebarwidget5-action {
+    font-size: 11px;
+    color: #0074cc;
+    margin: 0 0 4px 8px;
+    text-decoration: none;
+    float: right;
+    line-height: 19.5px;
+    :hover {
+      color: #0a95ff;
+    }
+  }
+
+  .sidebarwidget-items {
+    padding: 16px 15px;
+    border-top: 1px solid #d6d9dc;
+  }
+
+  .box-stretch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .box {
+    display: flex;
+    /* flex: 1 auto; */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+  .item1 {
+    margin-right: 12px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    /* text-align: center; */
+  }
+  img {
+    width: 17px;
+    height: 17px;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .item2 {
+    /* flex: 1 auto; */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+
+  a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #6a737c;
+    text-decoration: none;
+  }
+
+  .caption {
+    font-size: 12px;
+    margin: 0 0 8px;
+    color: #3b4045;
+  }
+
+  .item3 {
+    background-color: blue;
+  }
+
+  form {
+  }
+
+  .btn-outlined {
+    position: relative;
+    display: inline-block;
+    padding: 9.6px;
+    color: #0074cc;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 1px solid #0074cc;
+    border-radius: 3px;
+    :hover {
+      background-color: #f0f8ff;
+      cursor: pointer;
+    }
+  }
+
+  .break-word {
+    white-space: no-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 268px;
+    height: 34px;
+    color: #3b4045;
+    font-size: 13px;
+    margin: 0;
+    line-height: 16px;
   }
 `;
 
@@ -350,5 +531,3 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000000;
 `;
-
-export default RightSide;

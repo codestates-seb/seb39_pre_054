@@ -27,11 +27,14 @@ const Login = () => {
         password: password,
       })
       .then((response) => {
-        dispatch(loginSuccess(response.data));
+        // console.log(response)
+        let jwtToken = response.headers.authorization;
+        console.log(response.headers.authorization);
+        localStorage.setItem("authorization", jwtToken);
+        dispatch(loginSuccess(response.headers.memberid));
         console.log("ok");
-        //console.log(response)
-        localStorage.setItem("token", response.data.jwt);
-        navigate(`/`);
+        //console.log(response) //getIteml
+        //navigate(/);;
       })
       .catch((error) => {
         console.log(error.message);

@@ -15,7 +15,7 @@ const Questions = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
       .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
   }, []);
@@ -28,7 +28,7 @@ const Questions = () => {
   // }, [location.search]);
   // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
 
-  // console.log(location);
+  console.log(location.search);
   // console.log(questions);
 
   return (

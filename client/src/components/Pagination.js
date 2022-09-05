@@ -12,13 +12,13 @@ const Pagination = (props) => {
   const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스
   const [itemsPerPage, setItemsPerPage] = useState(3); // 쿼리 파라미터 : size
   const [tab, setTab] = useState("curr");
-  const [pageNum, setPageNum] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage; // 현재 창의 가장 마지막 아이템의 인덱스
     setCurrentItems(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, pageNum, data]);
+  }, [itemOffset, itemsPerPage, data]);
 
   // 왼쪽 버튼들을 누르면 실행되는 함수. 누른 버튼의 값에 따라 itemOffset 갱신
   const handlePageClick = (event) => {
@@ -28,11 +28,6 @@ const Pagination = (props) => {
     updateOffset();
   };
 
-  const updateOffset = () => {
-    const queryString = `?size=${itemsPerPage}&page=${pageNum}`;
-    navigate(`${queryString}`);
-  };
-
   // 오른쪽 버튼들을 누르면 실행되는 함수
   const changeItemsPerPage = (e) => {
     setItemsPerPage(e);
@@ -40,6 +35,11 @@ const Pagination = (props) => {
     setItemOffset(0);
     setPageNum(1);
     updateOffset();
+  };
+
+  const updateOffset = () => {
+    const queryString = `?size=${itemsPerPage}&page=${pageNum}`;
+    navigate(`${queryString}`);
   };
 
   console.log(itemsPerPage);

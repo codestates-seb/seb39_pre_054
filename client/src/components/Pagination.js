@@ -52,11 +52,11 @@ const Pagination = (props) => {
       <QuestionsPagination>
         {currentItems.map((question) => (
           <QuestionRow
-            key={question.question_id}
-            id={question.question_id}
+            key={question.questionId}
+            id={question.questionId}
             title={question.title}
             body={question.body}
-            createdAt={question.creation_date}
+            createdAt={question.creationDate}
             author={question.member.name}
           />
         ))}
@@ -87,29 +87,29 @@ const Pagination = (props) => {
         <PaginationRight>
           <div>
             <div
-              className={`btn ${tab === "3" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
+              className={`btn ${tab === "15" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
               onClick={() => {
-                changeItemsPerPage(3);
+                changeItemsPerPage(15);
               }}
             >
-              3
+              15
             </div>
 
             <div
-              className={`btn ${tab === "5" ? "active" : ""}`}
+              className={`btn ${tab === "30" ? "active" : ""}`}
               onClick={() => {
-                changeItemsPerPage(5);
+                changeItemsPerPage(30);
               }}
             >
-              5
+              30
             </div>
             <div
-              className={`btn ${tab === "10" ? "active" : ""}`}
+              className={`btn ${tab === "50" ? "active" : ""}`}
               onClick={() => {
-                changeItemsPerPage(10);
+                changeItemsPerPage(50);
               }}
             >
-              10
+              50
             </div>
             <div className="perpage">per page</div>
           </div>

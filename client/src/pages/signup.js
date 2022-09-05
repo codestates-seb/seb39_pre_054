@@ -21,6 +21,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  
 
   //오류확인
   const [nameError, setNameError] = useState({ display: "none" });
@@ -54,6 +55,9 @@ const Signup = () => {
           navigate(`/users/login`);
         })
         .catch(function (error) {
+          if(error.message === "Request failed with status code 500"){
+            alert("이미 가입된 이메일입니다.")
+          }
           console.log(error);
         });
     }

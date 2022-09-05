@@ -16,30 +16,34 @@ const Login = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const test = useSelector((state) => state.loginReducer);
+  // const test = useSelector((state) => state.loginReducer);
   //id값 or name 받아올때 useSelector
-
   const Logincheck = () => {
-    console.log(test);
+   
     axios
-      .get("http://localhost:3001/members/100", {
+      .post(`${process.env.REACT_APP_API_URI}/login`, {
         email: email,
         password: password,
       })
-      .then((response) => {
-        dispatch(loginSuccess(response.data));
+      .then((response) => { 
+        // console.log(response)
+        let jwtToken = response.headers.authorization
+        //console.log(jwtToken)
+        localStorage.setItem("authorization", jwtToken)
+        dispatch(loginSuccess(response.headers.memberid));
+        //console.log(response.headers.memberid)
         console.log("ok");
         //console.log(response)
-        localStorage.setItem("token", response.data.jwt);
-        navigate(`/`);
+        ; //getIteml
+        navigate(`/`);;
       })
       .catch((error) => {
         console.log(error.message);
-        // if(error.message === "Request failed with status code 404"){
-        //   alert("사용자가 없습니다")
-        //   setEmail("")
-        //   setPassword("")
-        // }
+        if(error.message === "Request failed with status code 500"){
+          alert("사용자가 없습니다")
+          setEmail("")
+          setPassword("")
+        }
       });
   };
   return (
@@ -89,7 +93,7 @@ const Login = () => {
                   type={"password"}
                   value={password}
                   onChange={(e) => {
-                    setPassword(e.target.valie);
+                    setPassword(e.target.value);
                   }}
                 ></InputText>
                 <InputMessage>Password cannot be empty.</InputMessage>

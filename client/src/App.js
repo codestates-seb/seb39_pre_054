@@ -12,6 +12,7 @@ import styled from "styled-components";
 import QuestionView from "./pages/QuestionView";
 import Posts from "./pages/Posts";
 import FooterLayout from "./components/FooterLayout";
+import MyPageEdit from "./pages/MyPageEdit";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
               ></Route>
               <Route path="/questions/ask" element={<Ask></Ask>}></Route>
               <Route path="/users/:id" element={<MyPage></MyPage>}></Route>
+              <Route path="/users/edit/:id" element = {<MyPageEdit></MyPageEdit>}></Route>
               <Route path="/posts/:id" element={<Posts></Posts>}></Route>
             </Route>
             <Route path="/users/login" element={<Login></Login>}></Route>

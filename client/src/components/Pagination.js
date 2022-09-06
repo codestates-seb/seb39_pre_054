@@ -42,11 +42,6 @@ const Pagination = (props) => {
     navigate(`${queryString}`);
   };
 
-  // console.log(itemsPerPage);
-  // console.log(itemOffset);
-  // console.log(pageNum);
-  // console.log(currentItems);
-
   return (
     <>
       <QuestionsPagination>

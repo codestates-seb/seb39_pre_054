@@ -22,7 +22,7 @@ const MyPageEdit = () => {
     `${process.env.REACT_APP_API_URI}/v1/members/${id}`,
      {name : newname},
      { headers: headers}
-     ).then((res) =>{
+     ).then(() =>{
       navigate(`/users/${id}`)
        
      })

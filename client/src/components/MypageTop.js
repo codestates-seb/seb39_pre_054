@@ -4,7 +4,7 @@ import BirthdayIcon from "../assets/cake-candles-solid.svg"
 import Pen from "../assets/pen-solid.svg"
 import seicon from "../assets/se-icon.svg"
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const MypageTop = () =>{ 

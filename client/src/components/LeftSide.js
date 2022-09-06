@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { ReactComponent as Globe } from "../assets/globe.svg";
 import { ReactComponent as StarVerified } from "../assets/starVerified.svg";
@@ -8,7 +8,6 @@ import { ReactComponent as BoardCase } from "../assets/board-case.svg";
 import { ReactComponent as QuestionMark } from "../assets/question-mark.svg";
 
 const LeftSide = () => {
-  const { pathname } = useLocation();
 
   return (
     <>

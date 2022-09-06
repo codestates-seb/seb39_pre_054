@@ -33,7 +33,7 @@ const AnswerPost = ({ questionId }) => {
             headers: headers,
           }
         )
-        .then((res) => window.location.reload())
+        .then(() => window.location.reload())
         .catch((err) => console.log(err));
     }
   };

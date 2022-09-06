@@ -20,17 +20,6 @@ const Questions = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // json server 테스트 용 - 쿼리파라미터
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:3001/questions${location.search}`)
-  //     .then((res) => setQuestions(res.data));
-  // }, [location.search]);
-  // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
-
-  // console.log(location.search);
-  // console.log(questions);
-
   return (
     <MainContainer>
       <Left>

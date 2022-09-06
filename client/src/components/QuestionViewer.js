@@ -24,7 +24,7 @@ const QuestionViewer = ({
         .delete(`${process.env.REACT_APP_API_URI}/v1/questions/${questionId}`, {
           headers: headers,
         })
-        .then((res) => navigate(`/`))
+        .then(() => navigate(`/`))
         .catch((err) => console.log(err));
     }
   };

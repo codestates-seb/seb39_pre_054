@@ -26,8 +26,7 @@ const AnswerEditContent = () => {
         questionPost,
         { headers: headers }
       )
-      .then((res) => navigate(`/questions/${location.state.questionId}`))
-      .catch((err) => console.log(err));
+      .then(() => navigate(`/questions/${location.state.questionId}`))
   };
 
   const cancleClick = () => {

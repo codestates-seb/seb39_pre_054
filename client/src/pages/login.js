@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../pages.css";
 import styled from "styled-components";
 import GithubIcon from "../assets/github-brands.svg";
@@ -6,7 +6,7 @@ import FacebookIcon from "../assets/square-facebook-brands.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginSuccess } from "../actions/index";
 
 // 로그인 페이지
@@ -16,7 +16,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  // const test = useSelector((state) => state.loginReducer);
   //id값 or name 받아올때 useSelector
   const Logincheck = () => {
     axios
@@ -25,16 +24,12 @@ const Login = () => {
         password: password,
       })
       .then((response) => {
-        console.log(response);
         let jwtToken = response.headers.authorization;
         const memberid = response.headers.memberid;
-        //console.log(jwtToken)
         localStorage.setItem("authorization", jwtToken);
         localStorage.setItem("memberid", memberid);
         dispatch(loginSuccess(response.headers.memberid));
-        //console.log(response.headers.memberid)
         console.log("ok"); //getIteml
-        //console.log(response)
         navigate(`/`);
       })
       .catch((error) => {

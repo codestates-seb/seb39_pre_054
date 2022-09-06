@@ -50,7 +50,6 @@ const Signup = () => {
           password: password,
         })
         .then((response) => {
-          console.log(response);
           alert("회원가입이 완료되었습니다!!");
           navigate(`/users/login`);
         })

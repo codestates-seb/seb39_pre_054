@@ -10,7 +10,7 @@ const Pagination = (props) => {
   const [currentItems, setCurrentItems] = useState([]); // 현재 창에 보여지는 아이템들
   const [pageCount, setPageCount] = useState(0); // 총 페이지 수
   const [itemOffset, setItemOffset] = useState(0); // 현재 창의 가장 첫번째 아이템의 인덱스
-  const [itemsPerPage, setItemsPerPage] = useState(3); // 쿼리 파라미터 : size
+  const [itemsPerPage, setItemsPerPage] = useState(5); // 쿼리 파라미터 : size
   const [tab, setTab] = useState("curr");
   const [pageNum, setPageNum] = useState(1);
 
@@ -42,10 +42,10 @@ const Pagination = (props) => {
     navigate(`${queryString}`);
   };
 
-  console.log(itemsPerPage);
+  // console.log(itemsPerPage);
   // console.log(itemOffset);
-  console.log(pageNum);
-  console.log(currentItems);
+  // console.log(pageNum);
+  // console.log(currentItems);
 
   return (
     <>
@@ -74,7 +74,7 @@ const Pagination = (props) => {
             onPageChange={handlePageClick}
             containerClassName={"pagination"}
             pageClassName={"page-item"}
-            pageLinkClassName={"page-num"} // 이걸 받아와야되는데..
+            pageLinkClassName={"page-num"}
             previousClassName={"page-item"}
             previousLinkClassName={"page-num"}
             nextClassName={"page-item"}
@@ -87,22 +87,14 @@ const Pagination = (props) => {
         <PaginationRight>
           <div>
             <div
-              className={`btn ${tab === "3" ? "active" : ""}`} // tab 값이 "2"이면 active 클래스를 추가
-              onClick={() => {
-                changeItemsPerPage(3);
-              }}
-            >
-              3
-            </div>
-
-            <div
-              className={`btn ${tab === "5" ? "active" : ""}`}
+              className={`btn ${tab === "5" ? "active" : ""}`} // tab 값이 "5"이면 active 클래스를 추가
               onClick={() => {
                 changeItemsPerPage(5);
               }}
             >
               5
             </div>
+
             <div
               className={`btn ${tab === "10" ? "active" : ""}`}
               onClick={() => {
@@ -110,6 +102,14 @@ const Pagination = (props) => {
               }}
             >
               10
+            </div>
+            <div
+              className={`btn ${tab === "30" ? "active" : ""}`}
+              onClick={() => {
+                changeItemsPerPage(30);
+              }}
+            >
+              30
             </div>
             <div className="perpage">per page</div>
           </div>

@@ -43,6 +43,11 @@ public class AnswerController {
         return new ResponseEntity<>(mapper.answerToAnswerResponseDto(answer), HttpStatus.OK);
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello Spring World!";
+    }
+
     @GetMapping("/{answer-id}")
     public ResponseEntity getAnswer(@PathVariable("answer-id") @Positive long answerId) {
         Answer answer = answerService.findAnswer(answerId);

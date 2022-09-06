@@ -44,6 +44,7 @@ const QuestionView = () => {
                   questionAuthor={question.member !== undefined && question.member.name}
                   answerId={question.answerIds}
                   questionId={question.questionId}
+                  questionMemberId={question.member !== undefined && question.member.memberId}
                 ></QuestionsViewContent>
                 <RightSide />
               </Content>

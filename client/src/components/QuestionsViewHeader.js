@@ -1,20 +1,34 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { BlueButton } from "./ui/Button";
 
-const QuestionsViewHeader = ({ questionTitle, questionCreatedAt, questionModifiedAt }) => {
+const QuestionsViewHeader = ({
+  questionTitle,
+  questionCreatedAt,
+  questionModifiedAt,
+}) => {
+  const isLogin = useSelector((state) => state.loginReducer.isLogin);
   return (
     <Container>
       <TitleContainer>
         <Header1>{questionTitle !== undefined && questionTitle}</Header1>
-        <StyledLink to="/questions/ask">
-          <BlueButton>Ask Question</BlueButton>
-        </StyledLink>
+        {isLogin && (
+          <StyledLink to="/questions/ask">
+            <BlueButton>Ask Question</BlueButton>
+          </StyledLink>
+        )}
       </TitleContainer>
       <CreateContainer>
-        <span>Asked {questionCreatedAt !== undefined && questionCreatedAt.slice(0, 10)}</span>
-        <span>Modified {questionModifiedAt !== undefined && questionModifiedAt.slice(0, 10)}</span>
+        <span>
+          Asked{" "}
+          {questionCreatedAt !== undefined && questionCreatedAt.slice(0, 10)}
+        </span>
+        <span>
+          Modified{" "}
+          {questionModifiedAt !== undefined && questionModifiedAt.slice(0, 10)}
+        </span>
         <span>Viewed 11 times</span>
       </CreateContainer>
     </Container>
@@ -39,7 +53,7 @@ const TitleContainer = styled.div`
 const CreateContainer = styled.div`
   display: flex;
 
-  span{
+  span {
     padding-right: 2rem;
   }
 `;

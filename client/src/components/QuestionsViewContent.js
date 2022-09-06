@@ -13,6 +13,7 @@ const QuestionsViewContent = ({
   questionAuthor,
   answerId,
   questionId,
+  questionMemberId,
 }) => {
   return (
     <Container>
@@ -25,6 +26,7 @@ const QuestionsViewContent = ({
           createdAt={questionCreatedAt}
           author={questionAuthor}
           questionId={questionId}
+          questionMemberId={questionMemberId}
         ></QuestionViewer>
       </div>
       <div className="answer-container">
@@ -36,7 +38,6 @@ const QuestionsViewContent = ({
               <div className="answer-content" key={idx}>
                 <Vote></Vote>
                 <AnswerViewer
-                  author={questionAuthor}
                   questionId={questionId}
                   id={el}
                 ></AnswerViewer>
@@ -46,7 +47,7 @@ const QuestionsViewContent = ({
       </div>
       <div className="answer-post-container">
         <div className="answer-title">Your Answer</div>
-        <AnswerPost questionId={questionId} answerId={answerId}></AnswerPost>
+        <AnswerPost questionId={questionId}></AnswerPost>
       </div>
     </Container>
   );

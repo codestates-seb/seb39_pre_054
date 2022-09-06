@@ -13,44 +13,12 @@ const Questions = () => {
   const location = useLocation();
   const [questions, setQuestions] = useState([]); // 질문들
 
-  // json server 테스트 용
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3001/questions")
-  //     .then((res) => setQuestions(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // console.log(process.env.REACT_APP_API_URI);
-
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
+      .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
       .then((res) => setQuestions(res.data.data))
       .catch((err) => console.log(err));
   }, []);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
-  //     .then((res) => setQuestions(res.data.data))
-  //     .catch((err) => console.log(err));
-  // }, [location.search]);
-
-  // server 테스트 용
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions`)
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // server 테스트 용 - 쿼리파라미터
-  // useEffect(() => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URI}/v1/questions${location.search}`)
-  //     .then((res) => console.log(res.data.data));
-  // }, [location.search]);
 
   // json server 테스트 용 - 쿼리파라미터
   // useEffect(() => {
@@ -60,8 +28,8 @@ const Questions = () => {
   // }, [location.search]);
   // 쿼리스트링이 바뀔 때마다 useEffect 를 실행해야 함
 
-  console.log(location);
-  console.log(questions);
+  // console.log(location.search);
+  // console.log(questions);
 
   return (
     <MainContainer>
@@ -70,21 +38,22 @@ const Questions = () => {
       </Left>
       <Container>
         <Row1>
-          <Header1>Top Questions</Header1>
+          <Header1>All Questions</Header1>
           <StyledLink to="/questions/ask">
             <BlueButton margin="0">Ask Question</BlueButton>
           </StyledLink>
         </Row1>
         <Row2>
+          <AllQuestions>{questions.length} questions</AllQuestions>
+
           <FilterGroup>
-            <button className="filter-button1">Interesting</button>
-            <button className="filter-button2">
-              <span>300</span>
-              Bountied
+            <button className="filter-button1">Newest</button>
+            <button className="filter-button2">Active</button>
+            <button className="filter-button3">
+              Bountied<span>300</span>
             </button>
-            <button className="filter-button3">Hot</button>
-            <button className="filter-button4">Week</button>
-            <button className="filter-button5">Month</button>
+            <button className="filter-button4">Unanswered</button>
+            <button className="filter-button5">More</button>
             <button className="filter-button6">
               <div>
                 <Filter fill="#39739d"></Filter>
@@ -143,70 +112,85 @@ const StyledLink = styled(Link)`
   color: #000000;
 `;
 
-const Row2 = styled.div``;
+const Row2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 13px;
+  padding-left: 1.4rem;
+`;
+
+const AllQuestions = styled.div`
+  font-size: 17px;
+  font-weight: 450;
+  color: #232629;
+  margin: 0 12px 0 0;
+`;
 
 const FilterGroup = styled.div`
-  padding-bottom: 1rem;
   display: flex;
-  margin-left: 19rem;
 
   .filter-button1 {
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #333333;
     margin-right: -1px;
     border: 1px solid #888888;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+    font-size: 12px;
 
     &:hover {
       cursor: pointer;
     }
   }
   .filter-button2 {
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #555555;
     margin-right: -1px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
+    font-size: 12px;
 
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
       cursor: pointer;
-    }
-
-    span {
-      margin: 0 5px 0 0;
-      padding: 2.2px 5.5px 2.75px;
-      background-color: #0074cc;
-      color: #ffffff;
-      font-size: 12px;
-      border-radius: 2px;
     }
   }
 
   .filter-button3 {
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #555555;
     margin-right: -1px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
+    font-size: 12px;
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
       cursor: pointer;
     }
+    span {
+      margin: 0 0 0 4px;
+      padding: 1.1px 5.5px;
+      background-color: #0074cc;
+      color: #ffffff;
+      font-size: 11px;
+      border-radius: 3px;
+    }
   }
   .filter-button4 {
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #555555;
     margin-right: -3px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #888888;
+    font-size: 12px;
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
@@ -214,7 +198,7 @@ const FilterGroup = styled.div`
     }
   }
   .filter-button5 {
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #555555;
     margin-left: 2px;
@@ -222,6 +206,7 @@ const FilterGroup = styled.div`
     border: 1px solid #888888;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    font-size: 12px;
     &:hover {
       background-color: #f8f9f9;
       color: #333333;
@@ -231,7 +216,7 @@ const FilterGroup = styled.div`
 
   .filter-button6 {
     display: flex;
-    padding: 0 0.7rem;
+    padding: 0 0.6rem;
     height: 2.3rem;
     color: #39739d;
     margin-left: 1rem;
@@ -240,6 +225,7 @@ const FilterGroup = styled.div`
     border-radius: 3px;
     align-items: center;
     text-align: right;
+    font-size: 12px;
     &:hover {
       background-color: #b3d4ea;
       cursor: pointer;

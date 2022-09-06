@@ -140,10 +140,11 @@ const RightSide = () => {
           <div className="box-stretch">
             <div className="box">
               <div className="item1">
-                <div className="avatar">
+                <div className="avatar1">
                   <img
+                    className="img1"
                     src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
-                    alt="gitlab_logo"
+                    alt="gitlab logo"
                   ></img>
                 </div>
               </div>
@@ -172,10 +173,11 @@ const RightSide = () => {
           <div className="box-stretch">
             <div className="box">
               <div className="item1">
-                <div className="avatar">
+                <div className="avatar2">
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
-                    alt="gitlab_logo"
+                    className="img2"
+                    src={`${process.env.PUBLIC_URL}/img/intel_logo.png`}
+                    alt="intel logo"
                   ></img>
                 </div>
               </div>
@@ -203,10 +205,11 @@ const RightSide = () => {
           <div className="box-stretch">
             <div className="box">
               <div className="item1">
-                <div className="avatar">
+                <div className="avatar3">
                   <img
-                    src={`${process.env.PUBLIC_URL}/img/gitlab_logo.png`}
-                    alt="gitlab_logo"
+                    className="img3"
+                    src={`${process.env.PUBLIC_URL}/img/twilio_logo.png`}
+                    alt="gitlab logo"
                   ></img>
                 </div>
               </div>
@@ -455,15 +458,44 @@ const Sidebarwidget5 = styled.div`
   .item1 {
     margin-right: 12px;
   }
-  .avatar {
+  .avatar1 {
     width: 32px;
     height: 32px;
     display: flex;
-    /* text-align: center; */
   }
-  img {
+
+  .avatar2 {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    background-color: #0068b5;
+    border-radius: 5px;
+  }
+
+  .avatar3 {
+    width: 32px;
+    height: 32px;
+    display: flex;
+  }
+
+  .img1 {
     width: 17px;
     height: 17px;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .img2 {
+    width: 21px;
+    height: 9px;
+    justify-content: center;
+    margin: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .img3 {
+    width: 16px;
+    height: 16px;
     justify-content: center;
     margin: auto;
   }

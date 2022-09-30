@@ -19,7 +19,7 @@ public class MemberResponseDto {
 
     private LocalDateTime last_edit_date;
 
-    private String roles; // User, MANAGER, ADMIN
+    private String roles; // User, MANAGER, ADMIN // 추가
 
 }
 

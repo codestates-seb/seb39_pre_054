@@ -22,3 +22,4 @@ public class MemberResponseDto {
     private String roles; // User, MANAGER, ADMIN
 
 }
+
